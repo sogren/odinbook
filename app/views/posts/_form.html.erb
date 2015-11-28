@@ -1,17 +1,19 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_for(@post, html: { class: "form-inline"}) do |f| %>
+	<% if @post.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<ul>
+			<% @post.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div clas="form-group" style="display: inline-block">
+		<%= f.text_field :content, class: "form-control", required: true %>
+	</div>
+
+	<%= f.submit "Submit", class: "btn btn-default",style:"margin-left: 50px;"  %>
 <% end %>

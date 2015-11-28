@@ -24,14 +24,15 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    @id = current_user.id
     @post = Post.new(post_params)
-
     respond_to do |format|
+    @post.update_attribute(:author_id, @id)
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to dashboard_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
-        format.html { render :new }
+        format.html { redirect_to dashboard_path, notice: 'Post creation failed.'  }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to dashboard_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -69,6 +70,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params[:post]
+      params.require(:post).permit(:content)
     end
 end
