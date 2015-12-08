@@ -1,4 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div id="profile">
+	<p>Profile of <%= @user.first_name %> <%= @user.last_name %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+	<div>
+		<%= link_to "Send friend request", send_invite_path(user_id: @user) %>
+	</div>
+	<div>
+		<%= link_to "add friend", add_friend_path(friend_id: @user.id), method: "put"  %>
+	</div>
+	<div>
+		<p>Common friends</p>
+	</div>
+
+	<div>
+		<p>People you might also know</p>
+	</div>
+</div>
+<div class="links">
+	<%= link_to "go back", :back %>
+</div>

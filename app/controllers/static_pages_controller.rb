@@ -10,6 +10,7 @@ class StaticPagesController < ApplicationController
 	def dashboard
 		@post = Post.new
 		@posts = Post.all
+		@users = User.all_except(current_user)
 	end
 
 	def welcome

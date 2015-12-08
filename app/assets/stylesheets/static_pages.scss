@@ -38,8 +38,10 @@
 	clear: both;
 }
 #post-wrapper{
-	width: 50%;
-	margin: 0 auto;
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  margin-left: -25%;
 	background: #CCC;
 }
 .post{ 
@@ -51,6 +53,8 @@
 		width: 80px;
 		height: 80px;
 		background: #FBB;
+		line-height: 80px;
+		text-align: center;
 	}
 
 	.main{
@@ -60,6 +64,38 @@
 			color: #3a5795;
 		}
 		.content{
+			color: brown;
+			word-wrap:break-word;
+		}
+		.functions{
+			color: green;
+		}
+	}
+}
+#people{
+  width: 25%;
+  height: 300px;
+	float:right;
+}
+.user{
+	background: #EEE;
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	.user-pic{
+		float: left;
+		margin: 0;
+		width: 60px;
+		height: 60px;
+		color: red;
+		line-height: 60px;
+		background: #FBB;
+		text-align: center;
+	}
+	.main{
+		float: right;
+		width: calc(100% - 60px);
+		.info{
 			color: brown;
 			word-wrap:break-word;
 		}

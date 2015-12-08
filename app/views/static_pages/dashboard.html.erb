@@ -2,6 +2,7 @@
 
 	<div id="header">
 		<p id="logo">facebook</p>
+		
 		<%= link_to "log out", destroy_user_session_path, :method => :delete %>
 	</div>
 
@@ -11,14 +12,15 @@
 	<div id="post-wrapper">
 		<div class="new-post">
 			<%= render partial: "posts/form" %>
-			<%= render @posts %>
 		</div>
 	
 		<div class="posts">
+			<%= render @posts %>
 		</div>
 	</div>
 
-	<div class="people">
+	<div id="people">
+		<%= render @users %>
 	</div>
 
 </div>
