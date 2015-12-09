@@ -20,11 +20,14 @@ class User < ActiveRecord::Base
 
 	has_many :friends_relations
 	has_many :friends, through: :friends_relations
+	has_many :inverse_friends_relations, :class_name => "FriendsRelation", :foreign_key => "friend_id"
+	has_many :inverse_friends, :through => :inverse_friends_relations, :source => :user
 
-	has_many :inverse_friends_relations, class_name: "FriendsRelation", foreign_key: "friend_id"
-	has_many :inverse_friends, through: :inverse_friends_relations, source: :user
-	
-	def is_friend?(user)
-	 	
+	def user_friends
+		(friends.all + inverse_friends.all).uniq
+	end
+
+	def is_friend?(friend)
+	 	user_friends.include?(friend)
 	end
 end

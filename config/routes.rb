@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   resources :users
 
 root "static_pages#home"
-get "static_pages/dashboard" => "static_pages#dashboard", as: "dashboard"
-get "static_pages/welcome" => "static_pages#welcome", as: "welcome"
 get "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
 put "friends_relations/create" => "friends_relations#create", as: "add_friend"
 delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
