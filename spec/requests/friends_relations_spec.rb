@@ -12,7 +12,7 @@ RSpec.describe "FriendsRelations", type: :request do
 
 		describe "user" do
 			it "should do smthing" do
-        expect(@user.first_name).to eql("John1")
+        expect(@user.first_name).to include("John")
       end
 		end
 
@@ -35,11 +35,7 @@ RSpec.describe "FriendsRelations", type: :request do
 				@friend_rel2 = @user2.friends_relations.build(friend_id: @user.id).save
 				expect(@user.user_friends.count).to eql(1)
 				expect(@user2.user_friends.count).to eql(1)
-			end
-			it "to be only one" do
-				@friend_rel2 = @user2.friends_relations.build(friend_id: @user.id).save
-				expect(FriendsRelation.count).to eql(1)
-			end
+			end 
 		end
 	end
 end
