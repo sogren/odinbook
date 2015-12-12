@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 10.times do |i|
-	a = User.new(first_name: "#{i}", last_name: "#{i}", email: "email#{i}@example.com", password: "qwerqwer" )
+	a = User.new(first_name: "John##{i}", last_name: "Doe##{i}", email: "email#{i}@example.com", password: "qwerqwer" )
 	a.save
 	a.posts.build(content: "#{('a'..'z').to_a.shuffle[0..8].join}").save
 end

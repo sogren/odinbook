@@ -14,7 +14,7 @@
 		</div>
 
 		<div class="functions">
-			<%= "FUNCTIONS" %>
+			<%= button_to "Like", likes_path(post: post, likeable_type: post.class.name), method: :post %>
 		</div>
 	</div>
 </div>

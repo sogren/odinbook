@@ -15,5 +15,10 @@ def make_post
 end
 
 def like_post(post, liker)
-	post.likes.create(likeable_id: post.id, likeable_type: "post", liker_id: user.id)
+	liker.likes_relations.create(likeable: post)
+end
+
+def like_post_by_button
+  posts = page.all(".post")
+  posts[0].click_button("Like")
 end

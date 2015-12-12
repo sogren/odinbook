@@ -23,10 +23,10 @@ class User < ActiveRecord::Base
 	has_many :inverse_friends_relations, class_name: "FriendsRelation", foreign_key: "friend_id"
 	has_many :inverse_friends, through: :inverse_friends_relations, source: :user
 
-	has_many :likes_relations, class_name: "Like", foreign_key: "liker_id"
+	has_many :likes_relations, class_name: "Like", foreign_key: "liker_id", dependent: :destroy
 	has_many :liked_posts, through: :likes_relations, source: :likeable, source_type: "Post"
 	has_many :liked_comments, through: :likes_relations, source: :likeable, source_type: "Comment"
-
+	
 	def user_friends
 		(friends.all + inverse_friends.all).uniq
 	end
