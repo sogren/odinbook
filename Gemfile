@@ -16,6 +16,7 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem "letter_opener"
+  gem 'database_cleaner'
 end
 group :test do
   gem 'selenium-webdriver'
