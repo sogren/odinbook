@@ -36,6 +36,12 @@ RSpec.describe "FriendsRelations", type: :request do
 				expect(@user.user_friends.count).to eql(1)
 				expect(@user2.user_friends.count).to eql(1)
 			end 
+			it "be only one" do
+				@user.friends_relations.build(friend_id: @user2.id).save
+				@user.friends_relations.build(friend_id: @user2.id).save
+				@user.friends_relations.build(friend_id: @user2.id).save
+				expect(@user.user_friends.count).to eql(1)
+			end 
 		end
 	end
 end

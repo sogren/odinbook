@@ -22,3 +22,13 @@ def like_post_by_button
   posts = page.all(".post")
   posts[0].click_button("Like")
 end
+
+def make_comment
+  posts = page.all(".post")
+  posts[0].click_button("Comment")
+  #wait_for_ajax
+  within ".new_comment" do
+    fill_in "comment_content", with: "example comment"
+    click_button "Send"
+  end
+end

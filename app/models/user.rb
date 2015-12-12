@@ -26,7 +26,9 @@ class User < ActiveRecord::Base
 	has_many :likes_relations, class_name: "Like", foreign_key: "liker_id", dependent: :destroy
 	has_many :liked_posts, through: :likes_relations, source: :likeable, source_type: "Post"
 	has_many :liked_comments, through: :likes_relations, source: :likeable, source_type: "Comment"
-	
+
+	has_many :comments, foreign_key: "author_id", dependent: :destroy
+
 	def user_friends
 		(friends.all + inverse_friends.all).uniq
 	end
