@@ -1,2 +1,3 @@
-$('#post-<%= @id %>').append("<%= escape_javascript (render 'comments/new', comment: @comment, id: @id, type: @type) %>");
-$('#post-<%= @id %>').find(".new_comment:last").slideDown("fast");
+$('.new_comment').remove();
+$('#<%= @type.downcase %>-<%= @id %>').append("<%= escape_javascript (render 'comments/new', comment: @comment, id: @id, type: @type) %>");
+//$('#<%= @type.downcase %>-<%= @id %>').find(".new_comment:last").slideDown("fast");

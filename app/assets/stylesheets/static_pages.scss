@@ -104,3 +104,40 @@
 		}
 	}
 }
+.post-comments{
+	clear: both;
+}
+.new_comment{
+	width: 500px;
+	margin-left: 25px;
+}
+.comment{ 
+	border: 1px solid red;
+	margin-left: 25px;
+	height: 30px;
+	clear: both;
+	.functions{
+		display: inline-block;
+		float: right;
+	}
+	.button_to{
+		display: inline-block;
+		float: right;
+	}
+}
+.functions form{
+	display: inline-block;
+}
+.alert{
+	position: absolute;
+	top: 0;
+	width: 500px;
+	height: 50px;
+	text-align: center;
+	line-height: 20px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-size: 20px;
+	color: #FFF;
+}

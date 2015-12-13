@@ -1,1 +1,12 @@
-<div class="comment"><%= comment.content %></div>
+<div class="comment clearfix" id="comment-<%= comment.id %>">
+	<p style="float:left"><%= comment.content %></p>
+
+	<div class="functions clearfix">
+		<%= button_to "Like", likes_path(post: comment, likeable_type: comment.class.name), method: :post %>
+		<%= button_to "Comment", new_comment_path(post: comment, commentable_type: comment.class.name), method: :get, remote: true %>
+		<p style="float:right">Likes: <%= comment.likes.count %></p>
+	</div>
+	<div class="post-comments clearfix">
+		<%= render comment.comments %>
+	</div>
+</div>

@@ -14,11 +14,12 @@
 		</div>
 
 		<div class="functions">
+			<p style="float:left">Likes: <%= post.likes.count %></p>
 			<%= button_to "Like", likes_path(post: post, likeable_type: post.class.name), method: :post %>
 			<%= button_to "Comment", new_comment_path(post: post, commentable_type: post.class.name), method: :get, remote: true %>
 		</div>
 	</div>
-	<div class="post comments">
+	<div class="post-comments">
 		<%= render post.comments %>
 	</div> 
 </div>

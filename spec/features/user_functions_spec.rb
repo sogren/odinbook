@@ -65,17 +65,17 @@ RSpec.describe "User functions", type: :feature do
       self.use_transactional_fixtures = false
       before do 
         make_post
-        make_comment
+        make_comment_on_post
       end
       it "and comment is added to post" do
-        expect{ make_comment }.to change{ Post.first.comments.count }.by(1)
+        expect{ make_comment_on_post }.to change{ Post.first.comments.count }.by(1)
       end
       it "and post has this comment" do
         expect( Post.first.comments.first.content ).to eql("example comment")
       end
 
       it "and comment is added to user" do
-        expect{ make_comment }.to change{ @user.comments.count }.by(1)
+        expect{ make_comment_on_post }.to change{ @user.comments.count }.by(1)
       end
       it "and user has this comment" do 
         expect( @user.comments.first.content ).to eql("example comment")
@@ -84,9 +84,39 @@ RSpec.describe "User functions", type: :feature do
       it "and comment is displayed" do
         expect(page).to have_content "example comment"
       end
-      it "and comment can be liked " do
-        like_post_by_button
-        expect( @user.liked_posts.last ).to eql(Post.first)
+    end
+
+    describe "can make comments on comments", js: true do  
+      self.use_transactional_fixtures = false
+      before do 
+        make_post
+        make_comment_on_post
+        make_comment_on_comment
+      end
+      it "and comment is added to comment" do
+        expect{ make_comment_on_comment }.to change{ Post.first.comments.first.comments.count }.by(1)
+      end
+      it "and comment has this comment" do
+        expect( Post.first.comments.first.comments.first.content ).to eql("example comment 2")
+      end
+
+      it "and comment is added to user" do
+        expect{ make_comment_on_comment }.to change{ @user.comments.count }.by(1)
+      end
+      it "and user has this comment" do 
+        expect( @user.comments.first.content ).to eql("example comment")
+      end
+
+      it "and comment is displayed" do
+        expect(page).to have_content "example comment"
+      end
+      it "and first comment can be liked " do
+        like_first_comment_by_button
+        expect( @user.liked_comments.last ).to eql(Post.first.comments.first)
+      end
+      it "and comment on comment can be liked " do
+        like_last_comment_by_button
+        expect( @user.liked_comments.last ).to eql(Post.first.comments.first.comments.first)
       end
     end
   end
