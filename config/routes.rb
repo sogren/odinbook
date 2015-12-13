@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
-  resources :posts
+  concern :commentable do
+    resources :comments, only: [:new, :create, :show]
+  end
+
+  resources :posts, concerns: :commentable
+
   resources :users 
   resources :likes, only: [:create, :destroy]
-  resources :comments, only: [:new, :create]
+  resources :comments, only: [:new, :create, :show], concerns: :commentable
 
 root "static_pages#home"
 get "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
