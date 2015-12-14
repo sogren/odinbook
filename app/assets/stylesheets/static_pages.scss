@@ -1,5 +1,7 @@
 body{
 	background: #EBEBEB;
+p{
+	margin: 0;
 }
 #main-profile-wrapper{}
 #header{
@@ -40,42 +42,143 @@ body{
 	margin-right: 350px; 
 	clear: both;
 }
-#post-wrapper{
+
+.alert{
+	position: absolute;
+	top: 0;
+	width: 500px;
+	height: 50px;
+	text-align: center;
+	line-height: 20px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-size: 20px;
+	color: #FFF;
+}
+//		 ######   #######  ##     ## ##     ## ######## ##    ## ########  ######  
+//		##    ## ##     ## ###   ### ###   ### ##       ###   ##    ##    ##    ## 
+//		##       ##     ## #### #### #### #### ##       ####  ##    ##    ##       
+//		##       ##     ## ## ### ## ## ### ## ######   ## ## ##    ##     ######  
+//		##       ##     ## ##     ## ##     ## ##       ##  ####    ##          ## 
+//		##    ## ##     ## ##     ## ##     ## ##       ##   ###    ##    ##    ## 
+//		 ######   #######  ##     ## ##     ## ######## ##    ##    ##     ######  
+
+.comment{
+	clear: both;
+	padding-top: 8px;
+	font-size: 12px;
+	font-family: helvetica, arial, sans-serif;
+	.c-comments{
+		margin-left: 10px;
+	}
+}
+}
+.c-main{
+	.c-author-image{
+		background: #113ECF;
+		width: 32px;
+		height: 32px;
+		float: left;
+		border: 1px solid #555;
+		color: white;
+	}
+	.c-core{
+		overflow: hidden;
+	}
+}
+
+.new_comment{
+	.form-group{
+		width: calc(100% - 60px);
+		float: left;
+	}
+	.btn{
+		width: 60px;
+		float: right;
+
+	}	
+}
+.functions{
+	a{
+		color: inherit;
+		text-decoration:none; 
+		cursor:pointer; 
+	}
+	form{
+		display: inline-block;
+	}
+	.glyphicon-comment{
+		padding-left: 20px;
+		color: #CCC;
+	}
+}
+//		########   #######   ######  ########  ######  
+//		##     ## ##     ## ##    ##    ##    ##    ## 
+//		##     ## ##     ## ##          ##    ##       
+//		########  ##     ##  ######     ##     ######  
+//		##        ##     ##       ##    ##          ## 
+//		##        ##     ## ##    ##    ##    ##    ## 
+//		##         #######   ######     ##     ######  
+
+//http://patorjk.com/software/taag/#p=display&h=1&v=0&f=Banner3&t=Posts
+
+.post{ 
+	width: 100%; 
+	margin-bottom: 30px;
+	background: #FFF;
+	border: 1px solid;
+	border-color: #EEE #DDD #CCC;
+	.p-main{
+		padding: 8px;
+		border-bottom: 1px solid #CCC;
+	}
+	.p-author-image{ 
+		color: white;
+		float: left;
+		width: 48px;
+		height: 48px;
+		background: #1A6EFF;
+		line-height: 48px;
+		text-align: center;
+	}
+	.p-author{
+		color: #3a5795;
+		width: calc(100% - 48px);
+		float: right;
+	}
+	.p-content{
+		margin-top: 15px;
+		word-wrap:break-word;
+		clear: both;
+	}
+	.p-functions{
+		margin-top: 10px;
+		clear: both;
+		overflow: hidden;
+		padding: 0px 20px;
+		border-top: 1px solid #CCC;
+	}
+	.p-comments{
+		padding: 8px;
+		background: #F5F5F5;
+	}
+}
+
+#dashboard-posts{
   position: absolute;
   width: 50%;
   left: 50%;
   margin-left: -25%;
-	background: #FFF;
-	border: 1px solid #EEE;
 }
-.post{ 
-	width: 100%; 
-	margin-bottom: 40px;
-	.author-image{ 
-		color: white;
-		float: left;
-		width: 80px;
-		height: 80px;
-		background: #1A6EFF;
-		line-height: 80px;
-		text-align: center;
-	}
+//		########  ########  #######  ########  ##       ######## 
+//		##     ## ##       ##     ## ##     ## ##       ##       
+//		##     ## ##       ##     ## ##     ## ##       ##       
+//		########  ######   ##     ## ########  ##       ######   
+//		##        ##       ##     ## ##        ##       ##       
+//		##        ##       ##     ## ##        ##       ##       
+//		##        ########  #######  ##        ######## ######## 
 
-	.main{
-		float: right;
-		width: calc(100% - 80px);
-		.author{
-			color: #3a5795;
-		}
-		.content{
-			color: brown;
-			word-wrap:break-word;
-		}
-		.functions{
-			color: green;
-		}
-	}
-}
 #people{
   width: 25%;
   height: 300px;
@@ -108,80 +211,3 @@ body{
 		}
 	}
 }
-
-.functions form{
-	display: inline-block;
-}
-.alert{
-	position: absolute;
-	top: 0;
-	width: 500px;
-	height: 50px;
-	text-align: center;
-	line-height: 20px;
-	left: 0;
-	right: 0;
-	margin: auto;
-	font-size: 20px;
-	color: #FFF;
-}
-//		 ######   #######  ##     ## ##     ## ######## ##    ## ########  ######  
-//		##    ## ##     ## ###   ### ###   ### ##       ###   ##    ##    ##    ## 
-//		##       ##     ## #### #### #### #### ##       ####  ##    ##    ##       
-//		##       ##     ## ## ### ## ## ### ## ######   ## ## ##    ##     ######  
-//		##       ##     ## ##     ## ##     ## ##       ##  ####    ##          ## 
-//		##    ## ##     ## ##     ## ##     ## ##       ##   ###    ##    ##    ## 
-//		 ######   #######  ##     ## ##     ## ######## ##    ##    ##     ######  
-
-.comment{ 
-	border: 1px solid #DDD;
-	margin-left: 25px;
-	clear: both;
-}
-.c-main{
-	.c-image{
-		background: #113ECF;
-		width: 30px;
-		height: 30px;
-		float: left;
-		border: 1px solid #555;
-		color: white;
-	}
-	.c-core{
-		border: 1px solid #DDD;
-		overflow: hidden;
-	}
-}
-.functions{
-	a{
-		color: inherit;
-		text-decoration:none; 
-		cursor:pointer; 
-	}
-	.glyphicon-comment{
-		padding-left: 20px;
-		color: #CCC;
-	}
-}
-
-.new_comment{
-	.form-group{
-		width: calc(100% - 60px);
-		float: left;
-	}
-	.btn{
-		width: 60px;
-		float: right;
-
-	}	
-}
-//		########   #######   ######  ########  ######  
-//		##     ## ##     ## ##    ##    ##    ##    ## 
-//		##     ## ##     ## ##          ##    ##       
-//		########  ##     ##  ######     ##     ######  
-//		##        ##     ##       ##    ##          ## 
-//		##        ##     ## ##    ##    ##    ##    ## 
-//		##         #######   ######     ##     ######  
-
-
-//http://patorjk.com/software/taag/#p=display&h=1&v=0&f=Banner3&t=Posts
