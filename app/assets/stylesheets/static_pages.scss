@@ -1,3 +1,6 @@
+body{
+	background: #EBEBEB;
+}
 #main-profile-wrapper{}
 #header{
 	height: 100px; 
@@ -42,17 +45,18 @@
   width: 50%;
   left: 50%;
   margin-left: -25%;
-	background: #CCC;
+	background: #FFF;
+	border: 1px solid #EEE;
 }
 .post{ 
 	width: 100%; 
 	margin-bottom: 40px;
-	.author-pic{ 
-		color: red;
+	.author-image{ 
+		color: white;
 		float: left;
 		width: 80px;
 		height: 80px;
-		background: #FBB;
+		background: #1A6EFF;
 		line-height: 80px;
 		text-align: center;
 	}
@@ -87,9 +91,9 @@
 		margin: 0;
 		width: 60px;
 		height: 60px;
-		color: red;
+		color: white;
 		line-height: 60px;
-		background: #FBB;
+		background: #1A6EFF;
 		text-align: center;
 	}
 	.main{
@@ -104,27 +108,7 @@
 		}
 	}
 }
-.post-comments{
-	clear: both;
-}
-.new_comment{
-	width: 500px;
-	margin-left: 25px;
-}
-.comment{ 
-	border: 1px solid red;
-	margin-left: 25px;
-	height: 30px;
-	clear: both;
-	.functions{
-		display: inline-block;
-		float: right;
-	}
-	.button_to{
-		display: inline-block;
-		float: right;
-	}
-}
+
 .functions form{
 	display: inline-block;
 }
@@ -141,3 +125,63 @@
 	font-size: 20px;
 	color: #FFF;
 }
+//		 ######   #######  ##     ## ##     ## ######## ##    ## ########  ######  
+//		##    ## ##     ## ###   ### ###   ### ##       ###   ##    ##    ##    ## 
+//		##       ##     ## #### #### #### #### ##       ####  ##    ##    ##       
+//		##       ##     ## ## ### ## ## ### ## ######   ## ## ##    ##     ######  
+//		##       ##     ## ##     ## ##     ## ##       ##  ####    ##          ## 
+//		##    ## ##     ## ##     ## ##     ## ##       ##   ###    ##    ##    ## 
+//		 ######   #######  ##     ## ##     ## ######## ##    ##    ##     ######  
+
+.comment{ 
+	border: 1px solid #DDD;
+	margin-left: 25px;
+	clear: both;
+}
+.c-main{
+	.c-image{
+		background: #113ECF;
+		width: 30px;
+		height: 30px;
+		float: left;
+		border: 1px solid #555;
+		color: white;
+	}
+	.c-core{
+		border: 1px solid #DDD;
+		overflow: hidden;
+	}
+}
+.functions{
+	a{
+		color: inherit;
+		text-decoration:none; 
+		cursor:pointer; 
+	}
+	.glyphicon-comment{
+		padding-left: 20px;
+		color: #CCC;
+	}
+}
+
+.new_comment{
+	.form-group{
+		width: calc(100% - 60px);
+		float: left;
+	}
+	.btn{
+		width: 60px;
+		float: right;
+
+	}	
+}
+//		########   #######   ######  ########  ######  
+//		##     ## ##     ## ##    ##    ##    ##    ## 
+//		##     ## ##     ## ##          ##    ##       
+//		########  ##     ##  ######     ##     ######  
+//		##        ##     ##       ##    ##          ## 
+//		##        ##     ## ##    ##    ##    ##    ## 
+//		##         #######   ######     ##     ######  
+
+
+//http://patorjk.com/software/taag/#p=display&h=1&v=0&f=Banner3&t=Posts

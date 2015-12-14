@@ -1,0 +1,8 @@
+<div class="functions">
+	<%= link_to likes_path(post: thing, likeable_type: thing.class.name), method: :post, remote: true do %>
+		<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+	<% end %><%= thing.likes.count %>
+	<%= link_to new_comment_path(post: thing, commentable_type: thing.class.name), method: :get, remote: true  do %>
+		<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+	<% end %>
+</div>

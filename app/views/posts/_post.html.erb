@@ -1,24 +1,27 @@
 <div class="post clearfix" id="post-<%= post.id %>">
-	<div class="author-pic">
-			<%= "IMAGE" %>
-	</div>
-
-	<div class="main">
+	<div class="user-post">
 		<div class="author">
-			<%= post.author.first_name %>
-			<%= post.author.last_name %>
+			<div class="author-image">
+				<%= "IMAGE" %>
+			</div>
+	
+			<div class="author-name">
+				<p>
+					<%= post.author.first_name %>
+					<%= post.author.last_name %>
+				</p>
+			</div>
 		</div>
 
-		<div class="content">
+		<div class="post-content">
 			<%= post.content %>
 		</div>
-
-		<div class="functions">
-			<p style="float:left">Likes: <%= post.likes.count %></p>
-			<%= button_to "Like", likes_path(post: post, likeable_type: post.class.name), method: :post %>
-			<%= button_to "Comment", new_comment_path(post: post, commentable_type: post.class.name), method: :get, remote: true %>
+	
+		<div class="post-functions">
+			<%= render partial: "functions", locals: { thing: post } %>
 		</div>
 	</div>
+
 	<div class="post-comments">
 		<%= render post.comments %>
 	</div> 
