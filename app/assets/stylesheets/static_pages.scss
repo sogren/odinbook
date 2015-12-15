@@ -3,6 +3,9 @@ body{
 p{
 	margin: 0;
 }
+.form-group{
+	margin: 0;
+}
 #main-profile-wrapper{}
 #header{
 	height: 100px; 
@@ -88,7 +91,7 @@ p{
 	}
 }
 
-.new_comment{
+.new-comment{
 	.form-group{
 		width: calc(100% - 60px);
 		float: left;

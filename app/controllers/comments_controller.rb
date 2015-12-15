@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
 	def new
 		@comment = Comment.new
 		@id = params[:post]
-		@type = params[:commentable_type]
 	end
 
 	def create
@@ -19,6 +18,6 @@ class CommentsController < ApplicationController
 	private
 
 		def comment_params
-			params.require(:comment).permit(:content, :commentable_id, :commentable_type)
+			params.require(:comment).permit(:content, :post_id)
 		end
 end

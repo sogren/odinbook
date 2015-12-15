@@ -1,3 +1,5 @@
-$('.new_comment').remove();
-$('#<%= @type.downcase %>-<%= @id %> > .c-main').after("<%= escape_javascript (render 'comments/new', comment: @comment, id: @id, type: @type) %>");
-//$('#<%= @type.downcase %>-<%= @id %>').find(".new_comment:last").slideDown("fast");
+
+if ($('.new-comment').length)
+	$('.new-comment').remove();
+else
+	$('#post-<%= @id %> > .p-main').after("<%= escape_javascript (render 'comments/new', comment: @comment, id: @id) %>");
