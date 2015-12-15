@@ -16,11 +16,11 @@
 		</div>
 
 		<div class="p-functions">
-			<%= render partial: "functions", locals: { likeable_id: post.id,likeable_type: "Post", post: post.id, likes: post.likes.count } %>
+			<%= render partial: "functions", locals: { likeable_id: post.id,likeable_type: "Post", post: post.id, likes: likes } %>
 		</div>
 	</div>
 
 	<div class="p-comments">
-		<%= render post.comments %>
+		<%= "render post.comments" %>
 	</div> 
 </div>
