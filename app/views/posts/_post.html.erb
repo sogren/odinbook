@@ -16,7 +16,7 @@
 		</div>
 
 		<div class="p-functions">
-			<%= render partial: "functions", locals: { likeable_id: post.id,likeable_type: post.class.name, post: post.id, likes: post.likes.count } %>
+			<%= render partial: "functions", locals: { likeable_id: post.id,likeable_type: "Post", post: post.id, likes: post.likes.count } %>
 		</div>
 	</div>
 

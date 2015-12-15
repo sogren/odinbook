@@ -13,7 +13,7 @@
 			</div>
 	
 			<div class="c-functions">
-				<%=  render partial: "functions", locals: { likeable_id: comment.id, likeable_type: comment.class.name, post: comment.post.id, likes: comment.likes.count } %>
+				<%=  render partial: "functions", locals: { likeable_id: comment.id, likeable_type: "Comment", post: comment.post.id, likes: comment.likes.count } %>
 			</div>
 		</div>
 

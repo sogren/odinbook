@@ -5,9 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+def word 
+ ('a'..'z').to_a.shuffle[rand(4)+1..rand(12)+5].join
+end
+def sentence 
+	arr=[]
+	t = rand(16)+3
+	t.times do 
+		arr << word
+	end
+	arr.join(" ")
+end
 
 10.times do |i|
-	a = User.new(first_name: "John##{i}", last_name: "Doe##{i}", email: "email#{i}@example.com", password: "qwerqwer" )
+	a = User.new(first_name: "John##{i+1}", last_name: "Doe##{i+1}", email: "email#{i+1}@example.com", password: "qwerqwer" )
 	a.save
-	a.posts.build(content: "#{('a'..'z').to_a.shuffle[0..8].join}").save
+	a.posts.build(content: sentence).save
+end
+100.times do |i|
+	a = User.find(rand(10)+1)
+	b = Post.find(rand(10)+1)
+	a.comments.build(content: sentence, post: b).save
 end

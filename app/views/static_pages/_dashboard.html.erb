@@ -15,12 +15,82 @@
 		</div>
 	
 		<div class="posts">
-			<%= render @posts %>
+
+			<% @posts.includes(:author, :likes, comments:[:author, :likes]).each do |post| %>
+
+				<div class="post clearfix" id="post-<%= post.id %>">
+					<div class="p-main clearfix">
+						<div class="clearfix">
+							<div class="p-author-image">
+								<%= "IMAGE" %>
+							</div>
+					
+							<div class="p-author">
+								<p><%= post.author.first_name + " " + post.author.last_name %></p>
+								<p>some things to do</p>
+							</div>
+						</div>
+				
+						<div class="p-content">
+							<%= post.content %>
+						</div>
+				
+						<div class="p-functions">
+
+							<div class="functions">
+								<%= link_to likes_path(likeable_id: post.id, likeable_type: "Post"), method: :post, remote: true do %>
+									<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+								<% end %><%= post.likes.length %>
+								<%= link_to new_comment_path(post: post.id), method: :get, remote: true  do %>
+									<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				
+					<div class="p-comments">
+
+						<%  post.comments.each do |comment| %>
+
+							<div class="comment clearfix" id="comment-<%= comment.id %>">
+								<div class="c-main">
+									<div class="c-author-image">
+										<%= "IMG" %>
+									</div>
+									<div class="c-core">
+										<div class="c-content">
+											<p><b><%= comment.author.first_name + " " + comment.author.last_name %></b>
+												<%= comment.content %>
+											</p>
+										</div>
+										<div class="c-functions">
+
+											<div class="functions">
+												<%= link_to likes_path(likeable_id: comment.id, likeable_type: "Comment"), method: :post, remote: true do %>
+													<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+												<% end %><%= comment.likes.length %>
+												<%= link_to new_comment_path(post: post.id), method: :get, remote: true  do %>
+													<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+												<% end %>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						<%  end  %>
+
+					</div> 
+				</div>
+
+			<% end %>
+
+
 		</div>
 	</div>
 
 	<div id="people">
 		<%= render @users %>
 	</div>
-
 </div>
