@@ -10,6 +10,7 @@ root "static_pages#home"
 get "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
 put "friends_relations/create" => "friends_relations#create", as: "add_friend"
 delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
+get "people" => "static_pages#people", as: "people"
 #post "likes/create" => "likes#create", as: "like"
 #post "likes/destroy" => "likes#destroy", as: "unlike"
   # The priority is based upon order of creation: first created -> highest priority.

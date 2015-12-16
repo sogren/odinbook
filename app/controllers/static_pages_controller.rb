@@ -6,4 +6,11 @@ class StaticPagesController < ApplicationController
 			@users = User.all_except(current_user)
 		end
 	end 
+
+	def people
+		@invited_users = current_user.invited_users
+		@invitations = current_user.invited_by
+		@friends = current_user.user_friends
+		@users = User.all_except(current_user)
+	end
 end

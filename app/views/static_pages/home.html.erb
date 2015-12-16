@@ -1,5 +1,26 @@
-<% if user_signed_in? %>
-	<%= render "static_pages/dashboard" %>
+<% if user_signed_in? %><div id="main-profile-wrapper" class="clearfix">
+
+	<%= render "static_pages/header" %>
+
+	<div class="profile">
+	</div>
+
+	<div id="dashboard-posts">
+		<div class="new-post">
+			<%= render partial: "posts/form" %>
+		</div>
+		<div class="posts">
+				<%= render @posts %>
+		</div>
+	</div>
+
+	<div id="people">
+		<%= render @users %>
+	</div>
+</div>
+
 <% else %>
+
 	<%= render "static_pages/welcome" %>
+
 <% end %>

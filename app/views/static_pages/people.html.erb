@@ -1,0 +1,20 @@
+<%= render "static_pages/header" %>
+<div class="profile">
+	</div>
+
+	<div id="dashboard-posts">
+		<div class="new-post">
+			<%= render @invited_users %>
+		</div>
+		<div class="posts">
+			<%= render @invitations %>
+		</div>
+	</div>
+		<div class="posts">
+			<%= render @friends %>
+		</div>
+
+	<div id="people">
+		<%= render @users %>
+	</div>
+</div>

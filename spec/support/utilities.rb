@@ -20,14 +20,14 @@ end
 
 def like_post_by_button
   posts = page.all(".post")
-  posts[0].first(:button, "Like").click
+  posts[0].first(:link, "like-post").click
 end
 
 def make_comment_on_post
   posts = page.all(".post")
-  posts[0].first(:button, "Comment").click
+  posts[0].first(:link, "make-comment").click
   #wait_for_ajax
-  within ".new_comment" do
+  within "#new_comment" do
     fill_in "comment_content", with: "example comment"
     click_button "Send"
   end
@@ -35,20 +35,10 @@ end
 
 def like_first_comment_by_button
   comments = page.all(".comment")
-  comments[0].first(:button, "Like").click
+  comments[0].first(:link, "like-comment").click
 end
 
 def like_last_comment_by_button
   comments = page.all(".comment")
-  comments[-1].first(:button, "Like").click
-end
-
-def make_comment_on_comment
-  comments = page.all(".comment")
-  comments[0].first(:button, "Comment").click
-  #wait_for_ajax
-  within ".new_comment" do
-    fill_in "comment_content", with: "example comment 2"
-    click_button "Send"
-  end
+  comments[-1].first(:link, "like-comment").click
 end
