@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  skip_before_filter :require_login, only: :home
 	def home
 		if user_signed_in?
 			@post = Post.new

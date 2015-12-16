@@ -16,13 +16,13 @@ RSpec.describe "Site", type: :feature do
 
   it "should contain link to friends" do 
     within("#header") do
-      expect( page ).to  have_selector( "friends" )
+      expect( page ).to  have_selector( "#people-inv" )
     end
   end
 
   it "should contain link to messages" do 
     within("#header") do
-      expect( page ).to  have_selector( "messages" )
+      expect( page ).to  have_selector( "#messages" )
     end
   end
 
