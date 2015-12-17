@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :comments, only: [:new, :create]
 
 root "static_pages#home"
-get "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
+post "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
+post "invitations/accept_invite" => "invitations#accept_invite", as: "accept_invite"
+delete "invitations/remove_invite" => "invitations#remove_invite", as: "remove_invite"
+delete "invitations/decline_invite" => "invitations#decline_invite", as: "decline_invite"
 put "friends_relations/create" => "friends_relations#create", as: "add_friend"
 delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
 get "people" => "static_pages#people", as: "people"

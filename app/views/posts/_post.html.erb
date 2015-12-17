@@ -6,7 +6,7 @@
 			</div>
 	
 			<div class="p-author">
-				<p><%= post.author.first_name + " " + post.author.last_name %></p>
+				<p><%= link_to "#{post.author.first_name} #{post.author.last_name}", post.author %></p>
 				<p>some things to do</p>
 			</div>
 		</div>

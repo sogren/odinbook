@@ -1,0 +1,22 @@
+<div class="user-people clearfix">
+	<div class="user-pic">
+			<%= "IMG" %>
+	</div>
+
+	<div class="user-name"> 
+		<%= link_to "#{user.first_name} #{user.last_name}", user %>
+	</div>
+
+	<div class="message"> 
+		<%= "MESSAGE" %>
+	</div>
+
+	<div class="functions">
+		<%= link_to accept_invite_path, method: :post, id: "like-post", remote: true do %>
+			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+		<% end %>
+		<%= link_to decline_invite_path, method: :post, id: "like-post", remote: true do %>
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+		<% end %>
+	</div>
+</div>

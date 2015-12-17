@@ -1,20 +1,23 @@
 <%= render "static_pages/header" %>
 <div class="profile">
-	</div>
-
-	<div id="dashboard-posts">
-		<div class="new-post">
-			<%= render @invited_users %>
-		</div>
-		<div class="posts">
-			<%= render @invitations %>
-		</div>
-	</div>
-		<div class="posts">
-			<%= render @friends %>
-		</div>
+</div>
 
 	<div id="people">
+		<div id="invites-received">
+			<p>Invites received:</p>
+			<%= render partial: "users/people", collection: @invitations, as: :user %>
+		</div>
+		<div id="invites-sent">
+			<p>Invites sent:</p>
+			<%= render partial: "users/people", collection: @invited_users, as: :user %>
+		</div>
+		<div id="friends">
+			<p>Your friends:</p>
+			<%= render partial: "users/people", collection: @friends, as: :user %>
+		</div>
+	</div>
+
+	<div id="you-may-know">
 		<%= render @users %>
 	</div>
 </div>

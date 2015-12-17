@@ -1,5 +1,5 @@
 <div id="header">
-	<p id="logo">odinbook</p>
+	<%= link_to "odinbook", root_path, id: "logo" %>
 	<%= link_to "log out", destroy_user_session_path, :method => :delete, class: "logout" %>
 	<div id="left-head">
 		<%= link_to people_path, method: :get, id: "people-inv" do %>
