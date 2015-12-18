@@ -1,24 +1,33 @@
 class InvitationsController < ApplicationController
 	def send_invite
-		@inv = current_user.sent_invitations.build(invited_user: User.find(user_id_params))
+		@inv = current_user.sent_invitations.build(invited_user_id: invite_params, status: "pending")
 		if @inv.save
 			flash[:notice] = "You succesfully invited user!"
 		else
 			flash[:danger] = "You cannot invite this user!"
 		end
-		redirect_to :back
-	end
-
-	def accept_invite
-		
+		redirect_to people_path
 	end
 
 	def remove_invite
-		
+		@inv = current_user.sent_invitations.find_by(invited_user_id: invite_params, status: "pending" )
+		if @inv.destroy
+			flash[:notice] = "invitation removed"
+		else
+			flash[:danger] = "couldnt find invite"
+		end
+		redirect_to people_path
 	end
 
 	def decline_invite
-		
+		@inv = current_user.received_invitations.find_by(invited_user_id: invite_params, status: "pending" )
+		if @inv
+			@inv.update(status: "declined")
+			flash[:notice] = "invitation declined"
+		else
+			flash[:danger] = "couldnt find invite"
+		end
+		redirect_to people_path
 	end
 
 	private
@@ -27,7 +36,7 @@ class InvitationsController < ApplicationController
 			
 		end
 
-		def user_id_params
-			params.require(:user_id)
+		def invite_params
+			params.require(:inv_user_id)
 		end
 end

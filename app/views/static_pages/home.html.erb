@@ -2,15 +2,14 @@
 
 	<%= render "static_pages/header" %>
 
-	<div class="profile">
-	</div>
+	<%= render "static_pages/profile" %>
 
 	<div id="dashboard-posts">
 		<div class="new-post">
 			<%= render partial: "posts/form" %>
 		</div>
 		<div class="posts">
-				<%= render @posts %>
+			<%= render @posts %>
 		</div>
 	</div>
 

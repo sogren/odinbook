@@ -1,0 +1,23 @@
+<div id="profile-main">
+	<div id="current-user" class="clearfix">
+		<div class="user-pic-lg">
+				<%= "IMG" %>
+		</div>
+	
+		<div class="user-name"> 
+			<%= link_to "#{current_user.first_name} #{current_user.last_name}", current_user %>
+		</div>
+	</div>
+	<div id="links">
+		<div class="link">
+			<%= link_to "home", root_path %>
+		</div>
+		<div class="link">
+			<%= link_to "friends", people_path %>
+		</div>
+		<div class="link">
+			<%= link_to "home", root_path %>
+		</div>
+	</div>
+</div>
+

@@ -1,20 +1,20 @@
+<%= render "static_pages/header" %>
+<%= render "static_pages/profile" %>
 <div id="profile">
-	<p>Profile of <%= @user.first_name %> <%= @user.last_name %></p>
-
-	<div>
-		<%= link_to "Send friend request", send_invite_path(user_id: @user) %>
+	<div class="profile-wrapper">
+		<div class="user-pic-lg">
+				<%= "IMG" %>
+		</div>
+	
+		<div class="user-name"> 
+			<%= link_to "#{@user.first_name} #{@user.last_name}", @user %>
+		</div>
+	
+		<div>
+			<%= link_to "Send friend request", send_invite_path(inv_user_id: @user), method: "post" %>
+		</div>
+		<div>
+			<p>Common friends</p>
+		</div>
 	</div>
-	<div>
-		<%= link_to "add friend", add_friend_path(friend_id: @user.id), method: "put"  %>
-	</div>
-	<div>
-		<p>Common friends</p>
-	</div>
-
-	<div>
-		<p>People you might also know</p>
-	</div>
-</div>
-<div class="links">
-	<%= link_to "go back", root_path %>
 </div>

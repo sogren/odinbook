@@ -1,5 +1,6 @@
 body{
 	background: #EBEBEB;
+}
 p{
 	margin: 0;
 }
@@ -62,6 +63,39 @@ a{
 	cursor:pointer; 
 	}
 }
+
+//		########  ########   #######  ######## #### ##       ########    ########  ####  ######   ######  
+//		##     ## ##     ## ##     ## ##        ##  ##       ##          ##     ##  ##  ##    ## ##    ## 
+//		##     ## ##     ## ##     ## ##        ##  ##       ##          ##     ##  ##  ##       ##       
+//		########  ########  ##     ## ######    ##  ##       ######      ########   ##  ##        ######  
+//		##        ##   ##   ##     ## ##        ##  ##       ##          ##         ##  ##             ## 
+//		##        ##    ##  ##     ## ##        ##  ##       ##          ##         ##  ##    ## ##    ## 
+//		##        ##     ##  #######  ##       #### ######## ########    ##        ####  ######   ###### 
+
+.user-pic-lg, .user-pic-md, .user-pic-sm{
+	color: white;
+	float: left;
+	text-align: center;
+}
+.user-pic-lg{
+	width: 64px;
+	height: 64px;
+	line-height: 64px;
+	background: #1A6EFF;
+}
+.user-pic-md{
+	width: 48px;
+	height: 48px;
+	line-height: 48px;
+	background: #1A6EFF;
+}
+.user-pic-sm{
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	background: #113ECF;
+}
+
 //		##     ## ########    ###    ########  ######## ########  
 //		##     ## ##         ## ##   ##     ## ##       ##     ## 
 //		##     ## ##        ##   ##  ##     ## ##       ##     ## 
@@ -128,16 +162,7 @@ a{
 		margin-left: 10px;
 	}
 }
-}
 .c-main{
-	.c-author-image{
-		background: #113ECF;
-		width: 32px;
-		height: 32px;
-		float: left;
-		border: 1px solid #555;
-		color: white;
-	}
 	.c-core{
 		overflow: hidden;
 	}
@@ -187,15 +212,6 @@ a{
 	.p-main{
 		padding: 8px;
 		border-bottom: 1px solid #CCC;
-	}
-	.p-author-image{ 
-		color: white;
-		float: left;
-		width: 48px;
-		height: 48px;
-		background: #1A6EFF;
-		line-height: 48px;
-		text-align: center;
 	}
 	.p-author{
 		color: #3a5795;
@@ -262,15 +278,6 @@ a{
 		float: left;
 		margin-right: 10px;
 	}
-	.user-pic{
-		margin: 0;
-		width: 32px;
-		height: 32px;
-		color: white;
-		line-height: 32px;
-		background: #1A6EFF;
-		text-align: center;
-	}
 	.user-name{
 		font-weight: bold;
 	}
@@ -298,19 +305,9 @@ a{
 	width: 90%;
 	margin: 0 auto;
 	margin-bottom: 15px;
-	.user-pic{
-		float: left;
-		margin: 0;
-		width: 60px;
-		height: 60px;
-		color: white;
-		line-height: 60px;
-		background: #1A6EFF;
-		text-align: center;
-	}
 	.main{
 		float: right;
-		width: calc(100% - 60px);
+		width: calc(100% - 64px);
 		.info{
 			color: brown;
 			word-wrap:break-word;
@@ -318,5 +315,59 @@ a{
 		.functions{
 			color: green;
 		}
+	}
+}
+//		 ######  ##     ##  #######  ##      ##    ##     ##  ######  ######## ########  
+//		##    ## ##     ## ##     ## ##  ##  ##    ##     ## ##    ## ##       ##     ## 
+//		##       ##     ## ##     ## ##  ##  ##    ##     ## ##       ##       ##     ## 
+//		 ######  ######### ##     ## ##  ##  ##    ##     ##  ######  ######   ########  
+//		      ## ##     ## ##     ## ##  ##  ##    ##     ##       ## ##       ##   ##   
+//		##    ## ##     ## ##     ## ##  ##  ##    ##     ## ##    ## ##       ##    ##  
+//		 ######  ##     ##  #######   ###  ###      #######   ######  ######## ##     ## 
+
+#profile{
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  margin-left: -25%;
+	>div{ 
+		width: 100%; 
+		margin-top: 30px;
+		background: #FFF;
+		border: 1px solid;
+		border-color: #DDD #CCC #BBB;
+		padding: 8px;
+	}
+}
+
+//		########  ########   #######  ######## #### ##       ######## 
+//		##     ## ##     ## ##     ## ##        ##  ##       ##       
+//		##     ## ##     ## ##     ## ##        ##  ##       ##       
+//		########  ########  ##     ## ######    ##  ##       ######   
+//		##        ##   ##   ##     ## ##        ##  ##       ##       
+//		##        ##    ##  ##     ## ##        ##  ##       ##       
+//		##        ##     ##  #######  ##       #### ######## ######## 
+
+#profile-main{
+	width: 25%;
+	clear: both;
+  position: absolute;
+  #current-user{
+  	width: 90%;
+  	margin: 0 auto;
+		line-height: 64px;
+  }
+	.user-name{
+		float: left;
+		font-weight: bold;
+		font-size: 16px;
+		padding-left: 10px;
+	}
+	#links{
+	}
+	.link{
+		width: 90%;
+		margin: 0 auto;
+		margin-top: 15px;
 	}
 }

@@ -1,5 +1,5 @@
 <div class="user-people clearfix">
-	<div class="user-pic">
+	<div class="user-pic-sm">
 			<%= "IMG" %>
 	</div>
 
@@ -12,11 +12,21 @@
 	</div>
 
 	<div class="functions">
-		<%= link_to accept_invite_path, method: :post, id: "like-post", remote: true do %>
-			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-		<% end %>
-		<%= link_to decline_invite_path, method: :post, id: "like-post", remote: true do %>
-			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+		<% if f_num == 1 %>
+			<%= link_to make_friend_path(friend_id: user.id), method: :post do %>
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			<% end %>
+			<%= link_to decline_invite_path(inv_user_id: user.id), method: :post do %>
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			<% end %>
+		<% elsif f_num == 2 %>
+			<%= link_to remove_invite_path(inv_user_id: user.id), method: :delete do %>
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			<% end %>
+		<% else %>
+			<%= link_to remove_friend_path(friend_id: user.id), method: :delete do %>
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			<% end %>
 		<% end %>
 	</div>
 </div>

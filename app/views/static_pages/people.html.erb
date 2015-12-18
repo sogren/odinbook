@@ -1,19 +1,19 @@
 <%= render "static_pages/header" %>
-<div class="profile">
-</div>
+<%= render "static_pages/profile" %>
+
 
 	<div id="people">
 		<div id="invites-received">
 			<p>Invites received:</p>
-			<%= render partial: "users/people", collection: @invitations, as: :user %>
+			<%= render partial: "users/people", collection: @received_invitations.map(&:inviting_user), locals:{ f_num: 1 }, as: :user %>
 		</div>
 		<div id="invites-sent">
 			<p>Invites sent:</p>
-			<%= render partial: "users/people", collection: @invited_users, as: :user %>
+			<%= render partial: "users/people", collection: @sent_invitations.map(&:invited_user), locals:{ f_num: 2 }, as: :user %>
 		</div>
 		<div id="friends">
 			<p>Your friends:</p>
-			<%= render partial: "users/people", collection: @friends, as: :user %>
+			<%= render partial: "users/people", collection: @friends, locals:{ f_num: 3 }, as: :user %>
 		</div>
 	</div>
 

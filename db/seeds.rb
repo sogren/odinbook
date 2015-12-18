@@ -8,6 +8,7 @@
 def word 
  ('a'..'z').to_a.shuffle[rand(4)+1..rand(12)+5].join
 end
+
 def sentence 
 	arr=[]
 	t = rand(16)+3
@@ -22,8 +23,25 @@ end
 	a.save
 	a.posts.build(content: sentence).save
 end
+
 100.times do |i|
 	a = User.find(rand(10)+1)
 	b = Post.find(rand(10)+1)
 	a.comments.build(content: sentence, post: b).save
+end
+
+User.all.each_with_index do |i, index|
+	(10-index-1).times do |k|
+		if rand(4) > 1
+			i.sent_invitations.build(friend_id: User.find(10-k)).save
+		end
+	end
+end
+
+User.all.each_with_index do |i, index|
+	(10-index-1).times do |k|
+		if rand(4) > 1
+			i.sent_invitations.build(friend_id: User.find(10-k)).save
+		end
+	end
 end
