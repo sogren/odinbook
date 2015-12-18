@@ -35,4 +35,14 @@ class User < ActiveRecord::Base
 	def is_friend?(friend)
 	 	user_friends.include?(friend)
 	end
+
+	def feed
+		friends_ids = user_friends.map(&:id)
+		Post.where("author_id IN (#{friends_ids.join(',')}) OR author_id = :user_id", user_id: id)
+	end
+
+	def may_know
+		friends_ids = user_friends.map(&:id)
+		User.where("id NOT IN (#{friends_ids.join(',')}) OR id = :user_id", user_id: id)
+	end
 end
