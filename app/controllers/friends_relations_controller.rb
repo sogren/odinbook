@@ -18,12 +18,12 @@ class FriendsRelationsController < ApplicationController
 	end
 
 	def destroy
-		@friendship = current_user.friends_relations.find_by(friend_id: friend_params) || current_user.inverse_friends_relations.find_by(friend_id: friend_params)
+		@friendship = current_user.friends_relations.find_by(friend_id: friend_params) || current_user.inverse_friends_relations.find_by(user_id: friend_params)
 		@inv = current_user.sent_invitations.find_by(invited_user_id: friend_params)
-		if @friendship.destroy
+		if @friendship && @friendship.destroy
 			flash[:danger] = "Friend removed."
 		else
-			flash[:danger] = "Unable to add."
+			flash[:danger] = "Unable to remove."
 		end
 		redirect_to people_path
 	end
