@@ -5,7 +5,11 @@
 
 	<div class="main">
 		<div class="user-name"> 
-			<%= link_to "#{user.first_name} #{user.last_name}", user %>
+			<% if user.profile.private %>
+				<%= link_to "#{user.first_name} #{user.last_name}", user_profile_path(user.id) %>
+			<% else %>
+				<%= "#{user.first_name} #{user.last_name}" %>
+			<% end %>
 		</div>
 
 		<div class="info"> 

@@ -32,6 +32,6 @@ class StaticPagesController < ApplicationController
 	private
 
 		def users
-			current_user.may_know.limit(6).offset(rand(User.all.length-6-current_user.user_friends.count))
+			current_user.may_know.includes(:profile).limit(6).offset(rand(User.all.length-6-current_user.user_friends.count))
 		end
 end

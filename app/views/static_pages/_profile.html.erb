@@ -19,7 +19,10 @@
 			<%= link_to "friends", people_path %>
 		</div>
 		<div class="link">
-			<%= link_to "home", root_path %>
+			<%= link_to "profile", user_profile_path(user_id: current_user.id) %>
+		</div>
+		<div class="link">
+			<%= link_to "edit profile", edit_profile_path %>
 		</div>
 	</div>
 </div>

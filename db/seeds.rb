@@ -23,6 +23,7 @@ amazing_number = 30
 amazing_number.times do |i|
 		a = User.new(first_name: "John##{i+1}", last_name: "Doe##{i+1}", email: "email#{i+1}@example.com", password: "qwerqwer" )
 		a.save
+		a.create_profile(private: false, about: sentence)
 	if rand(7) > 1
 		a.posts.build(content: sentence).save
 	end

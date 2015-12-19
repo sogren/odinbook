@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 	has_many :liked_posts, through: :likes_relations, source: :likeable, source_type: "Post"
 	has_many :liked_comments, through: :likes_relations, source: :likeable, source_type: "Comment"
 
+	has_one :profile, dependent: :destroy
+
 	def user_friends
 		(friends.all + inverse_friends.all).uniq
 	end

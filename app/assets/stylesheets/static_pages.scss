@@ -158,11 +158,15 @@ a{
 	}	
 }
 .functions{
+	p{
+		display: inline-block;
+		margin-left: 20px;
+	}
 	form{
 		display: inline-block;
 	}
-	.glyphicon-comment{
-		padding-left: 20px;
+	#make-comment{
+		margin-left: 20px;
 		color: #CCC;
 	}
 }
@@ -369,4 +373,41 @@ a{
 	right: 0;
 	margin: auto;
 	font-size: 20px;
+}
+//		##     ##    ###    #### ##    ##    ########  ########   #######  ######## #### ##       ######## 
+//		###   ###   ## ##    ##  ###   ##    ##     ## ##     ## ##     ## ##        ##  ##       ##       
+//		#### ####  ##   ##   ##  ####  ##    ##     ## ##     ## ##     ## ##        ##  ##       ##       
+//		## ### ## ##     ##  ##  ## ## ##    ########  ########  ##     ## ######    ##  ##       ######   
+//		##     ## #########  ##  ##  ####    ##        ##   ##   ##     ## ##        ##  ##       ##       
+//		##     ## ##     ##  ##  ##   ###    ##        ##    ##  ##     ## ##        ##  ##       ##       
+//		##     ## ##     ## #### ##    ##    ##        ##     ##  #######  ##       #### ######## ######## 
+
+
+#show-profile{
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  margin-left: -25%;
+	background: #FFF;
+	border: 1px solid;
+	border-color: #DDD #CCC #BBB;
+	margin-top: 50px;
+	>div{
+		padding: 8px;
+	}
+	#profile-head{
+		background: #EEE;
+		border-bottom: 1px solid #BBB;
+		font-size: 24px;
+		line-height: 30px;
+	}
+	#about{
+		font-size: 16px;
+		margin-top: 12px;
+	}
+	#details{
+		>p{
+			margin-top: 12px;
+		}
+	}
 }

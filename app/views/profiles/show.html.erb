@@ -1,0 +1,34 @@
+<%= render "static_pages/header" %>
+
+<% if user_signed_in? %>
+	<%= render "static_pages/profile" %>
+<% end %>
+
+<div id="show-profile">
+		<div id="profile-head">
+			<p><b>About <%= @user.first_name %> <%= @user.last_name %></b></p>
+		</div>
+
+		<div id="about">
+			<p><%= @profile.about ? @profile.about : " #{@user.first_name} did not write anything." %></p>
+		</div>
+
+		<% if !@profile.private %>
+
+
+			<div id="details">
+				<p><b>Birthday:</b><%=   profile_info(@profile.birthday)    %></p>
+				<p><b>Country:</b><%=    profile_info(@profile.country)     %></p>
+				<p><b>Gender:</b><%=     profile_info(@profile.gender)      %></p>
+				<p><b>Profession:</b><%= profile_info(@profile.profession)  %></p>
+				<p><b>Education:</b><%=  profile_info(@profile.education)   %></p>
+			</div>
+
+		<% else %>
+
+			<div id="details">
+				<p><%= @user.first_name %> <%= @user.last_name %> keeps details only for friends.</p>
+			</div>
+
+		<% end %>
+</div>

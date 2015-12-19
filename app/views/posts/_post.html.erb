@@ -6,7 +6,7 @@
 			</div>
 	
 			<div class="p-author">
-				<p><%= link_to "#{post.author.first_name} #{post.author.last_name}", post.author %></p>
+				<p><%= link_to "#{post.author.first_name} #{post.author.last_name}", user_profile_path(post.author.id) %></p>
 				<p><%= time_ago_in_words(post.created_at) + " ago" %></p>
 			</div>
 		</div>

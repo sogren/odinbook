@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
-  resources :posts
-  resources :users, only: [:show ]
+  resources :posts 
+  resources :users, only: [:show ] do
+    resource :profile, only: [:show]
+  end
   resources :likes, only: [:create, :destroy]
   resources :comments, only: [:new, :create]
 
@@ -17,6 +19,8 @@ delete "invitations/remove_invite" => "invitations#remove_invite", as: "remove_i
 
 post "friends_relations/make_friend" => "friends_relations#make_friend", as: "make_friend"
 delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
+
+post "edit_profile" => "profiles#edit"
 
 get '*unmatched_route', to: 'application#not_found'
 
