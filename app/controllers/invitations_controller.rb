@@ -2,7 +2,7 @@ class InvitationsController < ApplicationController
 	def send_invite
 		@inv = current_user.sent_invitations.build(invited_user_id: invite_params, status: "pending")
 		if @inv.save
-			flash[:notice] = "You succesfully invited user!"
+			flash[:info] = "You succesfully invited user!"
 		else
 			flash[:danger] = "You cannot invite this user!"
 		end
@@ -12,7 +12,7 @@ class InvitationsController < ApplicationController
 	def remove_invite
 		@inv = current_user.sent_invitations.find_by(invited_user_id: invite_params, status: "pending" )
 		if @inv.destroy
-			flash[:notice] = "invitation removed"
+			flash[:info] = "invitation removed"
 		else
 			flash[:danger] = "couldnt find invite"
 		end
@@ -23,7 +23,7 @@ class InvitationsController < ApplicationController
 		@inv = current_user.received_invitations.find_by(invited_user_id: invite_params, status: "pending" )
 		if @inv
 			@inv.update(status: "declined")
-			flash[:notice] = "invitation declined"
+			flash[:info] = "invitation declined"
 		else
 			flash[:danger] = "couldnt find invite"
 		end

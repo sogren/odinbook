@@ -21,7 +21,7 @@ class FriendsRelationsController < ApplicationController
 		@friendship = current_user.friends_relations.find_by(friend_id: friend_params) || current_user.inverse_friends_relations.find_by(user_id: friend_params)
 		@inv = current_user.sent_invitations.find_by(invited_user_id: friend_params)
 		if @friendship && @friendship.destroy
-			flash[:danger] = "Friend removed."
+			flash[:warning] = "Friend removed."
 		else
 			flash[:danger] = "Unable to remove."
 		end

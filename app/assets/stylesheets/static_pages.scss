@@ -31,20 +31,6 @@ p{
 	margin-right: 350px; 
 	clear: both;
 }
-
-.alert{
-	position: absolute;
-	top: 0;
-	width: 500px;
-	height: 50px;
-	text-align: center;
-	line-height: 20px;
-	left: 0;
-	right: 0;
-	margin: auto;
-	font-size: 20px;
-	color: #FFF;
-}
 //		##       #### ##    ## ##    ##  ######  
 //		##        ##  ###   ## ##   ##  ##    ## 
 //		##        ##  ####  ## ##  ##   ##       
@@ -72,30 +58,23 @@ a{
 //		##        ##    ##  ##     ## ##        ##  ##       ##          ##         ##  ##    ## ##    ## 
 //		##        ##     ##  #######  ##       #### ######## ########    ##        ####  ######   ###### 
 
-.user-pic-lg, .user-pic-md, .user-pic-sm{
+.user-pic-lg, .user-pic-md, .user-pic-sm > img{
 	color: white;
 	float: left;
 	text-align: center;
 }
-.user-pic-lg{
+.user-pic-lg > img{
 	width: 64px;
 	height: 64px;
-	line-height: 64px;
-	background: #1A6EFF;
 }
-.user-pic-md{
+.user-pic-md > img{
 	width: 48px;
 	height: 48px;
-	line-height: 48px;
-	background: #1A6EFF;
 }
-.user-pic-sm{
+.user-pic-sm > img{
 	width: 32px;
 	height: 32px;
-	line-height: 32px;
-	background: #113ECF;
 }
-
 //		##     ## ########    ###    ########  ######## ########  
 //		##     ## ##         ## ##   ##     ## ##       ##     ## 
 //		##     ## ##        ##   ##  ##     ## ##       ##     ## 
@@ -370,4 +349,24 @@ a{
 		margin: 0 auto;
 		margin-top: 15px;
 	}
+}
+//		   ###    ##       ######## ########  ########  ######  
+//		  ## ##   ##       ##       ##     ##    ##    ##    ## 
+//		 ##   ##  ##       ##       ##     ##    ##    ##       
+//		##     ## ##       ######   ########     ##     ######  
+//		######### ##       ##       ##   ##      ##          ## 
+//		##     ## ##       ##       ##    ##     ##    ##    ## 
+//		##     ## ######## ######## ##     ##    ##     ######  
+
+.alert{
+	position: absolute;
+	top: 0;
+	width: 500px;
+	height: 50px;
+	text-align: center;
+	line-height: 20px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-size: 20px;
 }

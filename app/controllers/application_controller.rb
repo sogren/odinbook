@@ -19,6 +19,26 @@ class ApplicationController < ActionController::Base
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def not_found
+    flash[:danger] = "There is no such page or you have no access to it!"
+    redirect_to root_path
+  end
+
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from Exception, with: :render_500
+    rescue_from ActionController::RoutingError, with: :render_404
+    rescue_from ActionController::UnknownController, with: :render_404
+    rescue_from ::AbstractController::ActionNotFound, with: :render_404
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  end
+
+  protected
+
+    def render_404(exception)
+      flash[:danger] = "There is no such page or you have no access to it!"
+      redirect_to root_path
+    end
+
   private
   
     def require_login

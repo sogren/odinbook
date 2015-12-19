@@ -10,6 +10,7 @@ gem 'bootstrap-sass',       '3.2.0.0'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'paperclip'
 gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
 	gem 'sqlite3'

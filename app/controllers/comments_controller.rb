@@ -7,10 +7,10 @@ class CommentsController < ApplicationController
 	def create
 		@comment = current_user.comments.create(comment_params)
 		if @comment.save
-			flash[:notice] = "comment added"
+			flash[:info] = "comment added"
 			redirect_to root_path
 		else
-			flash[:notice] = "adding failed"
+			flash[:warning] = "adding failed"
 			redirect_to root_path
 		end
 	end

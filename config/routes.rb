@@ -18,6 +18,8 @@ delete "invitations/remove_invite" => "invitations#remove_invite", as: "remove_i
 post "friends_relations/make_friend" => "friends_relations#make_friend", as: "make_friend"
 delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
 
+get '*unmatched_route', to: 'application#not_found'
+
 #post "likes/create" => "likes#create", as: "like"
 #post "likes/destroy" => "likes#destroy", as: "unlike"
   # The priority is based upon order of creation: first created -> highest priority.

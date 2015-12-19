@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
 				 :recoverable, :rememberable, :trackable, :validatable
 				 
+	has_attached_file :avatar, default_url: "digger2.jpg"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
 	validates :first_name, :last_name, :email, presence: true
 	validates :email, uniqueness: true
 	validates :password, length: { minimum: 8 }, unless: "password.nil?"

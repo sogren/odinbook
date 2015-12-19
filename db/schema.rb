@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218105521) do
+ActiveRecord::Schema.define(version: 20151219110141) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -58,6 +58,11 @@ ActiveRecord::Schema.define(version: 20151218105521) do
     t.integer  "author_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -73,6 +78,10 @@ ActiveRecord::Schema.define(version: 20151218105521) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
