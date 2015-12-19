@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   resources :posts
-  resources :users 
+  resources :users, only: [:show ]
   resources :likes, only: [:create, :destroy]
   resources :comments, only: [:new, :create]
 
 root "static_pages#home"
 
 get "people" => "static_pages#people", as: "people"
+get "timeline" => "static_pages#timeline", as: "timeline"
 
 post "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
 post "invitations/decline_invite" => "invitations#decline_invite", as: "decline_invite"
@@ -16,6 +17,8 @@ delete "invitations/remove_invite" => "invitations#remove_invite", as: "remove_i
 
 post "friends_relations/make_friend" => "friends_relations#make_friend", as: "make_friend"
 delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
+
+map.connect '*path', :controller => 'static_pages', :action => 'error404'
 
 #post "likes/create" => "likes#create", as: "like"
 #post "likes/destroy" => "likes#destroy", as: "unlike"

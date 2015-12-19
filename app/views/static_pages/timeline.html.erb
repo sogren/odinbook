@@ -1,0 +1,18 @@
+<% if user_signed_in? %><div id="main-profile-wrapper" class="clearfix">
+
+	<%= render "static_pages/header" %>
+
+	<%= render "static_pages/profile" %>
+
+	<div id="dashboard-posts">
+		<div class="posts">
+			<%= render @posts %>
+		</div>
+	</div>
+</div>
+
+<% else %>
+
+	<%= render "static_pages/welcome" %>
+
+<% end %>

@@ -6,11 +6,11 @@
 	<div class="user-name"> 
 		<%= link_to "#{user.first_name} #{user.last_name}", user %>
 	</div>
-
-	<div class="message"> 
-		<%= "MESSAGE" %>
-	</div>
-
+	<% if f_num != 3 %>
+		<div class="message"> 
+			<%= "MESSAGE" %>
+		</div>
+	<% end %>
 	<div class="functions">
 		<% if f_num == 1 %>
 			<%= link_to make_friend_path(friend_id: user.id), method: :post do %>
