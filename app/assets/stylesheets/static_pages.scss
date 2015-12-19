@@ -31,24 +31,6 @@ p{
 	margin-right: 350px; 
 	clear: both;
 }
-//		##       #### ##    ## ##    ##  ######  
-//		##        ##  ###   ## ##   ##  ##    ## 
-//		##        ##  ####  ## ##  ##   ##       
-//		##        ##  ## ## ## #####     ######  
-//		##        ##  ##  #### ##  ##         ## 
-//		##        ##  ##   ### ##   ##  ##    ## 
-//		######## #### ##    ## ##    ##  ######  
-
-a{
-	color: inherit;
-	text-decoration:none; 
-	cursor:pointer; 
-	&:hover,&:focus,&:active{
-	color: inherit;
-	text-decoration:none; 
-	cursor:pointer; 
-	}
-}
 
 //		########  ########   #######  ######## #### ##       ########    ########  ####  ######   ######  
 //		##     ## ##     ## ##     ## ##        ##  ##       ##          ##     ##  ##  ##    ## ##    ## 
@@ -58,10 +40,14 @@ a{
 //		##        ##    ##  ##     ## ##        ##  ##       ##          ##         ##  ##    ## ##    ## 
 //		##        ##     ##  #######  ##       #### ######## ########    ##        ####  ######   ###### 
 
-.user-pic-lg, .user-pic-md, .user-pic-sm > img{
+.user-pic-lg, .user-pic-md, .user-pic-sm, .user-pic-vg > img{
 	color: white;
 	float: left;
 	text-align: center;
+}
+.user-pic-vl > img{
+	width: 152px;
+	height: 152px;
 }
 .user-pic-lg > img{
 	width: 64px;
@@ -74,7 +60,108 @@ a{
 .user-pic-sm > img{
 	width: 32px;
 	height: 32px;
+} 
+
+//		##     ##    ###    #### ##    ##    ##     ##  ######  ######## ########   
+//		###   ###   ## ##    ##  ###   ##    ##     ## ##    ## ##       ##     ##  
+//		#### ####  ##   ##   ##  ####  ##    ##     ## ##       ##       ##     ##  
+//		## ### ## ##     ##  ##  ## ## ##    ##     ##  ######  ######   ########   
+//		##     ## #########  ##  ##  ####    ##     ##       ## ##       ##   ##    
+//		##     ## ##     ##  ##  ##   ###    ##     ## ##    ## ##       ##    ##   
+//		##     ## ##     ## #### ##    ##     #######   ######  ######## ##     ##  
+#main-user-profile, #profile-links{
+	width: 60%;
+	min-width: 600px;
+	left: 40%;
+	margin-left: 15%;
 }
+#main-user-profile{
+	height: 260px;
+	background: #122334;
+	.user-pic-vl{
+		position: relative;
+		top: 125px;
+		left: 15px;
+		border: 4px solid white;
+		display: inline-block;
+		box-shadow: 1px 1px 1px;
+	}
+	.user-name{
+		position: relative;
+		font-size: 32px;
+		color: white;
+		top: 35px;
+		left: 220px;
+	}
+}
+#profile-links{
+	height: 50px;
+	background: white;
+	clear: both;
+	border-style: solid;
+	border-color: #DDD #CCC #BBB;
+	border-width: 0 1px 1px;
+	padding-left: 220px;
+	div{
+		display: inline-block;
+		position: relative;
+		margin-right: 20px;
+		border-style: solid;
+		border-color: #EEE;
+		border-width: 0 1px 1px;
+	}
+	a:hover{
+		border-bottom: 2px solid #888;
+	}
+	a{
+		display: block;
+		height: 50px;
+		width: 75px;
+		line-height: 50px;
+		text-align: center;
+	}
+}
+
+//		##     ##    ###    #### ##    ##    ##      ## ########     ###    ########  ########  ######## ########  
+//		###   ###   ## ##    ##  ###   ##    ##  ##  ## ##     ##   ## ##   ##     ## ##     ## ##       ##     ## 
+//		#### ####  ##   ##   ##  ####  ##    ##  ##  ## ##     ##  ##   ##  ##     ## ##     ## ##       ##     ## 
+//		## ### ## ##     ##  ##  ## ## ##    ##  ##  ## ########  ##     ## ########  ########  ######   ########  
+//		##     ## #########  ##  ##  ####    ##  ##  ## ##   ##   ######### ##        ##        ##       ##   ##   
+//		##     ## ##     ##  ##  ##   ###    ##  ##  ## ##    ##  ##     ## ##        ##        ##       ##    ##  
+//		##     ## ##     ## #### ##    ##     ###  ###  ##     ## ##     ## ##        ##        ######## ##     ## 
+
+#main-wrapper{
+	position: absolute;
+	width: 45%;
+	left: 60%;
+	margin-left: -30%;
+	margin-top: 30px;
+}
+#wrapper-chunk{
+	>div{ 
+		width: 100%; 
+		margin-top: 30px;
+		background: #FFF;
+		border: 1px solid;
+		border-color: #DDD #CCC #BBB;
+		padding: 8px;
+	}
+}
+
+//		##       #### ##    ## ##    ##  ######  
+//		##        ##  ###   ## ##   ##  ##    ## 
+//		##        ##  ####  ## ##  ##   ##       
+//		##        ##  ## ## ## #####     ######  
+//		##        ##  ##  #### ##  ##         ## 
+//		##        ##  ##   ### ##   ##  ##    ## 
+//		######## #### ##    ## ##    ##  ######  
+
+a, a:hover, a:focus, a:active{
+	color: inherit;
+	text-decoration:none; 
+	cursor:pointer; 
+}
+
 //		##     ## ########    ###    ########  ######## ########  
 //		##     ## ##         ## ##   ##     ## ##       ##     ## 
 //		##     ## ##        ##   ##  ##     ## ##       ##     ## 
@@ -179,12 +266,8 @@ a{
 //		##         #######   ######     ##     ######  
 
 //http://patorjk.com/software/taag/#p=display&h=1&v=0&f=Banner3&t=Posts
-
-#dashboard-posts{
-  position: absolute;
-  width: 50%;
-  left: 50%;
-  margin-left: -25%;
+#post-form{
+	margin-bottom: 30px;
 }
 .post{ 
 	width: 100%; 
@@ -230,23 +313,11 @@ a{
 //		##        ########  #######  ##        ######## ######## 
 
 #people{
-  position: absolute;
-  width: 50%;
-  left: 50%;
-  margin-left: -25%;
-  p{
+  #wrapper-chunk > p{
   	font-size: 24px;
   	font-weight: bold;
   	padding-left: 15px;
   }
-	>div{ 
-		width: 100%; 
-		margin-top: 30px;
-		background: #FFF;
-		border: 1px solid;
-		border-color: #DDD #CCC #BBB;
-		padding: 8px;
-	}
 }
 
 .user-people{
@@ -298,28 +369,6 @@ a{
 		.functions{
 			color: green;
 		}
-	}
-}
-//		 ######  ##     ##  #######  ##      ##    ##     ##  ######  ######## ########  
-//		##    ## ##     ## ##     ## ##  ##  ##    ##     ## ##    ## ##       ##     ## 
-//		##       ##     ## ##     ## ##  ##  ##    ##     ## ##       ##       ##     ## 
-//		 ######  ######### ##     ## ##  ##  ##    ##     ##  ######  ######   ########  
-//		      ## ##     ## ##     ## ##  ##  ##    ##     ##       ## ##       ##   ##   
-//		##    ## ##     ## ##     ## ##  ##  ##    ##     ## ##    ## ##       ##    ##  
-//		 ######  ##     ##  #######   ###  ###      #######   ######  ######## ##     ## 
-
-#profile{
-  position: absolute;
-  width: 50%;
-  left: 50%;
-  margin-left: -25%;
-	>div{ 
-		width: 100%; 
-		margin-top: 30px;
-		background: #FFF;
-		border: 1px solid;
-		border-color: #DDD #CCC #BBB;
-		padding: 8px;
 	}
 }
 
@@ -384,10 +433,6 @@ a{
 
 
 #show-profile{
-  position: absolute;
-  width: 50%;
-  left: 50%;
-  margin-left: -25%;
 	background: #FFF;
 	border: 1px solid;
 	border-color: #DDD #CCC #BBB;

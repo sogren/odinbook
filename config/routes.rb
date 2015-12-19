@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
-  resources :posts 
-  resources :users, only: [:show ] do
+  resources :posts, only: [:new, :create, :show]
+  resources :users, only: [:create, :show ] do
     resource :profile, only: [:show]
   end
   resources :likes, only: [:create, :destroy]

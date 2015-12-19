@@ -1,29 +1,25 @@
-<div id="profile-main">
-	<div id="current-user" class="clearfix">
-		<div class="user-pic-lg">
-				<%= image_tag current_user.avatar.url %>
-		</div>
-	
-		<div class="user-name"> 
-			<%= link_to "#{current_user.first_name} #{current_user.last_name}", current_user %>
-		</div>
+<div id="main-user-profile">
+	<div class="user-pic-vl">
+			<%= image_tag current_user.avatar.url %>
 	</div>
-	<div id="links">
-		<div class="link">
-			<%= link_to "home", root_path %>
-		</div>
-		<div class="link">
-			<%= link_to "timeline", timeline_path %>
-		</div>
-		<div class="link">
-			<%= link_to "friends", people_path %>
-		</div>
-		<div class="link">
-			<%= link_to "profile", user_profile_path(user_id: current_user.id) %>
-		</div>
-		<div class="link">
-			<%= link_to "edit profile", edit_profile_path %>
-		</div>
+	<div class="user-name"> 
+		<%= link_to "#{current_user.first_name} #{current_user.last_name}", current_user %>
 	</div>
 </div>
-
+<div id="profile-links">
+	<div class="link">
+		<%= link_to "home", root_path %>
+	</div>
+	<div class="link">
+		<%= link_to "timeline", timeline_path %>
+	</div>
+	<div class="link">
+		<%= link_to "friends", people_path %>
+	</div>
+	<div class="link">
+		<%= link_to "profile", user_profile_path(user_id: current_user.id) %>
+	</div>
+	<div class="link">
+		<%= link_to "edit", edit_profile_path %>
+	</div>
+</div>

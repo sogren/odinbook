@@ -1,23 +1,22 @@
-<%= render "static_pages/header" %>
-<%= render "static_pages/profile" %>
-
-
+<div id="main-wrapper">
 	<div id="people">
-		<div id="invites-received">
-			<p>Invites received:</p>
-			<%= render partial: "users/people", collection: @received_invitations.map(&:inviting_user), locals:{ f_num: 1 }, as: :user %>
-		</div>
-		<div id="invites-sent">
-			<p>Invites sent:</p>
-			<%= render partial: "users/people", collection: @sent_invitations.map(&:invited_user), locals:{ f_num: 2 }, as: :user %>
-		</div>
-		<div id="friends">
-			<p>Your friends:</p>
-			<%= render partial: "users/people", collection: @friends, locals:{ f_num: 3 }, as: :user %>
+		<div id="wrapper-chunk">
+			<div id="invites-received">
+				<p>Invites received:</p>
+				<%= render partial: "users/people", collection: @received_invitations.map(&:inviting_user), locals:{ f_num: 1 }, as: :user %>
+			</div>
+			<div id="invites-sent">
+				<p>Invites sent:</p>
+				<%= render partial: "users/people", collection: @sent_invitations.map(&:invited_user), locals:{ f_num: 2 }, as: :user %>
+			</div>
+			<div id="friends">
+				<p>Your friends:</p>
+				<%= render partial: "users/people", collection: @friends, locals:{ f_num: 3 }, as: :user %>
+			</div>
 		</div>
 	</div>
+</div>
 
-	<div id="you-may-know">
-		<%= render @users %>
-	</div>
+<div id="you-may-know">
+	<%= render @users %>
 </div>
