@@ -1,19 +1,16 @@
 <div id="main-wrapper">
 	<div id="wrapper-chunk">
-		<div class="profile-wrapper">
+		<div class="profile-wrapper clearfix">
 			<div class="user-pic-lg">
 					<%= image_tag @user.avatar.url %>
 			</div>
 		
 			<div class="user-name"> 
-				<%= link_to "#{@user.first_name} #{@user.last_name}", @user %>
+				<%= link_to @user.full_name, @user %>
 			</div>
 		
 			<div>
 				<%= link_to "Send friend request", send_invite_path(inv_user_id: @user), method: "post" %>
-			</div>
-			<div>
-				<p>Common friends</p>
 			</div>
 		</div>
 	</div>

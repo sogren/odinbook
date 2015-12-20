@@ -17,6 +17,4 @@
 	</div>
 </div>
 
-<div id="you-may-know">
-	<%= render @users %>
-</div>
+<%= render partial: "static_pages/you_may_know", locals: { users: @users } %>

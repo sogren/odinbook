@@ -106,11 +106,11 @@ p{
 	margin-left: 15%;
 }
 #main-user-profile{
-	height: 260px;
+	height: 220px;
 	background: #122334;
 	.user-pic-vl{
 		position: relative;
-		top: 125px;
+		top: 85px;
 		left: 15px;
 		border: 4px solid white;
 		display: inline-block;
@@ -120,7 +120,7 @@ p{
 		position: relative;
 		font-size: 32px;
 		color: white;
-		top: 35px;
+		top: -5px;
 		left: 220px;
 	}
 }
@@ -391,29 +391,34 @@ a, a:hover, a:focus, a:active{
 //		   ##    ##     ## ##     ##    ##     ## #########    ##       ##  ##   ##  #### ##     ## ##  ##  ## 
 //		   ##    ##     ## ##     ##    ##     ## ##     ##    ##       ##   ##  ##   ### ##     ## ##  ##  ## 
 //		   ##     #######   #######     ##     ## ##     ##    ##       ##    ## ##    ##  #######   ###  ###  
+
 #you-may-know{
-  width: 25%;
+  width: 20%;
   height: 300px;
-	float:right;
-	a:hover{
-		text-decoration:underline; 
+	left: 77%;
+	bottom: 260px;
+	position: relative;
+	span{
+		font-size: 18px;
+		font-weight: bold;
 	}
-}
-.user{
-	background: #EEE;
-	width: 90%;
-	margin: 0 auto;
-	margin-bottom: 15px;
+	p{
+		word-wrap: break-word;
+    overflow: hidden;
+		text-overflow: ellipsis;
+    white-space: nowrap;
+	}
 	.main{
 		float: right;
-		width: calc(100% - 64px);
-		.info{
-			color: brown;
-			word-wrap:break-word;
-		}
-		.functions{
-			color: green;
-		}
+		width: calc(100% - 48px);
+		height: 50px;
+	}
+	.info{
+		color: brown;
+	}
+	.user{
+		background: #EEE;
+		margin: 15px 5px;
 	}
 }
 

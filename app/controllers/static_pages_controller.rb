@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   skip_before_filter :require_login, only: :home
+	before_action :authorize, only: [:timeline, :friends]
 	def home
 		if user_signed_in?
 			@post = Post.new
@@ -38,5 +39,10 @@ class StaticPagesController < ApplicationController
 
 		def users
 			current_user.may_know.includes(:profile).limit(6).offset(rand(User.all.length-6-current_user.user_friends.count))
+		end
+		
+		def authorize
+			@user = User.find(params[:id])
+			authorization(@user)
 		end
 end

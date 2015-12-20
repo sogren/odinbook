@@ -2,13 +2,15 @@ class Profile < ActiveRecord::Base
 	belongs_to :user
 
 	validates :user_id, presence: true
-	validates_inclusion_of :private, in: [true, false]
-#	validates :birthday
-#	validates :country
-#	validates :about
-#	validates :gender
-#	validates :profession
-#	validates :education
+	validates :about, length: { maximum: 250 }
+	validates :private,	inclusion: { in: [true, false] }
+	validates :gender,	inclusion: { in: %w{ male female different }}, allow_nil: true
 
-	validates :gender, inclusion: { in: %w{ male female different }}, allow_nil: true
+	def profile_description
+		about ? about : " User did not write anything."
+	end
+
+	def public?
+		!private
+	end
 end

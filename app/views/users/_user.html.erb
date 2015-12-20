@@ -1,23 +1,19 @@
 <div class="user clearfix">
-	<div class="user-pic-lg">
+	<div class="user-pic-md">
 			<%= image_tag user.avatar.url %>
 	</div>
 
 	<div class="main">
 		<div class="user-name"> 
-			<% if user.profile.private %>
-				<%= link_to "#{user.first_name} #{user.last_name}", user_profile_path(user.id) %>
+			<% if user.public? %>
+				<%= link_to user.full_name, user_profile_path(user.id) %>
 			<% else %>
-				<%= "#{user.first_name} #{user.last_name}" %>
+				<%= user.full_name %>
 			<% end %>
 		</div>
 
 		<div class="info"> 
-			<%= "some info about this user" %>
-		</div>
-
-		<div class="functions">
-			<%= "FUNCTIONS" %>
+			<p><%= user.profile.profile_description %></p>
 		</div>
 	</div>
 </div>

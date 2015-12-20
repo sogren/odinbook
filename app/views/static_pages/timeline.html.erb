@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
 
-<div id="main-wrapper" class="clearfix">
-	<div id="dashboard-posts">
-		<div class="posts">
-			<%= render @posts %>
+	<div id="main-wrapper" class="clearfix">
+		<div id="dashboard-posts">
+			<div class="posts">
+				<%= render @posts %>
+			</div>
 		</div>
 	</div>
-</div>
 
 <% else %>
 

@@ -1,5 +1,11 @@
 <div id="main-wrapper">
 		<div id="wrapper-chunk">
+			<% if @user != current_user %>
+				<div id="mutual-friends">
+					<p><b>Mutual friends:</b></p>
+					<%= render partial: "static_pages/friend", collection: mutual_friends(@user), locals:{ f_num: 3 }, as: :user %>
+				</div>
+			<% end %>
 			<div id="friends">
 				<p><b>This user friends:</b></p>
 				<%= render partial: "static_pages/friend", collection: @friends, locals:{ f_num: 3 }, as: :user %>

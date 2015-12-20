@@ -50,4 +50,12 @@ class User < ActiveRecord::Base
 		friends_ids = user_friends.map(&:id)
 		User.where("id NOT IN (#{friends_ids.join(',')}) OR id = :user_id", user_id: id)
 	end
+
+	def full_name
+		"#{first_name} #{last_name}"
+	end
+
+	def public?
+		profile.public?
+	end
 end

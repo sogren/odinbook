@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
-  resources :posts, only: [:new, :create, :show]
+  resources :posts, only: [:new, :create]
   resources :users, only: [:create, :show] do
     resource :profile, only: [:show]
+    resources :posts, only: [:show]
   end
   resources :likes, only: [:create, :destroy]
   resources :comments, only: [:new, :create]

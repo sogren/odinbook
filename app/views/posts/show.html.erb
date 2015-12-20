@@ -1,4 +1,41 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div id="main-wrapper">
+	<div id="people">
+		<div id="wrapper-chunk">
+			<div id="post">
+				<div class="post clearfix" id="post-<%= @post.id %>">
+					<div class="p-main clearfix">
+						<div class="clearfix">
+							<div class="user-pic-md">
+								<%= image_tag @post.author.avatar.url %>
+							</div>
+					
+							<div class="p-author">
+								<p><%= link_to "#{@post.author.full_name}", user_profile_path(@post.author.id) %></p>
+								<p><%= time_ago_in_words(@post.created_at) + " ago" %></p>
+							</div>
+						</div>
+				
+						<div class="p-content">
+							<%= @post.content %>
+						</div>
+				
+						<div class="p-functions">
+							<div class="functions">
+								<%= link_to likes_path(likeable_id: @post.id, likeable_type: "Post"), method: :@post, id: "like-post", remote: true do %>
+									<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+								<% end %><%= @post.likes.length %>
+								<%= link_to new_comment_path(post: @post.id), method: :get, id: "make-comment", remote: true  do %>
+									<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				
+					<div class="p-comments">
+						<%= render @post.comments %>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

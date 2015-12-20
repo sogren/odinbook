@@ -16,20 +16,23 @@
 		<div class="alert alert-<%= message_type %>"><%= message %></div>
 	<% end %>
 
-<%= render "static_pages/header" %>
-
 <% if user_signed_in? %>
+
+	<%= render "static_pages/header" %>
 	<%= render "static_pages/profile", locals: { user: current_user } %>
-<% else %>
+	<%= render "static_pages/current_user_profile" %>
+
+<% elsif @user %>
+
 	<%= render "static_pages/profile", locals: { user: @user } %>
+
 <% end %>
 
-<%= render "static_pages/current_user_profile" %>
 
 	<%= yield %>
 
 <script>
-	$(".alert").delay(1000).fadeOut("slow");
+	$(".alert").delay(1500).fadeOut("slow");
 </script>
 
 </body>
