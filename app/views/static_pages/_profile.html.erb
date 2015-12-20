@@ -1,25 +1,19 @@
 <div id="main-user-profile">
 	<div class="user-pic-vl">
-			<%= image_tag current_user.avatar.url %>
+			<%= image_tag @user.avatar.url %>
 	</div>
 	<div class="user-name"> 
-		<%= link_to "#{current_user.first_name} #{current_user.last_name}", current_user %>
+		<%= link_to "#{@user.first_name} #{@user.last_name}", @user %>
 	</div>
 </div>
 <div id="profile-links">
 	<div class="link">
-		<%= link_to "home", root_path %>
+		<%= link_to "Timeline", timeline_path(@user.id) %>
 	</div>
 	<div class="link">
-		<%= link_to "timeline", timeline_path %>
+		<%= link_to "Friends", friends_path(@user.id) %>
 	</div>
 	<div class="link">
-		<%= link_to "friends", people_path %>
-	</div>
-	<div class="link">
-		<%= link_to "profile", user_profile_path(user_id: current_user.id) %>
-	</div>
-	<div class="link">
-		<%= link_to "edit", edit_profile_path %>
+		<%= link_to "About", user_profile_path(user_id: @user.id) %>
 	</div>
 </div>

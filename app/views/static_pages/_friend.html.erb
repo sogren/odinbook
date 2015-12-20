@@ -1,0 +1,9 @@
+<div class="user-people clearfix">
+	<div class="user-pic-sm">
+			<%= image_tag user.avatar.url %>
+	</div>
+
+	<div class="user-name"> 
+		<%= link_to "#{user.first_name} #{user.last_name}", user %>
+	</div>
+</div>

@@ -8,11 +8,10 @@ class CommentsController < ApplicationController
 		@comment = current_user.comments.create(comment_params)
 		if @comment.save
 			flash[:info] = "comment added"
-			redirect_to root_path
 		else
 			flash[:warning] = "adding failed"
-			redirect_to root_path
 		end
+			redirect_to :back
 	end
 
 	private

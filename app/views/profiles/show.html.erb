@@ -12,11 +12,11 @@
 
 
 			<div id="details">
-				<p><b>Birthday:</b><%=   profile_info(@profile.birthday)    %></p>
-				<p><b>Country:</b><%=    profile_info(@profile.country)     %></p>
-				<p><b>Gender:</b><%=     profile_info(@profile.gender)      %></p>
-				<p><b>Profession:</b><%= profile_info(@profile.profession)  %></p>
-				<p><b>Education:</b><%=  profile_info(@profile.education)   %></p>
+				<p><span><b>Birthday:		</b></span><%=   profile_date(@profile.birthday)    %></p>
+				<p><span><b>Country:		</b></span><%=    profile_info(@profile.country)     %></p>
+				<p><span><b>Gender:			</b></span><%=     profile_info(@profile.gender)      %></p>
+				<p><span><b>Profession:	</b></span><%= profile_info(@profile.profession)  %></p>
+				<p><span><b>Education:	</b></span><%=  profile_info(@profile.education)   %></p>
 			</div>
 
 		<% else %>

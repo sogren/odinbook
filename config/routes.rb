@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   resources :posts, only: [:new, :create, :show]
-  resources :users, only: [:create, :show ] do
+  resources :users, only: [:create, :show] do
     resource :profile, only: [:show]
   end
   resources :likes, only: [:create, :destroy]
@@ -11,7 +11,10 @@ Rails.application.routes.draw do
 root "static_pages#home"
 
 get "people" => "static_pages#people", as: "people"
-get "timeline" => "static_pages#timeline", as: "timeline"
+
+get "friends/:id" => "static_pages#friends", as: "friends"
+
+get "timeline/:id" => "static_pages#timeline", as: "timeline"
 
 post "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
 post "invitations/decline_invite" => "invitations#decline_invite", as: "decline_invite"
@@ -20,7 +23,8 @@ delete "invitations/remove_invite" => "invitations#remove_invite", as: "remove_i
 post "friends_relations/make_friend" => "friends_relations#make_friend", as: "make_friend"
 delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
 
-post "edit_profile" => "profiles#edit"
+get "edit" => "profiles#edit", as: "edit_profile"
+patch "update_profile" => "profiles#update"
 
 get '*unmatched_route', to: 'application#not_found'
 

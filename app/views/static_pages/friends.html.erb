@@ -1,0 +1,8 @@
+<div id="main-wrapper">
+		<div id="wrapper-chunk">
+			<div id="friends">
+				<p><b>This user friends:</b></p>
+				<%= render partial: "static_pages/friend", collection: @friends, locals:{ f_num: 3 }, as: :user %>
+			</div>
+		</div>
+</div>

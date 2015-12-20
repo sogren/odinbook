@@ -62,6 +62,36 @@ p{
 	height: 32px;
 } 
 
+//		########  ########   #######  ######## #### ##       ######## 
+//		##     ## ##     ## ##     ## ##        ##  ##       ##       
+//		##     ## ##     ## ##     ## ##        ##  ##       ##       
+//		########  ########  ##     ## ######    ##  ##       ######   
+//		##        ##   ##   ##     ## ##        ##  ##       ##       
+//		##        ##    ##  ##     ## ##        ##  ##       ##       
+//		##        ##     ##  #######  ##       #### ######## ######## 
+
+#profile-main{
+	width: 14%;
+	clear: both;
+  position: absolute;
+  margin-left: 15%;
+  #current-user{
+  	margin: 0 auto;
+  }
+	.user-name{
+		float: left;
+		font-weight: bold;
+		font-size: 16px;
+		padding-left: 10px;
+	}
+	#links{
+	}
+	.link{
+		width: 90%;
+		margin: 0 auto;
+		margin-top: 15px;
+	}
+}
 //		##     ##    ###    #### ##    ##    ##     ##  ######  ######## ########   
 //		###   ###   ## ##    ##  ###   ##    ##     ## ##    ## ##       ##     ##  
 //		#### ####  ##   ##   ##  ####  ##    ##     ## ##       ##       ##     ##  
@@ -102,6 +132,7 @@ p{
 	border-color: #DDD #CCC #BBB;
 	border-width: 0 1px 1px;
 	padding-left: 220px;
+	margin-bottom: 30px;
 	div{
 		display: inline-block;
 		position: relative;
@@ -135,16 +166,15 @@ p{
 	width: 45%;
 	left: 60%;
 	margin-left: -30%;
-	margin-top: 30px;
 }
 #wrapper-chunk{
 	>div{ 
 		width: 100%; 
-		margin-top: 30px;
 		background: #FFF;
 		border: 1px solid;
 		border-color: #DDD #CCC #BBB;
 		padding: 8px;
+		margin-bottom: 30px;
 	}
 }
 
@@ -339,6 +369,21 @@ a, a:hover, a:focus, a:active{
 		float: right;
 	}
 }
+//		######## ########  #### ######## ##    ## ########   ######  
+//		##       ##     ##  ##  ##       ###   ## ##     ## ##    ## 
+//		##       ##     ##  ##  ##       ####  ## ##     ## ##       
+//		######   ########   ##  ######   ## ## ## ##     ##  ######  
+//		##       ##   ##    ##  ##       ##  #### ##     ##       ## 
+//		##       ##    ##   ##  ##       ##   ### ##     ## ##    ## 
+//		##       ##     ## #### ######## ##    ## ########   ######  
+
+#friends{
+	p{
+		margin-bottom: 15px;
+		font-size: 24px;
+	}
+}
+
 //		##    ##  #######  ##     ##    ##     ##    ###    ##    ##    ##    ## ##    ##  #######  ##      ## 
 //		 ##  ##  ##     ## ##     ##    ###   ###   ## ##    ##  ##     ##   ##  ###   ## ##     ## ##  ##  ## 
 //		  ####   ##     ## ##     ##    #### ####  ##   ##    ####      ##  ##   ####  ## ##     ## ##  ##  ## 
@@ -372,37 +417,6 @@ a, a:hover, a:focus, a:active{
 	}
 }
 
-//		########  ########   #######  ######## #### ##       ######## 
-//		##     ## ##     ## ##     ## ##        ##  ##       ##       
-//		##     ## ##     ## ##     ## ##        ##  ##       ##       
-//		########  ########  ##     ## ######    ##  ##       ######   
-//		##        ##   ##   ##     ## ##        ##  ##       ##       
-//		##        ##    ##  ##     ## ##        ##  ##       ##       
-//		##        ##     ##  #######  ##       #### ######## ######## 
-
-#profile-main{
-	width: 25%;
-	clear: both;
-  position: absolute;
-  #current-user{
-  	width: 90%;
-  	margin: 0 auto;
-		line-height: 64px;
-  }
-	.user-name{
-		float: left;
-		font-weight: bold;
-		font-size: 16px;
-		padding-left: 10px;
-	}
-	#links{
-	}
-	.link{
-		width: 90%;
-		margin: 0 auto;
-		margin-top: 15px;
-	}
-}
 //		   ###    ##       ######## ########  ########  ######  
 //		  ## ##   ##       ##       ##     ##    ##    ##    ## 
 //		 ##   ##  ##       ##       ##     ##    ##    ##       
@@ -436,7 +450,6 @@ a, a:hover, a:focus, a:active{
 	background: #FFF;
 	border: 1px solid;
 	border-color: #DDD #CCC #BBB;
-	margin-top: 50px;
 	>div{
 		padding: 8px;
 	}
@@ -451,8 +464,14 @@ a, a:hover, a:focus, a:active{
 		margin-top: 12px;
 	}
 	#details{
-		>p{
-			margin-top: 12px;
+		label, span{
+			margin: 0 auto;
+			width: 16%;
+			display: inline-block
+		}
+		p{
+			margin-top: 25px;
+			width: 100%;
 		}
 	}
 }

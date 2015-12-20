@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
 			@post = Post.new
 			@users = users
 		end
-		@user = current_user || User.find(params[:id])
+		@user = User.find(params[:id]) || current_user
 		@posts = @user.posts.includes(:author, :likes, comments:[:author, :likes]).all.order(created_at: :desc)
 	end 
 
@@ -22,6 +22,11 @@ class StaticPagesController < ApplicationController
 		@received_invitations = current_user.received_invitations.where(status: "pending")
 		@friends = current_user.user_friends
 		@users = users
+	end
+
+	def friends
+		@user = User.find(params[:id])
+		@friends = @user.user_friends
 	end
 
 	def error404
