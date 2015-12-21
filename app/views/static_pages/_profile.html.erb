@@ -3,7 +3,7 @@
 			<%= image_tag @user.avatar.url %>
 	</div>
 	<div class="user-name"> 
-		<%= link_to "#{@user.first_name} #{@user.last_name}", @user %>
+		<%= link_to "#{@user.full_name}", @user %>
 	</div>
 </div>
 <div id="profile-links">

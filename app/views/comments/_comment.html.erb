@@ -7,7 +7,7 @@
 
 		<div class="c-core">
 			<div class="c-content">
-				<p><b><%= link_to "#{comment.author.first_name} #{comment.author.last_name}", user_profile_path(comment.author.id) %></b>
+				<p><b><%= link_to "#{comment.author.full_name}", user_profile_path(comment.author.id) %></b>
 					<%= comment.content %>
 				</p>
 			</div>

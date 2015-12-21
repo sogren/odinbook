@@ -28,7 +28,7 @@
 							</div>
 					
 							<div class="p-author">
-								<p><%= post.author.first_name + " " + post.author.last_name %></p>
+								<p><%= post.author.full_name %></p>
 								<p>some things to do</p>
 							</div>
 						</div>
@@ -61,7 +61,7 @@
 									</div>
 									<div class="c-core">
 										<div class="c-content">
-											<p><b><%= comment.author.first_name + " " + comment.author.last_name %></b>
+											<p><b><%= comment.author.full_name %></b>
 												<%= comment.content %>
 											</p>
 										</div>

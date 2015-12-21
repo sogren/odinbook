@@ -6,7 +6,7 @@
 					<%= image_tag current_user.avatar.url %>
 				</div>
 				<div class="user-name"> 
-					<%= link_to "#{current_user.first_name} #{current_user.last_name}", current_user %>
+					<%= link_to "#{current_user.full_name}", current_user %>
 				</div>
 			</div>
 			<div id="links" class="clearfix">
