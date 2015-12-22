@@ -1,13 +1,9 @@
 <div class="comment clearfix" id="comment-<%= comment.id %>">
 	<div class="c-main">
-
-		<div class="user-pic-sm">
-			<%= image_tag comment.author.avatar.url %>
-		</div>
-
 		<div class="c-core">
 			<div class="c-content">
-				<p><b><%= link_to "#{comment.author.full_name}", user_profile_path(comment.author.id) %></b>
+					<%= render "users/basic_user_display", user: comment.author, pic_size: "sm" %>
+				<p>
 					<%= comment.content %>
 				</p>
 			</div>

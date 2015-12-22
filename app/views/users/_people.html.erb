@@ -1,11 +1,7 @@
 <div class="user-people clearfix">
-	<div class="user-pic-sm">
-			<%= image_tag user.avatar.url %>
-	</div>
+	
+	<%= render "users/basic_user_display", user: user, pic_size: "sm" %>
 
-	<div class="user-name"> 
-		<%= link_to user.full_name, user %>
-	</div>
 	<% if f_num != 3 %>
 		<div class="message"> 
 			<%= "MESSAGE" %>

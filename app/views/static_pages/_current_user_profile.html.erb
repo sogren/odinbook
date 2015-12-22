@@ -2,12 +2,7 @@
 	<div id="wrapper-chunk">
 		<div id="current-user-profile">
 			<div id="current-user" class="clearfix">
-				<div class="user-pic-sm">
-					<%= image_tag current_user.avatar.url %>
-				</div>
-				<div class="user-name"> 
-					<%= link_to "#{current_user.full_name}", current_user %>
-				</div>
+				<%= render "users/basic_user_display", user: @user, pic_size: "sm" %>
 			</div>
 			<div id="links" class="clearfix">
 				<div class="link">

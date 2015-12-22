@@ -1,16 +1,6 @@
 <div class="user clearfix">
-	<div class="user-pic-md">
-			<%= image_tag user.avatar.url %>
-	</div>
-
 	<div class="main">
-		<div class="user-name"> 
-			<% if user.public? %>
-				<%= link_to user.full_name, user_profile_path(user.id) %>
-			<% else %>
-				<%= user.full_name %>
-			<% end %>
-		</div>
+		<%= render "users/basic_user_display", user: user, pic_size: "md" %>
 
 		<div class="info"> 
 			<p><%= user.profile.profile_description %></p>

@@ -1,10 +1,5 @@
 <div id="main-user-profile">
-	<div class="user-pic-vl">
-			<%= image_tag @user.avatar.url %>
-	</div>
-	<div class="user-name"> 
-		<%= link_to "#{@user.full_name}", @user %>
-	</div>
+	<%= render "users/basic_user_display", user: @user, pic_size: "vl" %>
 </div>
 <div id="profile-links">
 	<div class="link">
