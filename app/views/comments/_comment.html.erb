@@ -7,18 +7,19 @@
 					<%= comment.content %>
 				</p>
 			</div>
-	
-			<div class="c-functions">
-				<div class="functions">
-					<%= link_to likes_path(likeable_id: comment.id, likeable_type: "Comment"), method: :post, id: "like-comment", remote: true do %>
-						<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-					<% end %><%= comment.likes.length %>
-					<%= link_to new_comment_path(post: comment.post.id), method: :get, id: "make-comment", remote: true  do %>
-						<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-					<% end %>
-					<p><%= time_ago_in_words(comment.created_at) + " ago" %></p>
+			<% if user_signed_in? %>
+				<div class="c-functions">
+					<div class="functions">
+						<%= link_to likes_path(likeable_id: comment.id, likeable_type: "Comment"), method: :post, id: "like-comment", remote: true do %>
+							<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+						<% end %><%= comment.likes.length %>
+						<%= link_to new_comment_path(post: comment.post.id), method: :get, id: "make-comment", remote: true  do %>
+							<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+						<% end %>
+						<p><%= time_ago_in_words(comment.created_at) + " ago" %></p>
+					</div>
 				</div>
-			</div>
+			<% end %>
 		</div>
 
 	</div>

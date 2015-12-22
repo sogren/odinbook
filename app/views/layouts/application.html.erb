@@ -15,16 +15,19 @@
 <% flash.each do |message_type, message| %>
 		<div class="alert alert-<%= message_type %>"><%= message %></div>
 	<% end %>
+<% if current_user || @user %>
+	<%= render "static_pages/header" %>
+<% end %>
 
 <% if user_signed_in? %>
 
-	<%= render "static_pages/header" %>
 	<%= render "static_pages/profile", locals: { user: current_user } %>
 	<%= render "static_pages/current_user_profile" %>
 
 <% elsif @user %>
 
 	<%= render "static_pages/profile", locals: { user: @user } %>
+	<%= render "static_pages/odin_sidebar" %>
 
 <% end %>
 

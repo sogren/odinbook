@@ -1,4 +1,19 @@
 module ApplicationHelper
+	def friend_button(user)
+		if current_user.is_friend?(user)
+			a = content_tag(:p, "This user is your friend")
+			a << content_tag(:p, (link_to "Manage your friends", people_path))
+		elsif current_user.is_invited_by?(user)
+			a = content_tag(:p, "This user sent you an invitation")
+			a << content_tag(:p, (link_to "Manage your invitations", people_path))
+		elsif current_user.invited?(user)
+			a = content_tag(:p, "You already sent an invitation")
+			a << content_tag(:p, (link_to "Manage your invitations", people_path))
+		else
+			content_tag(:p, (link_to "Send friend request to this user", send_invite_path(inv_user_id: @user), method: "post"))
+		end
+	end
+
 
 	def require_login
 		unless user_signed_in?
@@ -15,7 +30,11 @@ module ApplicationHelper
 	end
 
 	def authorized(user)
-		current_user.is_friend?(user) || current_user == user || user.public?
+		if user_signed_in?
+			current_user.is_friend?(user) || current_user == user || user.public?
+		else
+			user.public?
+		end
 	end
 
 	def choose_user

@@ -2,19 +2,29 @@
 	<div id="people">
 		<div id="wrapper-chunk">
 			<div id="invites-received">
-				<p>Invites received:</p>
-				<%= render partial: "users/people", collection: @received_invitations.map(&:inviting_user), locals:{ f_num: 1 }, as: :user %>
+				<% if @received_invitations.length > 0 %>
+					<p>Invites received:</p>
+					<%= render partial: "users/people", collection: @received_invitations.map(&:inviting_user), locals:{ f_num: 1 }, as: :user %>
+				<% else %>
+					<b>You have not received any invites!</b>
+				<% end %>
 			</div>
 			<div id="invites-sent">
-				<p>Invites sent:</p>
-				<%= render partial: "users/people", collection: @sent_invitations.map(&:invited_user), locals:{ f_num: 2 }, as: :user %>
+				<% if @sent_invitations.length > 0 %>
+					<p>Invites sent:</p>
+					<%= render partial: "users/people", collection: @sent_invitations.map(&:invited_user), locals:{ f_num: 2 }, as: :user %>
+				<% else %>
+					<b>You have not sent any invites!</b>
+				<% end %>
 			</div>
 			<div id="friends">
-				<p>Your friends:</p>
-				<%= render partial: "users/people", collection: @friends, locals:{ f_num: 3 }, as: :user %>
+				<% if @friends.length > 0 %>
+					<p>Your friends:</p>
+					<%= render partial: "users/people", collection: @friends, locals:{ f_num: 3 }, as: :user %>
+				<% else %>
+					<b>You have no friends hehehehehe xD</b>
+				<% end %>
 			</div>
 		</div>
 	</div>
 </div>
-
-<%= render partial: "static_pages/you_may_know", locals: { users: @users } %>

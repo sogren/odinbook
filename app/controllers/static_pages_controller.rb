@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  skip_before_filter :require_login, only: :home
+  skip_before_filter :require_login, only: [:home, :timeline, :friends]
 	before_action :authorize, only: [:timeline, :friends]
 	def home
 		if user_signed_in?

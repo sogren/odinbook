@@ -1,15 +1,11 @@
-<% if user_signed_in? %>
-
-	<div id="main-wrapper" class="clearfix">
-		<div id="dashboard-posts">
-			<div class="posts">
+<div id="main-wrapper" class="clearfix">
+	<div id="dashboard-posts">
+		<div class="posts">
+			<% if @posts.length > 0 %>
 				<%= render @posts %>
-			</div>
+			<% else %>
+				<p><b>This user has no posts!</b></p>
+			<% end %>
 		</div>
 	</div>
-
-<% else %>
-
-	<%= render "static_pages/welcome" %>
-
-<% end %>
+</div>

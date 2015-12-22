@@ -37,6 +37,14 @@ class User < ActiveRecord::Base
 		(friends.all + inverse_friends.all).uniq
 	end
 
+	def is_invited_by?(user)
+		invited_by.include?(user)
+	end
+
+	def invited?(user)
+		invited_users.include?(user)
+	end
+
 	def is_friend?(friend)
 	 	user_friends.include?(friend)
 	end
