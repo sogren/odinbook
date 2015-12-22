@@ -5,4 +5,10 @@ class Post < ActiveRecord::Base
 	belongs_to :author, class_name: "User"
 	has_many :likes, as: :likeable
 	has_many :comments
+
+	def receiver
+		if receiver_id
+			User.where("id = receiver_id")
+		end
+	end
 end

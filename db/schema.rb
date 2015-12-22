@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151219132555) do
+ActiveRecord::Schema.define(version: 20151222183625) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20151219132555) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "status"
+    t.string   "message"
   end
 
   add_index "invitations", ["invited_user_id", "inviting_user_id"], name: "index_invitations_on_invited_user_id_and_inviting_user_id", unique: true
@@ -53,10 +54,13 @@ ActiveRecord::Schema.define(version: 20151219132555) do
 
   create_table "posts", force: :cascade do |t|
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "author_id"
+    t.integer  "receiver_id"
   end
+
+  add_index "posts", ["receiver_id"], name: "index_posts_on_receiver_id"
 
   create_table "profiles", force: :cascade do |t|
     t.datetime "created_at", null: false

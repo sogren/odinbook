@@ -14,7 +14,7 @@ class StaticPagesController < ApplicationController
 			@post = Post.new
 			@users = users
 		end
-		@user = User.find(params[:id]) || current_user
+		@user = User.find(params[:id])
 		@posts = @user.posts.includes(:author, :likes, comments:[:author, :likes]).all.order(created_at: :desc)
 	end 
 

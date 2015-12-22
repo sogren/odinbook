@@ -21,10 +21,10 @@ class PostsController < ApplicationController
 		@post = current_user.posts.build(post_params)
 		respond_to do |format|
 			if @post.save
-				format.html { redirect_to root_path, notice: 'Post was successfully created.' }
+				format.html { redirect_to :back, notice: 'Post was successfully created.' }
 				format.json { render :show, status: :created, location: @post }
 			else
-				format.html { redirect_to root_path, notice: 'Post creation failed.'  }
+				format.html { redirect_to :back, notice: 'Post creation failed.'  }
 				format.json { render json: @post.errors, status: :unprocessable_entity }
 			end
 		end
@@ -58,6 +58,6 @@ class PostsController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def post_params
-			params.require(:post).permit(:content)
+			params.require(:post).permit(:content,:receiver_id)
 		end
 end
