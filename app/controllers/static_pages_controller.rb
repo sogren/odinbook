@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
 			@users = users
 		end
 		@user = User.find(params[:id])
-		@posts = @user.posts.includes(:author, :likes, comments:[:author, :likes]).all.order(created_at: :desc)
+		@posts = @user.timeline.includes(:author, :likes, comments:[:author, :likes]).all.order(created_at: :desc)
 	end 
 
 	def people

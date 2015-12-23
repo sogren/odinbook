@@ -2,7 +2,7 @@
 	<div class="p-main clearfix">
 		<div class="clearfix">
 			<div class="p-author">
-				<%= render partial: "users/basic_user_display", locals: { receiver: post.author, user: post.author, pic_size: "md" } %>
+				<%= render partial: "users/basic_user_display", locals: { receiver: post.receiver, user: post.author, pic_size: "md" } %>
 				<p><%= link_to "#{time_ago_in_words(post.created_at)} ago", user_post_path(post.author.id, post.id)  %></p>
 			</div>
 		</div>
@@ -26,6 +26,6 @@
 	</div>
 
 	<div class="p-comments">
-		<%= render post.comments %>
+		<%= render post.comments %> 
 	</div> 
 </div>

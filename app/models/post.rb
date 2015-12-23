@@ -7,8 +7,6 @@ class Post < ActiveRecord::Base
 	has_many :comments
 
 	def receiver
-		if receiver_id
-			User.where("id = receiver_id")
-		end
+			User.find_by(id: receiver_id)
 	end
 end
