@@ -4,7 +4,7 @@ class Profile < ActiveRecord::Base
 	validates :user_id, presence: true
 	validates :about, length: { maximum: 250 }
 	validates :private,	inclusion: { in: [true, false] }
-	validates :gender,	inclusion: { in: %w{ male female different }}, allow_nil: true
+	validates :gender,	inclusion: { in: %w{ Male Female Different }}, allow_nil: true
 
 	def profile_description
 		about ? about : " User did not write anything."
