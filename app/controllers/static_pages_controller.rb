@@ -1,10 +1,11 @@
 class StaticPagesController < ApplicationController
   skip_before_filter :require_login, only: [:home, :timeline, :friends]
 	before_action :authorize, only: [:timeline, :friends]
+	respond_to :html, :js
 	def home
 		if user_signed_in?
 			@post = Post.new
-			@posts = current_user.feed.includes(:author, :likes, comments:[:author, :likes]).all.order(created_at: :desc)
+			@posts = current_user.feed.includes(:author, :likes, comments:[:author, :likes]).all.paginate(:page => params[:page]).order(created_at: :desc)
 			@users = users
 		end
 	end 
@@ -15,7 +16,7 @@ class StaticPagesController < ApplicationController
 			@users = users
 		end
 		@user = User.find(params[:id])
-		@posts = @user.timeline.includes(:author, :likes, comments:[:author, :likes]).all.order(created_at: :desc)
+		@posts = @user.timeline.includes(:author, :likes, comments:[:author, :likes]).all.paginate(:page => params[:page]).order(created_at: :desc)
 	end 
 
 	def people

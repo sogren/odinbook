@@ -26,6 +26,8 @@
 	</div>
 
 	<div class="p-comments">
-		<%= render post.comments %> 
-	</div> 
+		<% comments = post.comments.paginate(page: params[:comment_page]) %>
+		<%= render comments %> 
+		<%= will_paginate comments, param_name: "comment_page" %>
+	</div>
 </div>

@@ -8,6 +8,7 @@
 		<div class="posts">
 			<% if @posts.length > 0 %>
 				<%= render @posts %>
+				<%= will_paginate @posts %>
 			<% else %>
 				<p><b>This user has no posts!</b></p>
 			<% end %>

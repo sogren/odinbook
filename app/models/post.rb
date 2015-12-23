@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
 	has_many :likes, as: :likeable
 	has_many :comments
 
+  self.per_page = 6
+  
 	def receiver
 			User.find_by(id: receiver_id)
 	end

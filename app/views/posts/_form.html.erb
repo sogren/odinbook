@@ -5,7 +5,7 @@
 			<div clas="form-group" style="display: inline-block">
 				<%= f.text_field :content, class: "form-control", required: true %>
 			</div>
-			<% if receiver %>
+			<% if local_assigns[:receiver] %>
 				<%= f.hidden_field :receiver_id, value: receiver %>
 			<% end %>
 		
