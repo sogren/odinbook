@@ -2,9 +2,9 @@ class FriendsRelationsController < ApplicationController
 	def make_friend
 		@inv = current_user.received_invitations.find_by(inviting_user_id: friend_params, status: "pending")
 		if @inv
-			@inv.update(status: "accepted")
 			@friendship = current_user.friends_relations.build(friend_id: friend_params)
 			if @friendship.save
+				@inv.update(status: "accepted")
 				flash[:notice] = "Added as friend!"
 				redirect_to people_path
 			else

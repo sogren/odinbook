@@ -1,7 +1,7 @@
 <div id="main-user-profile">
 	<%= render "users/basic_user_display", user: @user, pic_size: "vl" %>
 	<div id="friend">
-		<%= friend_button(@user) if @user !=current_user %>
+		<%= friend_button(@user) if @user != current_user && user_signed_in? %>
 	</div>
 </div>
 <div id="profile-links">

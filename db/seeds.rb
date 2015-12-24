@@ -41,8 +41,8 @@ User.all.each_with_index do |i|
 	all = i.received_invitations
 	all.count.times do |k|
 		if rand(12) > 3
-			all[k].update(status: "accepted")
 			i.friends_relations.build(friend_id: all[k].inviting_user_id).save
+			all[k].update(status: "accepted")
 		end
 	end
 end

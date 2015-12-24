@@ -12,7 +12,8 @@ class FriendsRelation < ActiveRecord::Base
 		one		= Invitation.where("inviting_user_id = #{a} AND invited_user_id = #{b} AND status = 'pending'").any?
 		two		= Invitation.where("inviting_user_id = #{b} AND invited_user_id = #{a} AND status = 'pending'").any?
 		three	= user_id == friend_id
-		unless one || two && !three
+		four	= FriendsRelation.where("user_id = #{b} AND friend_id = #{a}").empty?
+		unless one || two && !three && four
 			errors.add(:user, "You can not add this user!")
 		end
 	end
