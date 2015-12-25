@@ -32,10 +32,6 @@ class InvitationsController < ApplicationController
 
 	private
 
-		def invite_check
-			
-		end
-
 		def invite_params
 			params.require(:inv_user_id)
 		end

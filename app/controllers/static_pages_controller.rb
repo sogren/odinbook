@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
 			@post = Post.new
 			@users = users
 		end
-		@user = User.find(params[:id])
+		@user = User.includes(:profile).find(params[:id])
 		@posts = @user.timeline.includes(:author, :likes, comments:[:author, :likes]).all.paginate(:page => params[:page]).order(created_at: :desc)
 	end 
 

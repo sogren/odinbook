@@ -33,4 +33,5 @@ class FriendsRelationsController < ApplicationController
 		def friend_params
 			params.require(:friend_id)
 		end
+		
 end

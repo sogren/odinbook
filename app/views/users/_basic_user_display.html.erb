@@ -4,7 +4,7 @@
 
 <div class="user-name"> 
 	<%  if local_assigns[:receiver] %>
-		<%= user_name_link(user) + " > " + user_name_link(receiver) %>
+		<%= user_name_link(user) %> > <%= user_name_link(receiver) %>
 	<%  else %>
 		<%= user_name_link(user) %>
 	<% end %>
