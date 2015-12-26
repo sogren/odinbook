@@ -20,7 +20,7 @@ class InvitationsController < ApplicationController
 	end
 
 	def decline_invite
-		@inv = current_user.received_invitations.find_by(invited_user_id: invite_params, status: "pending" )
+		@inv = current_user.received_invitations.find_by(inviting_user_id: invite_params, status: "pending" )
 		if @inv
 			@inv.update(status: "declined")
 			flash[:info] = "invitation declined"

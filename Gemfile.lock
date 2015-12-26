@@ -281,6 +281,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  guard
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails

@@ -20,12 +20,13 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem "letter_opener"
   gem 'database_cleaner'
+  gem 'guard'
+  gem 'guard-rspec'
 end
 group :test do
   gem 'selenium-webdriver'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
-  gem 'guard-rspec'
   gem 'capybara'
 end
 
