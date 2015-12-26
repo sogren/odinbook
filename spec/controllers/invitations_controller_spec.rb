@@ -32,7 +32,7 @@ RSpec.describe InvitationsController, type: :controller do
 			it "user2 cannot invite user" do
 				sign_in @user2
 				post :send_invite, { inv_user_id: @user.id }
-				expect(flash[:danger]).to be_present
+				expect(flash[:danger]).to eql("You cannot invite this user!")
 			end
 		end
 	end
@@ -45,11 +45,13 @@ RSpec.describe InvitationsController, type: :controller do
 
 		context "after decline with valid attributes" do 
 			before do
+				sign_out(@user)
 				sign_in @user2
 				post :decline_invite, { inv_user_id: @user.id }
 			end
+
 			it "there is positive response" do
-				expect(flash[:info]).to be_present
+				expect(flash[:info]).to eql("invitation declined")
 			end
 			it "invitation still exists" do
 				expect(@user2.received_invitations.count).to eql(1)
@@ -58,18 +60,32 @@ RSpec.describe InvitationsController, type: :controller do
 				expect(@user2.received_invitations.first.status).to eql("declined")
 			end
 			it "user cannot invite again" do
+				sign_out(@user2)
 				sign_in @user
 				post :send_invite, { inv_user_id: @user2.id }
-				expect(flash[:danger]).to be_present
+				expect(flash[:danger]).to eql("You cannot invite this user!")
 			end
 		end
 	end
 
 	describe "POST #remove_invite" do
-		context "with valid attributes" do
+		before do
+			sign_in @user
+			post :send_invite, { inv_user_id: @user2.id }
+		end
+
+		context "after removing invitation" do
 			before do
-				sign_in @user
-				post :decline_invite, { inv_user_id: @user.id }
+				post :remove_invite, { inv_user_id: @user2.id }
+			end
+			it "user has no invitation" do
+				expect(@user2.received_invitations.count).to eql(0)
+			end
+			it "invitation is removed" do
+				expect(Invitation.count).to eql(0)
+			end
+			it "there is flash confirming" do
+				expect(flash[:info]).to eql("invitation removed")
 			end
 		end
 	end
