@@ -14,24 +14,31 @@ RSpec.describe InvitationsController, type: :controller do
 				post :send_invite, { inv_user_id: @user2.id }
 			end
 
-			it "should create invite" do
+			it "creates invitation" do
 				expect(Invitation.count).to eql(1)
 			end
-			it "user should have invite" do
+			it "adds invitation to user" do
 				expect(@user.sent_invitations.count).to eql(1)
 			end
-			it "user2 should have invite" do
+			it "adds invitation to second user" do
 				expect(@user2.received_invitations.count).to eql(1)
 			end
-			it "user2 is invited by user" do
+			it "makes second user invited by first" do
 				expect(@user.invited?(@user2)).to be true
 			end
-			it "user invites user2" do
+			it "makes user to invite second" do
 				expect(@user2.is_invited_by?(@user)).to be true
 			end
-			it "user2 cannot invite user" do
+			it "blocks first user from inviting again" do
+				sign_out(@user)
 				sign_in @user2
 				post :send_invite, { inv_user_id: @user.id }
+				expect(flash[:danger]).to eql("You cannot invite this user!")
+			end
+			it "blocks second user from inviting again" do
+				sign_out(@user2)
+				sign_in @user
+				post :send_invite, { inv_user_id: @user2.id }
 				expect(flash[:danger]).to eql("You cannot invite this user!")
 			end
 		end
@@ -50,16 +57,16 @@ RSpec.describe InvitationsController, type: :controller do
 				post :decline_invite, { inv_user_id: @user.id }
 			end
 
-			it "there is positive response" do
+			it "confirms with flash" do
 				expect(flash[:info]).to eql("invitation declined")
 			end
-			it "invitation still exists" do
+			it "does not remove invitation" do
 				expect(@user2.received_invitations.count).to eql(1)
 			end
-			it "invitation is declined" do
+			it "declines invitation" do
 				expect(@user2.received_invitations.first.status).to eql("declined")
 			end
-			it "user cannot invite again" do
+			it "block user from inviting again" do
 				sign_out(@user2)
 				sign_in @user
 				post :send_invite, { inv_user_id: @user2.id }
@@ -78,13 +85,13 @@ RSpec.describe InvitationsController, type: :controller do
 			before do
 				post :remove_invite, { inv_user_id: @user2.id }
 			end
-			it "user has no invitation" do
+			it "removes invitation from user" do
 				expect(@user2.received_invitations.count).to eql(0)
 			end
-			it "invitation is removed" do
+			it "removes invitation" do
 				expect(Invitation.count).to eql(0)
 			end
-			it "there is flash confirming" do
+			it "confirms with flash" do
 				expect(flash[:info]).to eql("invitation removed")
 			end
 		end

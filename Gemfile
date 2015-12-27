@@ -15,7 +15,7 @@ gem 'paperclip'
 gem 'country_select', git: 'https://github.com/alibabajan/country_select.git'
 gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
-	gem 'sqlite3'
+  gem 'sqlite3'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem "letter_opener"

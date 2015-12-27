@@ -6,21 +6,19 @@ class FriendsRelationsController < ApplicationController
 			if @friendship.save
 				@inv.update(status: "accepted")
 				flash[:notice] = "Added as friend!"
-				redirect_to people_path
 			else
 				flash[:danger] = "Unable to add."
-				redirect_to people_path
 			end
 		else
 			flash[:danger] = "There is no invitation like this"
-			redirect_to people_path
 		end
+		redirect_to people_path
 	end
 
 	def destroy
 		@friendship = current_user.friends_relations.find_by(friend_id: friend_params) || current_user.inverse_friends_relations.find_by(user_id: friend_params)
-		@inv = current_user.sent_invitations.find_by(invited_user_id: friend_params)
-		if @friendship && @friendship.destroy
+		@inv = current_user.sent_invitations.find_by(invited_user_id: friend_params, status: "accepted") || current_user.received_invitations.find_by(inviting_user_id: friend_params, status: "accepted")
+		if @friendship && @friendship.destroy && @inv.destroy
 			flash[:warning] = "Friend removed."
 		else
 			flash[:danger] = "Unable to remove."
