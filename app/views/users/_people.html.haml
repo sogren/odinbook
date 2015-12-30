@@ -1,0 +1,17 @@
+.user-people.clearfix
+  = render "users/basic_user_display", user: user, pic_size: "sm"
+  - if f_num != 3
+    .message
+      = "MESSAGE"
+  .functions
+    - if f_num == 1
+      = link_to make_friend_path(friend_id: user.id), method: :post do
+        %span.glyphicon.glyphicon-ok{"aria-hidden" => "true"}
+      = link_to decline_invite_path(inv_user_id: user.id), method: :post do
+        %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
+    - elsif f_num == 2
+      = link_to remove_invite_path(inv_user_id: user.id), method: :delete do
+        %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
+    - else
+      = link_to remove_friend_path(friend_id: user.id), method: :delete do
+        %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}

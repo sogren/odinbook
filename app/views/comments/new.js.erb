@@ -1,4 +1,0 @@
-if ($('.new-comment').length)
-	$('.new-comment').remove();
-else
-	$('#post-<%= @id %> > .p-main').after("<%= escape_javascript (render 'comments/new', comment: @comment, id: @id) %>");

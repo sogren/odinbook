@@ -1,0 +1,29 @@
+#main-wrapper
+  #show-profile
+    #profile-head
+      %p
+        %b Update your profile!
+    #details
+      = form_for @profile, url: update_profile_path do |p|
+        %p
+          = p.label :about, "About:"
+          = p.text_field :about, size: 60
+        %p
+          = p.label :birthday, "Birthday:"
+          = p.date_select :birthday, order: [:day, :month, :year], start_year: 1900, end_year: 2015, include_blank: true
+        %p
+          = p.label :country, "Country:"
+          = p.country_select :country, include_blank: true
+        %p
+          = p.label :gender, "Gender:"
+          = p.select :gender, ["Male", "Female", "Different"], include_blank: true
+        %p
+          = p.label :profession, "Profession:"
+          = p.text_field :profession
+        %p
+          = p.label :education, "Education:"
+          = p.text_field :education
+        %p
+          = p.label :private, "Profile visibility:"
+          = p.select :private, {Private: true, Public: false}
+        %p= p.submit "commit changes!", class: "btn"

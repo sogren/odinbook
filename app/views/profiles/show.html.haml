@@ -1,0 +1,35 @@
+#main-wrapper
+  #show-profile
+    #profile-head
+      %p
+        %b
+          About #{@user.full_name}
+    #about
+      %p= @profile.profile_description
+    - if authorized(@user)
+      #details
+        %p
+          %span
+            %b Birthday:
+          = profile_date(@profile.birthday)
+        %p
+          %span
+            %b Country:
+          = profile_info(@profile.country)
+        %p
+          %span
+            %b Gender:
+          = profile_info(@profile.gender)
+        %p
+          %span
+            %b Profession:
+          = profile_info(@profile.profession)
+        %p
+          %span
+            %b Education:
+          = profile_info(@profile.education)
+    - else
+      #details
+        %p
+          = @user.full_name
+          keeps details only for friends.

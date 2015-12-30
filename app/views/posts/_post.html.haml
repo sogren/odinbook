@@ -1,0 +1,20 @@
+.post.clearfix{:id => "post-#{post.id}"}
+  .p-main.clearfix
+    .clearfix
+      .p-author
+        = render partial: "users/basic_user_display", locals: { receiver: post.receiver, user: post.author, pic_size: "md" }
+        %p= link_to "#{time_ago_in_words(post.created_at)} ago", user_post_path(post.author.id, post.id)
+    .p-content
+      = post.content
+    - if user_signed_in?
+      .p-functions
+        .functions
+          = link_to likes_path(likeable_id: post.id, likeable_type: "Post"), method: :post, id: "like-post", remote: true do
+            %span.glyphicon.glyphicon-thumbs-up{"aria-hidden" => "true"}
+          = post.likes.length
+          = link_to new_comment_path(post: post.id), method: :get, id: "make-comment", remote: true  do
+            %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
+  .p-comments
+    - comments = post.comments.paginate(page: params[:comment_page])
+    = render comments
+    = will_paginate comments, param_name: "comment_page"

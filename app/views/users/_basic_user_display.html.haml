@@ -1,0 +1,8 @@
+%div{:class => "user-pic-#{pic_size}"}
+  = image_tag user.avatar.url
+.user-name
+  - if local_assigns[:receiver]
+    = user_name_link(user)
+    \&gt; #{user_name_link(receiver)}
+  - else
+    = user_name_link(user)

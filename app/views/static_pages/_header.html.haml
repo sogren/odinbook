@@ -1,0 +1,10 @@
+#header
+  = link_to "odinbook", root_path, id: "logo"
+  - if user_signed_in?
+    = link_to "log out", destroy_user_session_path, :method => :delete, class: "logout"
+    #left-head
+      = link_to people_path, method: :get, id: "people-inv" do
+        %span#first-glyph.glyphicon.glyphicon-user{"aria-hidden" => "true"}
+        %span.glyphicon.glyphicon-user{"aria-hidden" => "true"}
+      = link_to people_path, method: :get, id: "messages" do
+        %span.glyphicon.glyphicon-envelope{"aria-hidden" => "true"}

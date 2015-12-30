@@ -1,0 +1,5 @@
+.user.clearfix
+  .main
+    = render "users/basic_user_display", user: user, pic_size: "md"
+    .info
+      %p= user.profile.profile_description

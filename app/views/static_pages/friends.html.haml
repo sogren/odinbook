@@ -1,0 +1,11 @@
+#main-wrapper
+  #wrapper-chunk
+    - if @user != current_user && current_user
+      #mutual-friends
+        %p
+          %b Mutual friends:
+        = render partial: "static_pages/friend", collection: mutual_friends(@user), locals:{ f_num: 3 }, as: :user
+    #friends
+      %p
+        %b This user friends:
+      = render partial: "static_pages/friend", collection: @friends, locals:{ f_num: 3 }, as: :user

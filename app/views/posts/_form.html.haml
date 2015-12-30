@@ -1,0 +1,8 @@
+#wrapper-chunk
+  #post-form
+    = form_for(@post, html: { class: "form-inline"}) do |f|
+      %div{:clas => "form-group", :style => "display: inline-block"}
+        = f.text_field :content, class: "form-control", required: true
+      - if local_assigns[:receiver]
+        = f.hidden_field :receiver_id, value: receiver
+      = f.submit "Submit", class: "btn btn-default",style:"margin-left: 50px;"

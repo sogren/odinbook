@@ -1,0 +1,12 @@
+#main-wrapper.clearfix
+  #dashboard-posts
+    - if user_signed_in?
+      .new-post
+        = render partial: "posts/form", locals: { receiver: (@user.id if @user != current_user) }
+    .posts
+      - if @posts.length > 0
+        = render @posts
+        = will_paginate @posts
+      - else
+        %p
+          %b This user has no posts!

@@ -1,0 +1,15 @@
+#unlog-navbar
+  %p Odinbook
+  #log-in-form
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-inline" } ) do |f|
+      .form-group
+        = f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control", required: true
+      .form-group
+        = f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control", required: true
+      %br/
+      %br/
+      - if devise_mapping.rememberable?
+        .form-group
+          = f.check_box :remember_me
+          = f.label :remember_me
+      = f.submit "Log in", class: "btn btn-default",style:"float:right"

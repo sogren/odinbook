@@ -1,7 +1,0 @@
-<%= form_for @comment, html: { class: "new-comment clearfix" } do |f|%>
-	<div class="form-group">
-		<%= f.text_field :content, autofocus: true, placeholder: "...", class: "form-control", required: true  %>
-	</div>
-	<%= f.hidden_field :post_id, { value: @id } %>
-	<%= f.submit "Send", class: "btn btn-default", style:"float:right" %>
-<% end %>
