@@ -5,9 +5,9 @@ class Invitation < ActiveRecord::Base
 	validates :invited_user_id, presence: true 
 	validates_inclusion_of :status, in: %w( pending accepted declined )
 	validates_uniqueness_of :invited_user_id, scope: :inviting_user_id
-	validate :is_invitable?, on: :create
+	validate :invitable?, on: :create
 
-	def is_invitable?
+	def invitable?
 		a			= inviting_user_id
 		b			= invited_user_id
 		ids		= [a, b]

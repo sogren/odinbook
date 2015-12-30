@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 				 :recoverable, :rememberable, :trackable, :validatable
 				 
 	has_attached_file :avatar, default_url: "digger2.jpg"
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
 	validates :first_name, :last_name, :email, presence: true
 	validates :email, uniqueness: true
@@ -46,21 +46,21 @@ class User < ActiveRecord::Base
 	end
 
 	def is_friend?(friend)
-	 	user_friends.include?(friend)
+		user_friends.include?(friend)
 	end
 
 	def feed
 		friends_ids = user_friends.map(&:id)
-		Post.where("author_id IN (#{friends_ids.join(',')}) OR author_id = :user_id", user_id: id)
-	end
-
-	def timeline
-		Post.where("author_id = :user_id OR receiver_id = :user_id", user_id: id)
+		Post.where("author_id IN (#{friends_ids.join(',')}) OR author_id = :user_id OR receiver_id = :user_id", user_id: id)
 	end
 
 	def may_know
 		friends_ids = user_friends.map(&:id)
-		User.where("id NOT IN (#{friends_ids.join(',')}) OR id = :user_id", user_id: id)
+		User.where("id NOT IN (#{friends_ids.join(',')}) OR id = :id", id: id)
+	end
+
+	def timeline
+		Post.where('author_id = :user_id OR receiver_id = :user_id', user_id: id)
 	end
 
 	def full_name

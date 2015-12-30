@@ -1,19 +1,19 @@
 #main-wrapper
   #post
-    .post.clearfix{:id => "post-#{@post.id}"}
+    .post.clearfix{:id => "post-#{post.id}"}
       .p-main.clearfix
         .clearfix
           .p-author
-            = render "users/basic_user_display", user: @post.author, pic_size: "md"
-            %p= time_ago_in_words(@post.created_at) + " ago"
+            = render "users/basic_user_display", user: post.author, pic_size: "md"
+            %p= time_ago_in_words(post.created_at) + " ago"
         .p-content
-          = @post.content
+          = post.content
         .p-functions
           .functions
-            = link_to likes_path(likeable_id: @post.id, likeable_type: "Post"), method: :@post, id: "like-post", remote: true do
+            = link_to likes_path(likeable_id: post.id, likeable_type: "Post"), method: :post, id: "like-post", remote: true do
               %span.glyphicon.glyphicon-thumbs-up{"aria-hidden" => "true"}
-            = @post.likes.length
-            = link_to new_comment_path(post: @post.id), method: :get, id: "make-comment", remote: true  do
+            = post.likes.length
+            = link_to new_comment_path(post: post.id), method: :get, id: "make-comment", remote: true  do
               %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
       .p-comments
-        = render @post.comments
+        = render post.comments

@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
 		private
 
 		def authorize
-			@user = User.find(params[:user_id])
+			@user ||= User.find(params[:user_id])
 			authorization(@user)
 		end
 end

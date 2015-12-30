@@ -5,10 +5,17 @@ class Post < ActiveRecord::Base
 	belongs_to :author, class_name: "User"
 	has_many :likes, as: :likeable
 	has_many :comments
+	validate :authorized?, if: "receiver_id"
 
   self.per_page = 6
   
+  def authorized?
+  	unless author.is_friend?(receiver) || receiver.public?
+			errors.add(:inviting_user, "You can not ivite this user!")
+  	end
+  end
+
 	def receiver
-			User.find_by(id: receiver_id)
+		User.find_by(id: receiver_id)
 	end
 end
