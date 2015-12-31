@@ -25,7 +25,7 @@ post "friends_relations/make_friend" => "friends_relations#make_friend", as: "ma
 delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
 
 get "edit" => "profiles#edit", as: "edit_profile"
-patch "update_profile" => "profiles#update"
+put "update_profile" => "profiles#update"
 
 get '*unmatched_route', to: 'application#not_found'
 

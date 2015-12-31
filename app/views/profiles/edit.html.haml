@@ -4,7 +4,7 @@
       %p
         %b Update your profile!
     #details
-      = form_for @profile, url: update_profile_path do |p|
+      = form_for @profile, url: update_profile_path, method: 'put' do |p|
         %p
           = p.label :about, "About:"
           = p.text_field :about, size: 60
