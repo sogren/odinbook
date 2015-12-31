@@ -20,13 +20,13 @@ class ProfilesController < ApplicationController
 		redirect_to edit_profile_path
 	end
 
-	private
+	 private
 
-		def user_params
+	def user_params
 			params.require(:user_id)
 		end
 
-		def update_profile_params
-			params.require(:profile).permit(:about,"birthday(1i)","birthday(2i)","birthday(3i)", :country, :gender, :profession, :education, :private)
+	def update_profile_params
+			params.require(:profile).permit(:about, "birthday(1i)", "birthday(2i)", "birthday(3i)", :country, :gender, :profession, :education, :private)
 		end
 end

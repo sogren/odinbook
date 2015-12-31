@@ -8,6 +8,6 @@ class LikesController < ApplicationController
 		else
 			flash[:info] = "something went wrong"
 		end
-			render nothing: true
+		render nothing: true
 	end
 end

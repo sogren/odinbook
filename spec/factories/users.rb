@@ -9,7 +9,7 @@ FactoryGirl.define do
 		email
 		password "qwerqwer"
 		after(:create) do |user|
-			profile ||= FactoryGirl.create(:profile, user: user)
+			FactoryGirl.create(:profile, user: user)
 		end
 	end
 end

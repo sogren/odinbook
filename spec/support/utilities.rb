@@ -26,7 +26,6 @@ end
 def make_comment_on_post
   posts = page.all(".post")
   posts[0].first(:link, "make-comment").click
-  #wait_for_ajax
   within "#new_comment" do
     fill_in "comment_content", with: "example comment"
     click_button "Send"

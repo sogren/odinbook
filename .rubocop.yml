@@ -5,7 +5,12 @@ Style/IndentationWidth:
   Enabled: false
 
 Metrics/LineLength:
-  Max: 99
+  Max: 120
 
 StringLiterals:
   Enabled: false
+
+AllCops:
+  Exclude:
+    - db/**/*
+    - config/**/*

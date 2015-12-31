@@ -15,29 +15,29 @@ RSpec.describe ProfilesController, type: :controller do
 			end
 			context 'when profile is public' do
 				before do
-					get_show_public_profile
+					show_public_profile
 				end
 				it 'show the profile' do
-					expect(response).to render_template(:show) 
+					expect(response).to render_template(:show)
 				end
 			end
 
 			context 'when profile is private' do
 				before do
-					get_show_private_profile
+					show_private_profile
 				end
 				it 'redirects root path' do
-					expect(response).to redirect_to(root_path) 
+					expect(response).to redirect_to(root_path)
 				end
 			end
 
 			context 'when profile is private but belongs to a friend' do
 				before do
 					make_friend(user, user2)
-					get_show_private_profile
+					show_private_profile
 				end
 				it 'show the profile' do
-					expect(response).to render_template(:show) 
+					expect(response).to render_template(:show)
 				end
 			end
 		end
@@ -45,19 +45,19 @@ RSpec.describe ProfilesController, type: :controller do
 		context 'when logged out' do
 			context 'when profile is public' do
 				before do
-					get_show_public_profile
+					show_public_profile
 				end
 				it 'show the profile' do
-					expect(response).to render_template(:show) 
+					expect(response).to render_template(:show)
 				end
 			end
 
 			context 'when profile is private' do
 				before do
-					get_show_private_profile
+					show_private_profile
 				end
 				it 'redirects root path' do
-					expect(response).to redirect_to(root_path) 
+					expect(response).to redirect_to(root_path)
 				end
 			end
 		end
@@ -72,7 +72,7 @@ RSpec.describe ProfilesController, type: :controller do
 				before(:each) do
 					sign_in user
 					allow(controller).to receive(:current_user).and_return(user)
-					put_edit_private_profile(valid_params)
+					edit_private_profile(valid_params)
 				end
 				it 'changes profile attributes' do
 					expect(user.profile.gender).to eql('Female')
@@ -86,8 +86,8 @@ RSpec.describe ProfilesController, type: :controller do
 				before do
 					sign_in user
 					allow(controller).to receive(:current_user).and_return(user)
-					allow(user).to receive(:update_attributes ).and_return(false)
-					put_edit_private_profile(invalid_params)
+					allow(user).to receive(:update_attributes).and_return(false)
+					edit_private_profile(invalid_params)
 				end
 				it 'sends flash with negative response' do
 					expect(flash[:danger]).to eql('Update failed')
@@ -97,8 +97,8 @@ RSpec.describe ProfilesController, type: :controller do
 
 		context 'when user is logged out' do
 			it 'redirects to root page' do
-				put_edit_private_profile(valid_params)
-				expect(response).to redirect_to(root_path) 
+				edit_private_profile(valid_params)
+				expect(response).to redirect_to(root_path)
 			end
 		end
 	end
@@ -108,16 +108,16 @@ RSpec.describe ProfilesController, type: :controller do
 		user.friends_relations.create(friend_id: user2.id)
 	end
 
-	def get_show_public_profile
-		get :show, { user_id: user2 }
+	def show_public_profile
+		get :show, user_id: user2
 	end
 
-	def get_show_private_profile
+	def show_private_profile
 		user2.profile.update(private: true)
-		get :show, { user_id: user2 }
+		get :show, user_id: user2
 	end
 
-	def put_edit_private_profile(hash)
-		put :update, { profile: hash }
+	def edit_private_profile(hash)
+		put :update, profile: hash
 	end
 end

@@ -4,7 +4,7 @@ class CreateFriendsRelations < ActiveRecord::Migration
     	t.references :user
     	t.references :friend
 
-      t.timestamps null: false
+     t.timestamps null: false
     end
   end
 end

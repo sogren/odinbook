@@ -10,7 +10,7 @@ class InvitationsController < ApplicationController
 	end
 
 	def remove_invite
-		@inv = current_user.sent_invitations.find_by(invited_user_id: invite_params, status: "pending" )
+		@inv = current_user.sent_invitations.find_by(invited_user_id: invite_params, status: "pending")
 		if @inv.destroy
 			flash[:info] = "invitation removed"
 		else
@@ -20,7 +20,7 @@ class InvitationsController < ApplicationController
 	end
 
 	def decline_invite
-		@inv = current_user.received_invitations.find_by(inviting_user_id: invite_params, status: "pending" )
+		@inv = current_user.received_invitations.find_by(inviting_user_id: invite_params, status: "pending")
 		if @inv
 			@inv.update(status: "declined")
 			flash[:info] = "invitation declined"
@@ -30,9 +30,9 @@ class InvitationsController < ApplicationController
 		redirect_to people_path
 	end
 
-	private
+	 private
 
-		def invite_params
+	def invite_params
 			params.require(:inv_user_id)
 		end
 end

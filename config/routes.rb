@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, controllers: { registrations: "registrations" }
 
   resources :posts, only: [:new, :create]
   resources :users, only: [:create, :show] do
@@ -9,28 +9,28 @@ Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
   resources :comments, only: [:new, :create]
 
-root "static_pages#home"
+  root "static_pages#home"
 
-get "people" => "static_pages#people", as: "people"
+  get "people" => "static_pages#people", as: "people"
 
-get "friends/:id" => "static_pages#friends", as: "friends"
+  get "friends/:id" => "static_pages#friends", as: "friends"
 
-get "timeline/:id" => "static_pages#timeline", as: "timeline"
+  get "timeline/:id" => "static_pages#timeline", as: "timeline"
 
-post "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
-post "invitations/decline_invite" => "invitations#decline_invite", as: "decline_invite"
-delete "invitations/remove_invite" => "invitations#remove_invite", as: "remove_invite"
+  post "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
+  post "invitations/decline_invite" => "invitations#decline_invite", as: "decline_invite"
+  delete "invitations/remove_invite" => "invitations#remove_invite", as: "remove_invite"
 
-post "friends_relations/make_friend" => "friends_relations#make_friend", as: "make_friend"
-delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
+  post "friends_relations/make_friend" => "friends_relations#make_friend", as: "make_friend"
+  delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
 
-get "edit" => "profiles#edit", as: "edit_profile"
-put "update_profile" => "profiles#update"
+  get "edit" => "profiles#edit", as: "edit_profile"
+  put "update_profile" => "profiles#update"
 
-get '*unmatched_route', to: 'application#not_found'
+  get '*unmatched_route', to: 'application#not_found'
 
-#post "likes/create" => "likes#create", as: "like"
-#post "likes/destroy" => "likes#destroy", as: "unlike"
+  # post "likes/create" => "likes#create", as: "like"
+  # post "likes/destroy" => "likes#destroy", as: "unlike"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

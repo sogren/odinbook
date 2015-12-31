@@ -1,5 +1,4 @@
 module ApplicationHelper
-
 	def require_login
 		unless user_signed_in?
 			flash[:danger] = "You cannot go there! First sign in or sign up!"

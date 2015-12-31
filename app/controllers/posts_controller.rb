@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 	before_action :authorize, only: [:show]
 	skip_before_filter :require_login, only: [:show]
-  add_flash_types :danger, :info
+ add_flash_types :danger, :info
 
 	expose(:post)
 
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 				format.html { redirect_to :back, info: 'Post was successfully created.' }
 				format.json { render :show, status: :created, location: post }
 			else
-				format.html { redirect_to :back, danger: 'Post creation failed.'  }
+				format.html { redirect_to :back, danger: 'Post creation failed.' }
 				format.json { render json: post.errors, status: :unprocessable_entity }
 			end
 		end
@@ -45,8 +45,9 @@ class PostsController < ApplicationController
 		end
 	end
 
-	private
-		def post_params
-			params.require(:post).permit(:content,:receiver_id)
+	 private
+
+	def post_params
+			params.require(:post).permit(:content, :receiver_id)
 		end
 end

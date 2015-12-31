@@ -26,10 +26,9 @@ class FriendsRelationsController < ApplicationController
 		redirect_to people_path
 	end
 
-	private
+	 private
 
-		def friend_params
+	def friend_params
 			params.require(:friend_id)
 		end
-		
 end

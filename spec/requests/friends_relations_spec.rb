@@ -1,9 +1,9 @@
 require 'rails_helper'
 require 'shared_contexts'
 
-RSpec.describe "FriendsRelations", type: :request do 
-  include_context "api request authentication helper methods"
-  include_context "api request global before and after hooks"
+RSpec.describe "FriendsRelations", type: :request do
+	include_context "api request authentication helper methods"
+	include_context "api request global before and after hooks"
 
 	before do
 		@user		= FactoryGirl.create :user
@@ -16,7 +16,6 @@ RSpec.describe "FriendsRelations", type: :request do
 				send_invitation(@user2, @user)
 				make_friends(@user, @user2)
 			end
-
 			it "confirms with flash" do
 				expect(flash[:notice]).to eql("Added as friend!")
 			end
@@ -42,7 +41,6 @@ RSpec.describe "FriendsRelations", type: :request do
 				expect(@user2.sent_invitations.count).to eql(1)
 			end
 		end
-
 		context "without invitation" do
 			it "sends flash with engative response" do
 				make_friends(@user, @user2)
@@ -91,23 +89,20 @@ RSpec.describe "FriendsRelations", type: :request do
 	end
 end
 
-
-
-
 def send_invitation(sender, receiver)
 	sign_in sender
-	post send_invite_path, { inv_user_id: receiver.id }
+	post send_invite_path, inv_user_id: receiver.id
 	sign_out
 end
 
 def make_friends(friender, friend)
 	sign_in friender
-	post make_friend_path, { friend_id: friend.id }
+	post make_friend_path, friend_id: friend.id
 	sign_out
 end
 
 def remove_friends(remover, friend)
 	sign_in remover
-	delete remove_friend_path, { friend_id: friend.id }
+	delete remove_friend_path, friend_id: friend.id
 	sign_out
 end
