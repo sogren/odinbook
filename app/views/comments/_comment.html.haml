@@ -8,9 +8,7 @@
       - if user_signed_in?
         .c-functions
           .functions
-            = link_to likes_path(likeable_id: comment.id, likeable_type: "Comment"), method: :post, id: "like-comment", remote: true do
-              %span.glyphicon.glyphicon-thumbs-up{"aria-hidden" => "true"}
-            = comment.likes.length
+            = render 'likes/like', id: comment.id, type: "Comment", likes: comment.likes.length
             = link_to new_comment_path(post: comment.post.id), method: :get, id: "make-comment", remote: true  do
               %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
             %p= time_ago_in_words(comment.created_at) + " ago"

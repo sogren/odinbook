@@ -43,4 +43,8 @@ module ApplicationHelper
 			content_tag(:p, (link_to "Send friend request to this user", send_invite_path(inv_user_id: @user), method: "post"))
 		end
 	end
+
+	def user_liked?(id, type)
+		current_user.likes_relations.find_by(likeable_id: id, likeable_type: type)
+	end
 end
