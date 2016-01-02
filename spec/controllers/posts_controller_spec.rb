@@ -146,13 +146,13 @@ RSpec.describe PostsController, type: :controller do
  			end
  		end
  	end
-end
 
-def create_and_show_post(user)
-	user.posts.create(content: "casual post")
-	get :show, user_id: user.id, id: Post.first
-end
+  def create_and_show_post(user)
+    user.posts.create(content: "casual post")
+    get :show, user_id: user.id, id: Post.first
+  end
 
-def make_profile_private(user)
-	user.profile.update(private: true)
+  def make_profile_private(user)
+    user.profile.update(private: true)
+  end
 end

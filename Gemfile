@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'paperclip'
 gem 'country_select', git: 'https://github.com/alibabajan/country_select.git'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem "spring", group: :development
+gem 'spring-commands-rspec', group: :development
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'

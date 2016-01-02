@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resource :profile, only: [:show]
     resources :posts, only: [:show]
   end
-  resources :likes, only: [:create, :destroy]
+  resources :likes, only: [:create]
   resources :comments, only: [:new, :create]
 
   root "static_pages#home"
@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   post "friends_relations/make_friend" => "friends_relations#make_friend", as: "make_friend"
   delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
+
+  delete "like" => "likes#destroy", as: "unlike"
 
   get "edit" => "profiles#edit", as: "edit_profile"
   put "update_profile" => "profiles#update"
