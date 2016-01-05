@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 	before_action :authorize, only: [:show]
 	skip_before_filter :require_login, only: [:show]
- add_flash_types :danger, :info
+ 	add_flash_types :danger, :info
 
 	expose(:post)
 

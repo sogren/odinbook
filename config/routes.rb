@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 
   root "static_pages#home"
 
-  get "people" => "static_pages#people", as: "people"
+  get "people" => "users#people", as: "people"
 
-  get "friends/:id" => "static_pages#friends", as: "friends"
+  get "friends/:id" => "users#friends", as: "friends"
 
-  get "timeline/:id" => "static_pages#timeline", as: "timeline"
+  get "timeline/:id" => "users#timeline", as: "timeline"
 
   post "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
   post "invitations/decline_invite" => "invitations#decline_invite", as: "decline_invite"

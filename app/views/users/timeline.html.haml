@@ -2,7 +2,7 @@
   #dashboard-posts
     - if user_signed_in?
       .new-post
-        = render partial: "posts/form", locals: { receiver: (@user.id if @user != current_user) }
+        = render partial: "posts/form", locals: { receiver: (user.id if user != current_user) }
     .posts
       - if @posts.length > 0
         = render @posts
