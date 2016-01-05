@@ -2,33 +2,36 @@ class LikesController < ApplicationController
 	respond_to :html, :js
 
 	def create
-		likes_params
-		@like_relation = current_user.likes_relations.build(likeable_id: @id, likeable_type: @type)
-		@likeable = @like_relation.likeable
+		@like_relation = current_user.likes_relations.new(likes_params)
 		if @like_relation.save
 			flash[:info] = "successfully liked"
 		else
 			flash[:danger] = "something went wrong"
 		end
-		render 'reload.js', locals: { type: @type, id: @id, likes: @likeable.likes.length }
+
+		render 'reload.js', locals: likes_locals(@like_relation)
 	end
 
 	def destroy
-		likes_params
-		@like_relation = current_user.likes_relations.find_by(likeable_id: @id, likeable_type: @type)
-		@likeable = @like_relation.likeable
+		@like_relation = current_user.likes_relations.find_by(likes_params)
 		if @like_relation.destroy
 			flash[:info] = "successfully unliked"
 		else
 			flash[:danger] = "something went wrong"
 		end
-		render 'reload.js', locals: { type: @type, id: @id, likes: @likeable.likes.length }
+		render 'reload.js', locals: likes_locals(@like_relation)
 	end
 
 	private
 
+		def likes_locals(relation)
+			@id = likes_params[:likeable_id]
+			@type = likes_params[:likeable_type]
+			@likes = relation.likes
+			{ type: @type, id: @id, likes: @likes }
+		end
+
 		def likes_params
-			@id = params[:likeable_id]
-			@type = params[:likeable_type]
+			params.require(:liked).permit(:likeable_id, :likeable_type)
 		end
 end

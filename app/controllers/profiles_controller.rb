@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 	skip_before_filter :require_login, only: :show
-	before_action :authorize, only: [:show]
+	before_action :authorize, only: :show
 	def show
 		@user = User.includes(:profile).find(user_params)
 		@profile = @user.profile
@@ -22,11 +22,11 @@ class ProfilesController < ApplicationController
 
 	 private
 
-	def user_params
+		def user_params
 			params.require(:user_id)
 		end
 
-	def update_profile_params
+		def update_profile_params
 			params.require(:profile).permit(:about, "birthday(1i)", "birthday(2i)", "birthday(3i)", :country, :gender, :profession, :education, :private)
 		end
 end

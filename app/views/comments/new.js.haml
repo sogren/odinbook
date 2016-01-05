@@ -2,4 +2,4 @@ if ($('.new-comment').length)
 $('.new-comment').remove();
 else
 console.log('#post-#{@id} .p-main')
-$('#post-#{@id} .p-main').after("#{escape_javascript (render 'comments/new', comment: @comment, id: @id)}");
+$('#post-#{@id} .p-main').after("#{escape_javascript (render 'comments/new', comment: comment, id: @id)}");

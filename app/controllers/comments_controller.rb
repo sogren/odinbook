@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 	expose(:comment)
+
 	def new
-		@comment = Comment.new
 		@id = params[:post]
 	end
 

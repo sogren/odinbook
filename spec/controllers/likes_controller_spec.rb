@@ -4,7 +4,7 @@ RSpec.describe LikesController, type: :controller do
   let(:user) { FactoryGirl.create :user }
   let(:user2) { FactoryGirl.create :user }
   let(:users_post) { FactoryGirl.create :post, author: user2 }
-  let(:users_comment) { FactoryGirl.create :comment, author: user2 }
+  let(:users_comment) { FactoryGirl.create :comment, author: user2, post_id: users_post.id }
 
   before do
    request.env["HTTP_REFERER"] = "where_i_came_from"
@@ -91,18 +91,18 @@ RSpec.describe LikesController, type: :controller do
   end
 
   def like_post(thing)
-    post :create, likeable_id: thing.id, likeable_type: 'Post'
+    post :create, liked: { likeable_id: thing.id, likeable_type: 'Post' }
   end
 
   def like_comment(thing)
-    post :create, likeable_id: thing.id, likeable_type: 'Comment'
+    post :create, liked: { likeable_id: thing.id, likeable_type: 'Comment' }
   end
 
   def unlike_post(thing)
-    delete :destroy, likeable_id: thing.id, likeable_type: 'Post'
+    delete :destroy, liked: { likeable_id: thing.id, likeable_type: 'Post' }
   end
 
   def unlike_comment(thing)
-    delete :destroy, likeable_id: thing.id, likeable_type: 'Comment'
+    delete :destroy, liked: { likeable_id: thing.id, likeable_type: 'Comment' }
   end
 end
