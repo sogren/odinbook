@@ -6,7 +6,9 @@ class RegistrationsController < Devise::RegistrationsController
 	after_filter :create_profile, only: :create
 
 	def create_profile
-    resource.create_profile(private: true) if resource.persisted?
+		if resource.persisted?
+    	resource.create_profile(private: true)
+    end
 	end
 	 # GET /resource/sign_up
 	 # def new

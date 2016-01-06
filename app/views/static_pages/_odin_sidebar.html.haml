@@ -1,7 +1,27 @@
 #profile-main
   #wrapper-chunk
-    #odin-sidebar
-      %p
-        %b= link_to "Welcome to Odinbook!", root_path
-      %p Fell free to make your own account!
-      %p This is a perfect place to waste your time, and do nothing productive!
+    - if user_signed_in?
+      #current-user-profile
+        #current-user.clearfix
+          = render "users/basic_user_display", user: current_user, pic_size: "sm"
+        #links.clearfix
+          .link
+            = link_to "home", root_path
+          .link
+            = link_to "timeline", timeline_path(current_user.id)
+          .link
+            = link_to "people", people_path
+          .link
+            = link_to "friends", friends_path(current_user.id)
+          .link
+            = link_to "profile", user_profile_path(user_id: current_user.id)
+          .link
+            = link_to "edit profile", edit_profile_path
+    - else
+      #odin-sidebar
+        %p
+          %b= link_to "Welcome to Odinbook!", root_path
+        %p Fell free to make your own account!
+        %p This is a perfect place to waste your time, and do nothing productive!
+
+= @user
