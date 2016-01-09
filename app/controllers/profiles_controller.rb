@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
 	skip_before_filter :require_login, only: :show
 	before_action :authorize, only: :show
 
-  expose(:user)
+  expose(:user) { exposure_block }
 
 	def show
 		@user = User.includes(:profile).find(user_params)

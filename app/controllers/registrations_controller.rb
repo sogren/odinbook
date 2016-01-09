@@ -5,7 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
 
 	after_filter :create_profile, only: :create
 
-	expose(:user) { current_user if params[:id].nil? }
+	expose(:user) { exposure_block }
 
 	def create_profile
 		if resource.persisted?

@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   skip_before_filter :require_login, only: :home
   respond_to :html, :js
 
-  expose(:user) { current_user if params[:id].nil? }
+  expose(:user) { exposure_block }
 
   def home
     if user_signed_in?

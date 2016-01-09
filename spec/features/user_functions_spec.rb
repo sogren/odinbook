@@ -12,16 +12,20 @@ RSpec.describe "User functions", type: :feature do
 		sign_in(@user)
 	end
 
-	describe "can make post which should" do
+	describe "making post" do
 		before do
-			sign_in(@user)
+			sign_out
+			sign_in(user)
 			make_post
 		end
 
-		it "make posts" do
+		it "make post" do
 			expect(page).to have_content "example post"
 		end
 		it "add post to user" do
+			expect(user.posts.last.content).to eql("example post")
+		end
+		it "displays post" do
 			expect(user.posts.last.content).to eql("example post")
 		end
 	end
@@ -35,25 +39,6 @@ RSpec.describe "User functions", type: :feature do
 		end
 		it "which add liked post to user" do
 			expect { like_post(@post, @user) }.to change { @user.liked_posts.count }.by(1)
-		end
-	end
-
-	describe "can click like on posts", js: true do
-		before do
-			make_post
-		end
-		it "which add liked post to user" do
-			expect { like_post_by_button }.to change { Post.last.likes.count }.by(1)
-		end
-		it "which add like to post" do
-			expect { like_post_by_button }.to change { @user.liked_posts.count }.by(1)
-		end
-		it "and user has this post liked " do
-			like_post_by_button
-			expect(@user.liked_posts.last).to eql(Post.last)
-		end
-		it "and post have only one like from user " do
-			expect { 5.times { like_post_by_button } }.to change { @user.liked_posts.count }.by(1)
 		end
 	end
 

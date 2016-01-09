@@ -45,4 +45,9 @@ class ApplicationController < ActionController::Base
 		@user ||= User.find(params[:user_id])
 		authorization(@user)
 	end
+
+  def exposure_block
+    return current_user if params[:id].nil?
+    User.find(params[:id])
+  end
 end
