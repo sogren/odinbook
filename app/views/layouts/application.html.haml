@@ -8,13 +8,13 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    - @user = choose_user
     - flash.each do |message_type, message|
       %div{:class => "alert alert-#{message_type}"}= message
-    - if @user && @user.valid?
-      = render "static_pages/header"
-      = render "static_pages/profile", locals: { user: @user }
-      = render "static_pages/odin_sidebar"
-    = yield
+    = render "static_pages/header"
+    #site-wrapper
+      - if user
+        = render "static_pages/profile", user: user
+        = render "static_pages/odin_sidebar"
+      = yield
     :javascript
       $(".alert").delay(1500).fadeOut("slow");

@@ -1,9 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
 	before_filter :configure_sign_up_params
 	before_filter :configure_account_update_params
-	skip_before_filter :require_login, only: :create
+	skip_before_filter :require_login, only: [:create, :new]
 
 	after_filter :create_profile, only: :create
+
+	expose(:user) { current_user if params[:id].nil? }
 
 	def create_profile
 		if resource.persisted?

@@ -4,6 +4,7 @@ gem 'bcrypt'
 gem 'devise'
 gem 'rubocop'
 
+gem 'simple_form'
 gem 'haml'
 gem 'haml-rails'
 

@@ -1,11 +1,11 @@
 #main-user-profile
-  = render "users/basic_user_display", user: @user, pic_size: "vl"
+  = render "users/basic_user_display", user: user, pic_size: "vl"
   #friend
-    = friend_button(@user) if @user != current_user && user_signed_in?
+    = friend_button(user) if user != current_user && user_signed_in?
 #profile-links
   .link
-    = link_to "Timeline", timeline_path(@user.id)
+    = link_to "Timeline", timeline_path(user.id)
   .link
-    = link_to "Friends", friends_path(@user.id)
+    = link_to "Friends", friends_path(user.id)
   .link
-    = link_to "About", user_profile_path(user_id: @user.id)
+    = link_to "About", user_profile_path(user_id: user.id)

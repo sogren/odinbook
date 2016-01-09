@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "Site", type: :feature do
+  include Signing
+  include ComPosting
+  include Liking
+
 	before do
 		@user = FactoryGirl.create :user
-		log_in(@user)
+		sign_in(@user)
 		5.times { make_post }
 	end
 

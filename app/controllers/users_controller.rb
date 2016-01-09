@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:timeline, :friends]
   before_action :authorize, only: [:timeline, :friends]
 
-  expose(:user)
+  expose(:user) { current_user if params[:id].nil? }
 
   def show
   end

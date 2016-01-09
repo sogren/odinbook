@@ -3,22 +3,13 @@ class LikesController < ApplicationController
 
 	def create
 		@like_relation = current_user.likes_relations.new(likes_params)
-		if @like_relation.save
-			flash[:info] = "successfully liked"
-		else
-			flash[:danger] = "something went wrong"
-		end
-
+		@like_relation.save
 		render 'reload.js', locals: likes_locals(@like_relation)
 	end
 
 	def destroy
 		@like_relation = current_user.likes_relations.find_by(likes_params)
-		if @like_relation.destroy
-			flash[:info] = "successfully unliked"
-		else
-			flash[:danger] = "something went wrong"
-		end
+		@like_relation.destroy
 		render 'reload.js', locals: likes_locals(@like_relation)
 	end
 

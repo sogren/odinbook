@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
-  skip_before_filter :require_login, only: [:home, :timeline, :friends]
-   before_action :authorize, only: [:timeline, :friends]
-   respond_to :html, :js
+  skip_before_filter :require_login, only: :home
+  respond_to :html, :js
+
+  expose(:user) { current_user if params[:id].nil? }
+
   def home
     if user_signed_in?
       @post = Post.new

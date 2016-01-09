@@ -32,17 +32,17 @@ class ApplicationController < ActionController::Base
 		rescue_from ActiveRecord::RecordNotFound, with: :render_404
 	end
 
-	 protected
+	protected
 
 	def render_404(_exception)
-			flash[:danger] = "There is no such page or you have no access to it!"
-			redirect_to root_path
-		end
+		flash[:danger] = "There is no such page or you have no access to it!"
+		redirect_to root_path
+	end
 
-		private
+	private
 
 	def authorize
-			@user ||= User.find(params[:user_id])
-			authorization(@user)
-		end
+		@user ||= User.find(params[:user_id])
+		authorization(@user)
+	end
 end

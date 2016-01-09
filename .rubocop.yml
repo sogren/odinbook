@@ -17,3 +17,6 @@ AllCops:
 
 Style/EndOfLine:
   Enabled: false
+
+Style/Documentation:
+  Enabled: false

@@ -21,10 +21,6 @@ module ApplicationHelper
 		end
 	end
 
-	def choose_user
-		@user ||= current_user
-	end
-
 	def mutual_friends(user)
 		current_user.user_friends & user.user_friends
 	end
