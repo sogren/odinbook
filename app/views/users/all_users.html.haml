@@ -1,0 +1,10 @@
+#main-wrapper
+  #people
+    #wrapper-chunk
+      #all-users
+        - @users.each do |user|
+          .user-people.clearfix
+            = render "users/basic_user_display", user: user, pic_size: "sm"
+            .message
+              = friend_button(user) if user != current_user && user_signed_in?
+

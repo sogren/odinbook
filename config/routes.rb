@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   root "static_pages#home"
 
+  get "all_users" => "users#all_users", as: "all_users"
+
   get "people" => "users#people", as: "people"
 
   get "friends/:id" => "users#friends", as: "friends"

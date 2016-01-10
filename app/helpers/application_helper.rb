@@ -35,7 +35,7 @@ module ApplicationHelper
 			a = content_tag(:p, "You already sent an invitation")
 			a << content_tag(:p, (link_to "Manage your invitations", people_path))
 		else
-			content_tag(:p, (link_to "Send friend request to this user", send_invite_path(inv_user_id: @user), method: "post"))
+			content_tag(:p, (link_to "Send friend request to this user", send_invite_path(inv_user_id: user), method: "post"))
 		end
 	end
 

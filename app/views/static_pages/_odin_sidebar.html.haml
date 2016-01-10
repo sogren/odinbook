@@ -17,6 +17,8 @@
             = link_to "profile", user_profile_path(user_id: current_user.id)
           .link
             = link_to "edit profile", edit_profile_path
+          .link
+            = link_to "all users", all_users_path
     - else
       #odin-sidebar
         %p
