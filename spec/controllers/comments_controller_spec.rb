@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
+  render_views
+
   let(:user) { FactoryGirl.create :user }
   let(:user2) { FactoryGirl.create :user }
   let(:users_post) { FactoryGirl.create :post, author: user2 }

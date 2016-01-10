@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 
 	helper_method :resource_name, :resource, :devise_mapping
 
+  expose(:user) { exposure_block }
+
 	def resource_name
 		:user
 	end
@@ -42,12 +44,12 @@ class ApplicationController < ActionController::Base
 	private
 
 	def authorize
-		@user ||= User.find(params[:user_id])
-		authorization(@user)
+		authorization(user)
 	end
 
   def exposure_block
+    return User.find(params[:user_id]) if params[:user_id].present?
     return current_user if params[:id].nil?
-    User.find(params[:id])
+    return User.find(params[:id])
   end
 end

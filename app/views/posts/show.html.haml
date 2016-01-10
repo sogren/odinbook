@@ -8,10 +8,11 @@
             %p= time_ago_in_words(post.created_at) + " ago"
         .p-content
           = post.content
-        .p-functions
-          .functions
-            = render 'likes/like', id: post.id, type: "Post", likes: post.likes.length
-            = link_to new_comment_path(post: post.id), method: :get, id: "make-comment", remote: true  do
-              %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
+        - if user_signed_in?
+          .p-functions
+            .functions
+              = render 'likes/like', id: post.id, type: "Post", likes: post.likes.length
+              = link_to new_comment_path(post: post.id), method: :get, id: "make-comment", remote: true  do
+                %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
       .p-comments
         = render post.comments

@@ -1,13 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
+  render_views
+
   before do
     @user = FactoryGirl.create :user
     @user2 = FactoryGirl.create :user
     request.env["HTTP_REFERER"] = "where_i_came_from"
   end
 
+
+  it "should contain posts" do
+    @user.posts.create(content: "casual post")
+    get :show, user_id: @user.id, id: Post.first
+    expect(response.body).to have_content('casual post')
+  end
+
   describe "GET #show" do
+    it 'show post' do
+      @user.posts.create(content: "casual post")
+      get :show, user_id: @user.id, id: Post.first
+      expect(response).to render_template(:show)
+    end
     context "when logged in" do
       before do
         sign_in @user

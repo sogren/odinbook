@@ -1,9 +1,8 @@
 module ApplicationHelper
 	def require_login
-		unless user_signed_in?
-			flash[:danger] = "You cannot go there! First sign in or sign up!"
-			redirect_to root_path
-		end
+		return true if user_signed_in?
+		flash[:danger] = "You cannot go there! First sign in or sign up!"
+		redirect_to root_path
 	end
 
 	def authorization(user)

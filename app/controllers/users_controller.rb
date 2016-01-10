@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:timeline, :friends]
   before_action :authorize, only: [:timeline, :friends]
 
-  expose(:user) { exposure_block }
-
-  def show
-  end
 
   def timeline
     if user_signed_in?

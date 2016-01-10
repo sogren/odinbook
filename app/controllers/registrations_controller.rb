@@ -5,7 +5,6 @@ class RegistrationsController < Devise::RegistrationsController
 
 	after_filter :create_profile, only: :create
 
-	expose(:user) { exposure_block }
 
 	def create_profile
 		if resource.persisted?

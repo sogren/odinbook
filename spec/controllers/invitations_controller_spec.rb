@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe InvitationsController, type: :controller do
+  render_views
+
   before do
   	@user	= FactoryGirl.create :user
    @user2	= FactoryGirl.create :user

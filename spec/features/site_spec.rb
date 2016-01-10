@@ -4,10 +4,10 @@ RSpec.describe "Site", type: :feature do
   include Signing
   include ComPosting
   include Liking
+  let(:user) { FactoryGirl.create :user }
 
 	before do
-		@user = FactoryGirl.create :user
-		sign_in(@user)
+		sign_in(user)
 		5.times { make_post }
 	end
 
