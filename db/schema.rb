@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151222183625) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.text     "content"
     t.datetime "created_at", null: false
@@ -37,9 +40,9 @@ ActiveRecord::Schema.define(version: 20151222183625) do
     t.string   "message"
   end
 
-  add_index "invitations", ["invited_user_id", "inviting_user_id"], name: "index_invitations_on_invited_user_id_and_inviting_user_id", unique: true
-  add_index "invitations", ["invited_user_id"], name: "index_invitations_on_invited_user_id"
-  add_index "invitations", ["inviting_user_id"], name: "index_invitations_on_inviting_user_id"
+  add_index "invitations", ["invited_user_id", "inviting_user_id"], name: "index_invitations_on_invited_user_id_and_inviting_user_id", unique: true, using: :btree
+  add_index "invitations", ["invited_user_id"], name: "index_invitations_on_invited_user_id", using: :btree
+  add_index "invitations", ["inviting_user_id"], name: "index_invitations_on_inviting_user_id", using: :btree
 
   create_table "likes", force: :cascade do |t|
     t.integer  "likeable_id"
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 20151222183625) do
     t.integer  "liker_id"
   end
 
-  add_index "likes", ["likeable_id", "likeable_type", "liker_id"], name: "likes_index", unique: true
-  add_index "likes", ["liker_id"], name: "index_likes_on_liker_id"
+  add_index "likes", ["likeable_id", "likeable_type", "liker_id"], name: "likes_index", unique: true, using: :btree
+  add_index "likes", ["liker_id"], name: "index_likes_on_liker_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.text     "content"
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20151222183625) do
     t.integer  "receiver_id"
   end
 
-  add_index "posts", ["receiver_id"], name: "index_posts_on_receiver_id"
+  add_index "posts", ["receiver_id"], name: "index_posts_on_receiver_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -96,7 +99,7 @@ ActiveRecord::Schema.define(version: 20151222183625) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

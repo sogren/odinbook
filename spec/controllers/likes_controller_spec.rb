@@ -69,7 +69,7 @@ RSpec.describe LikesController, type: :controller do
     context 'when unliking comment' do
       before do
         create_comment_like_directly(user, users_comment)
-        unlike_comment(users_post)
+        unlike_comment(users_comment)
       end
 
       it 'destroys like' do

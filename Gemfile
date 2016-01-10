@@ -3,6 +3,7 @@ gem 'rails', '4.2.0'
 gem 'bcrypt'
 gem 'devise'
 gem 'rubocop'
+gem 'pg'
 
 gem 'simple_form'
 gem 'haml'
@@ -26,7 +27,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "spring", group: :development
 gem 'spring-commands-rspec', group: :development
 group :development, :test do
-  gem 'sqlite3'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem "letter_opener"
@@ -43,6 +43,5 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
-  gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
 end
