@@ -6,8 +6,8 @@ RSpec.describe UsersController, type: :controller do
   def setup(action, target, priv = nil, user = nil)
     target.profile.update(private: true) if priv
     if user
-      user.sent_invitations.build(invited_user_id: target.id, status: 'pending')
-      target.friends_relations.create(friend_id: target.id)
+      user.sent_invitations.create(invited_user_id: target.id, status: 'pending')
+      target.friends_relations.create(friend_id: user.id)
     end
     get action, id: target.id
   end
@@ -17,8 +17,9 @@ RSpec.describe UsersController, type: :controller do
 
   context 'when logged in' do
     before { sign_in user }
+
     describe 'GET #timeline' do
-      context 'on friends timeline-page' do
+      context 'on friend page' do
 
         context 'with public profile' do
           before { setup(:timeline, user2, nil, user) }
@@ -30,7 +31,7 @@ RSpec.describe UsersController, type: :controller do
         end
       end
 
-      context 'on strangers timeline-page' do
+      context 'on stranger page' do
 
         context 'with public profile' do
           before { setup(:timeline, user2, nil) }
@@ -42,7 +43,7 @@ RSpec.describe UsersController, type: :controller do
         end
       end
 
-      context 'on own timeline-page' do
+      context 'on own page' do
 
         context 'with public profile' do
           before { setup(:timeline, user, nil) }
@@ -56,14 +57,14 @@ RSpec.describe UsersController, type: :controller do
     end
 
     describe 'GET #people' do
-      context 'on own people-page' do
+      context 'on own page' do
         before { get :people }
         it { expect(response).to render_template(:people) }
       end
     end
 
     describe 'GET #friends' do
-      context 'on friends friends-page' do
+      context 'on friend page' do
 
         context 'with public profile' do
           before { setup(:friends, user2, nil, user) }
@@ -75,7 +76,7 @@ RSpec.describe UsersController, type: :controller do
         end
       end
 
-      context 'on strangers friends-page' do
+      context 'on stranger page' do
 
         context 'with public profile' do
           before { setup(:friends, user2, nil) }
@@ -87,7 +88,7 @@ RSpec.describe UsersController, type: :controller do
         end
       end
 
-      context 'on own friends-page' do
+      context 'on own page' do
 
         context 'with public profile' do
           before { setup(:friends, user, nil) }
