@@ -34,6 +34,10 @@ class ApplicationController < ActionController::Base
 		rescue_from ActiveRecord::RecordNotFound, with: :render_404
 	end
 
+  def new_session_path(scope)
+    new_user_session_path
+  end
+
 	protected
 
 	def render_404(_exception)
