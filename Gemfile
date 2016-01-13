@@ -5,6 +5,7 @@ gem 'devise'
 gem 'rubocop'
 gem 'pg'
 gem 'omniauth-facebook'
+gem 'figaro'
 
 gem 'simple_form'
 gem 'haml'
