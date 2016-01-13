@@ -2,5 +2,5 @@
   #description
     %p
       Odinbook is facebook-like social site! You can have friends and stuff and waste your time! Or not, because we don't have millions of people here :/
-    = link_to 'Log in!', new_user_session_path
+    = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
     = link_to 'Create your own account!', new_user_registration_path

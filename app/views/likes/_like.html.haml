@@ -3,7 +3,10 @@
     = link_to unlike_path(liked: { likeable_id: id, likeable_type: type } ), method: :delete, id: "like-#{type.downcase}"  , remote: true do
       %span.glyphicon.glyphicon-thumbs-down{"aria-hidden" => "true"}
     = likes
+    .fb-like{"data-href" => "http://localhost:3000", "data-send" => "true", "data-show-faces" => "false", "data-width" => "450"}
   - else
     = link_to likes_path(liked: { likeable_id: id, likeable_type: type } ), method: :post, id: "like-#{type.downcase}", remote: true do
       %span.glyphicon.glyphicon-thumbs-up{"aria-hidden" => "true"}
     = likes
+    .fb-like{"data-href" => "http://localhost:3000/users/#{thing.author.id}/posts/#{id}", "data-send" => "true", "data-show-faces" => "false", "data-width" => "450"}
+    ="http://localhost:3000/users/#{thing.author.id}/posts/#{id}"

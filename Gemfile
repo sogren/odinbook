@@ -4,6 +4,7 @@ gem 'bcrypt'
 gem 'devise'
 gem 'rubocop'
 gem 'pg'
+gem 'omniauth-facebook'
 
 gem 'simple_form'
 gem 'haml'
