@@ -3,9 +3,8 @@ class User < ActiveRecord::Base
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	scope :all_except, ->(user) { where.not(id: user) }
 	devise :database_authenticatable, :registerable,
-				    :recoverable, :rememberable, :trackable, :validatable
-
-	devise :omniauthable, :omniauth_providers => [:facebook]
+				    :recoverable, :rememberable, :trackable, :validatable,
+				    :omniauthable, :omniauth_providers => [:facebook]
 
 	has_attached_file :avatar, default_url: "digger2.jpg"
 	validates_attachment_content_type :avatar, content_type: %r{ \Aimage\/.*\Z }
