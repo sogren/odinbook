@@ -9,10 +9,10 @@ class User < ActiveRecord::Base
 	has_attached_file :avatar, default_url: "digger2.jpg"
 	validates_attachment_content_type :avatar, content_type: %r{ \Aimage\/.*\Z }
 
-	#validates :first_name, :last_name, :email, presence: true
-	#validates :email, uniqueness: true
-	#validates :password, length: { minimum: 8 }, unless: "password.nil?"
-	#validates :password, presence: true, if: "id.nil?"
+	validates :first_name, :last_name, :email, presence: true
+	validates :email, uniqueness: true
+	validates :password, length: { minimum: 8 }, unless: "password.nil?"
+	validates :password, presence: true, if: "id.nil?"
 
 	has_many :posts, foreign_key: :author_id, dependent: :destroy
 	has_many :comments, foreign_key: :author_id, dependent: :destroy
@@ -74,19 +74,25 @@ class User < ActiveRecord::Base
 		profile.public?
 	end
 
-	def self.from_omniauth(auth)
-  	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-	    user.email = auth.info.email
-	    user.password = Devise.friendly_token[0,20]
-      user.first_name = auth.info.first_name   # assuming the user model has a name
-      user.last_name  = auth.info.last_name
-	  end
-	end
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      name = auth.info.name.split(' ')
+      user.first_name = name[0]   # assuming the user model has a name
+      user.last_name  = name[1]
+      #url             = auth.info.image
+      #user.avatar    = url.gsub("http","https")
+    end
+  end
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+      if data = session["devise.facebook_data"] &&
+                session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
+        user.first_name = data["first_name"] if user.first_name.blank?
+        user.last_name  = data["last_name"]  if user.last_name.blank?
       end
     end
   end

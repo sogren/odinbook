@@ -16,21 +16,3 @@
         = render "static_pages/profile", user: user
         = render "static_pages/odin_sidebar"
       = yield
-      :javascript
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '1675815196028042',
-            xfbml      : true,
-            version    : 'v2.5'
-          });
-        };
-
-        (function(d, s, id){
-           var js, fjs = d.getElementsByTagName(s)[0];
-           if (d.getElementById(id)) {return;}
-           js = d.createElement(s); js.id = id;
-           js.src = "//connect.facebook.net/en_US/sdk.js";
-           fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'facebook-jssdk'));
-
-        $(".alert").delay(1500).fadeOut("slow");

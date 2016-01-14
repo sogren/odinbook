@@ -18,7 +18,7 @@ def sentence
 	arr.join(" ")
 end
 
-amazing_number = 30
+amazing_number = 10
 
 amazing_number.times do |i|
 		a = User.new(first_name: "John##{i + 1}", last_name: "Doe##{i + 1}", email: "email#{i + 1}@example.com", password: "qwerqwer")
