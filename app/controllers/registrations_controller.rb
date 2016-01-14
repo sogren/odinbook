@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
 	def create_profile
 		if resource.persisted?
     	resource.create_profile(private: true)
-    	OdinMailer.welcome_email(resource).deliver
+    	#OdinMailer.welcome_email(resource).deliver
     end
 	end
 	 # GET /resource/sign_up
