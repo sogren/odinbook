@@ -1,12 +1,10 @@
 class User < ActiveRecord::Base
-	# Include default devise modules. Others available are:
-	# :confirmable, :lockable, :timeoutable and :omniauthable
 	scope :all_except, ->(user) { where.not(id: user) }
 	devise :database_authenticatable, :registerable,
 				    :recoverable, :rememberable, :trackable, :validatable,
 				    :omniauthable, :omniauth_providers => [:facebook]
 
-	has_attached_file :avatar, default_url: "digger2.jpg"
+	has_attached_file :avatar, default_url: "doge.jpg"
 	validates_attachment_content_type :avatar, content_type: %r{ \Aimage\/.*\Z }
 
 	validates :first_name, :last_name, :email, presence: true
