@@ -16,8 +16,8 @@ class FriendsRelationsController < ApplicationController
   end
 
   def destroy
-    @friendship = current_user.friends_relations.find_by(friend_id: friend_params) || current_user.inverse_friends_relations.find_by(user_id: friend_params)
-    @inv = current_user.sent_invitations.find_by(invited_user_id: friend_params, status: 'accepted') || current_user.received_invitations.find_by(inviting_user_id: friend_params, status: 'accepted')
+    @friendship = current_user.all_friends_rels(friend_params)
+    @inv = current_user.accepted_invites(friend_params)
     if @friendship && @friendship.destroy && @inv.destroy
       flash[:warning] = 'Friend removed.'
     else

@@ -67,4 +67,10 @@ guard :rspec, cmd: "bundle exec spring rspec" do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
+
+  # my own settings
+  fr_con = "friends_relations_controller.rb"
+  watch('app/controllers/invitations_controller.rb') { 'spec/features/friending_spec.rb' }
+  watch('app/controllers/'+ fr_con) { 'spec/features/friending_spec.rb' }
+  watch('app/controllers/'+ fr_con) { 'spec/requests/friends_relations_spec.rb' }
 end

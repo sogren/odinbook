@@ -51,7 +51,8 @@ class User < ActiveRecord::Base
   def feed
     ids = user_friends.map(&:id)
     ids << id
-    Post.where("author_id IN (#{ids.join(',')}) OR receiver_id = :user_id", user_id: id)
+    Post.where("author_id IN (#{ids.join(',')}) OR
+                receiver_id = :user_id", user_id: id)
   end
 
   def may_know
@@ -71,6 +72,19 @@ class User < ActiveRecord::Base
   def public?
     profile.public?
   end
+
+  def accepted_invites(friend_id)
+    ids = [id, friend_id].join(',')
+    Invitation.find_by("invited_user_id IN (#{ids}) AND
+                        inviting_user_id IN (#{ids}) AND status = 'accepted'")
+  end
+
+  def all_friends_rels(friend_id)
+    ids = [id, friend_id].join(',')
+    FriendsRelation.find_by("friend_id IN (#{ids}) OR user_id IN (#{ids})")
+  end
+
+  # Omniauth methods / currently unused
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
