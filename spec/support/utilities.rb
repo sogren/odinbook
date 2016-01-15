@@ -23,10 +23,10 @@ end
 
 module ComPosting
   def make_post
-  	within("#new_post") do
-  		fill_in "post_content", with: "example post"
-  	end
-  	click_button "Submit"
+    within("#new_post") do
+      fill_in "post_content", with: "example post"
+    end
+    click_button "Submit"
   end
 
   def make_comment_on_post
@@ -41,7 +41,7 @@ end
 
 module Liking
   def like_post(post, liker)
-  	liker.likes_relations.create(likeable: post)
+    liker.likes_relations.create(likeable: post)
   end
 
   def like_post_by_button

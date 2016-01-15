@@ -6,12 +6,12 @@ RSpec.describe CommentsController, type: :controller do
   let(:user) { FactoryGirl.create :user }
   let(:user2) { FactoryGirl.create :user }
   let(:users_post) { FactoryGirl.create :post, author: user2 }
-  let(:valid_params) {  { content: 'new comment', post_id: users_post.id } }
-  let(:inv_params) {  { content: '', post_id: users_post.id } }
-  let(:inv_params_wo_post) {  { content: 'new comment', post_id: nil } }
+  let(:valid_params) { { content: 'new comment', post_id: users_post.id } }
+  let(:inv_params) { { content: '', post_id: users_post.id } }
+  let(:inv_params_wo_post) { { content: 'new comment', post_id: nil } }
 
   before do
-   request.env["HTTP_REFERER"] = "where_i_came_from"
+    request.env["HTTP_REFERER"] = "where_i_came_from"
   end
 
   describe 'POST #create' do

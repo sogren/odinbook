@@ -1,8 +1,3 @@
-Style/Tab:
-  Enabled: false
-
-Style/IndentationWidth:
-  Enabled: false
 
 Metrics/LineLength:
   Max: 120
@@ -15,8 +10,120 @@ AllCops:
     - db/**/*
     - config/**/*
 
-Style/EndOfLine:
-  Enabled: false
 
 Style/Documentation:
   Enabled: false
+
+Style/EndOfLine:
+  Exclude:
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'bin/setup'
+    - 'spec/controllers/static_pages_controller_spec.rb'
+    - 'spec/factories/posts.rb'
+    - 'spec/features/login_spec.rb'
+    - 'spec/shared_contexts.rb'
+    - 'spec/spec_helper.rb'
+
+Lint/AssignmentInCondition:
+  Exclude:
+    - 'app/models/user.rb'
+
+Lint/UnusedMethodArgument:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
+
+Metrics/AbcSize:
+  Max: 25
+# Offense count: 4
+# Cop supports --auto-correct.
+# Configuration parameters: AlignWith, SupportedStyles, AutoCorrect.
+Lint/DefEndAlignment:
+  Enabled: false
+
+
+# Offense count: 7
+# Configuration parameters: AllowURI, URISchemes.
+Metrics/LineLength:
+  Max: 198
+
+
+# Offense count: 7
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/AccessModifierIndentation:
+  Enabled: false
+
+# Offense count: 4
+# Cop supports --auto-correct.
+Style/EmptyLines:
+  Exclude:
+    - 'app/controllers/registrations_controller.rb'
+    - 'app/controllers/sessions_controller.rb'
+    - 'app/controllers/static_pages_controller.rb'
+    - 'spec/controllers/posts_controller_spec.rb'
+
+# Offense count: 6
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/EmptyLinesAroundBlockBody:
+  Exclude:
+    - 'spec/controllers/users_controller_spec.rb'
+
+# Offense count: 3
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/EmptyLinesAroundClassBody:
+  Exclude:
+    - 'app/controllers/sessions_controller.rb'
+    - 'app/models/like.rb'
+    - 'spec/mailers/previews/odin_mailer_preview.rb'
+
+
+# Offense count: 6
+# Configuration parameters: MinBodyLength.
+Style/GuardClause:
+  Exclude:
+    - 'app/controllers/registrations_controller.rb'
+    - 'app/controllers/static_pages_controller.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/models/friends_relation.rb'
+    - 'app/models/invitation.rb'
+    - 'app/models/post.rb'
+
+
+# Offense count: 3
+# Cop supports --auto-correct.
+Style/LeadingCommentSpace:
+  Exclude:
+    - 'app/controllers/registrations_controller.rb'
+    - 'app/models/user.rb'
+
+# Offense count: 3
+# Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist.
+Style/PredicateName:
+  Exclude:
+    - 'app/models/friends_relation.rb'
+    - 'app/models/user.rb'
+
+# Offense count: 2
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
+Style/SpaceInsideBlockBraces:
+  Enabled: false
+
+
+
+# Offense count: 4
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+Style/TrailingBlankLines:
+  Exclude:
+    - 'app/controllers/friends_relations_controller.rb'
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
+    - 'spec/controllers/users_controller_spec.rb'
+    - 'spec/support/utilities.rb'

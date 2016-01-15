@@ -1,23 +1,23 @@
 class CommentsController < ApplicationController
-	expose(:comment)
+  expose(:comment)
 
-	def new
-		@id = params[:post]
-	end
+  def new
+    @id = params[:post]
+  end
 
-	def create
-		@comment = current_user.comments.create(comment_params)
-		if @comment.save
-			flash[:info] = "comment added"
-		else
-			flash[:warning] = "adding failed"
-		end
-		redirect_to :back
-	end
+  def create
+    @comment = current_user.comments.create(comment_params)
+    if @comment.save
+      flash[:info] = "comment added"
+    else
+      flash[:warning] = "adding failed"
+    end
+    redirect_to :back
+  end
 
-	 private
+   private
 
-	def comment_params
-			params.require(:comment).permit(:content, :post_id)
-		end
+  def comment_params
+    params.require(:comment).permit(:content, :post_id)
+    end
 end

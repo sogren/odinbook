@@ -79,7 +79,7 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-   describe "POST #create" do
+  describe "POST #create" do
     context "on owners timeline" do
       before do
         sign_in @user
@@ -145,6 +145,7 @@ RSpec.describe PostsController, type: :controller do
           expect(flash[:info]).to eql('Post was successfully created.')
         end
       end
+
       context "with private profile" do
         before do
           sign_in @user

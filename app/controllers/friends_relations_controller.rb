@@ -28,8 +28,8 @@ class FriendsRelationsController < ApplicationController
 
    private
 
-    def friend_params
-      params.require(:friend_id)
-    end
+  def friend_params
+    params.require(:friend_id)
+  end
 end
 

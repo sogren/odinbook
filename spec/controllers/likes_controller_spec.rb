@@ -9,7 +9,7 @@ RSpec.describe LikesController, type: :controller do
   let(:users_comment) { FactoryGirl.create :comment, author: user2, post_id: users_post.id }
 
   before do
-   request.env["HTTP_REFERER"] = "where_i_came_from"
+    request.env["HTTP_REFERER"] = "where_i_came_from"
   end
 
   describe 'POST #create' do

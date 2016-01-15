@@ -32,11 +32,11 @@ class InvitationsController < ApplicationController
 
    private
 
-    def invite_params
-      { invited_user_id: params[:inv_user_id], status: 'pending' }
-    end
+  def invite_params
+    { invited_user_id: params[:inv_user_id], status: 'pending' }
+  end
 
-    def decline_invite_params
-      { inviting_user_id: params[:inv_user_id], status: 'pending' }
-    end
+  def decline_invite_params
+    { inviting_user_id: params[:inv_user_id], status: 'pending' }
+  end
 end
