@@ -32,4 +32,3 @@ class FriendsRelationsController < ApplicationController
     params.require(:friend_id)
   end
 end
-

@@ -19,6 +19,11 @@ module Signing
   def sign_out
     click_link "log out"
   end
+
+  def change_user(user)
+    sign_out
+    sign_in(user)
+  end
 end
 
 module ComPosting
@@ -57,5 +62,52 @@ module Liking
   def like_last_comment_by_button
     comments = page.all(".comment")
     comments[-1].first(:link, "like-comment").click
+  end
+end
+
+module Inviting
+  def send_inv(sender, receiver)
+    sign_in(sender)
+    visit user_path(receiver)
+    click_link('Send friend request to this user')
+    sign_out
+  end
+
+  def decline_inv(user)
+    sign_in(user)
+    visit people_path
+    within '#invites-received .functions' do
+      page.all('a')[1].click
+    end
+    sign_out
+  end
+
+  def delete_inv(user)
+    sign_in(user)
+    visit people_path
+    within '#invites-sent .functions' do
+      page.all('a')[0].click
+    end
+    sign_out
+  end
+end
+
+module Friending
+  def accept_inv(user)
+    sign_in(user)
+    visit people_path
+    within '#invites-received .functions' do
+      page.all('a')[0].click
+    end
+    sign_out
+  end
+
+  def remove_friend(user)
+    sign_in(user)
+    visit people_path
+    within '#friends .functions' do
+      page.all('a')[0].click
+    end
+    sign_out
   end
 end
