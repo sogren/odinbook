@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:timeline, :friends]
   before_action :authorize, only: [:timeline, :friends]
-  respond_to :html, :js
 
   def all_users
     @users = User.all
@@ -13,6 +12,10 @@ class UsersController < ApplicationController
       @users = users
     end
     @posts = user.timeline.includes(:author, :likes, comments: [:author, :likes]).all.paginate(page: params[:page]).order(created_at: :desc)
+    respond_to do |format|
+      format.html { render "timeline" }
+      format.js   { render partial: "shared/pagination" }
+    end
   end
 
   def people
