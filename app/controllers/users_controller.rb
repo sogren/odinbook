@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:timeline, :friends]
   before_action :authorize, only: [:timeline, :friends]
+  respond_to :html, :js
 
   def all_users
     @users = User.all
