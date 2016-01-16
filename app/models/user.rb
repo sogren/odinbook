@@ -73,13 +73,13 @@ class User < ActiveRecord::Base
     profile.public?
   end
 
-  def accepted_invites(friend_id)
+  def accepted_invite(friend_id)
     ids = [id, friend_id].join(',')
     Invitation.find_by("invited_user_id IN (#{ids}) AND
                         inviting_user_id IN (#{ids}) AND status = 'accepted'")
   end
 
-  def all_friends_rels(friend_id)
+  def current_friend_rel(friend_id)
     ids = [id, friend_id].join(',')
     FriendsRelation.find_by("friend_id IN (#{ids}) OR user_id IN (#{ids})")
   end

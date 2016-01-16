@@ -44,7 +44,7 @@ RSpec.describe "FriendsRelations", type: :request do
     context "without invitation" do
       it "sends flash with engative response" do
         make_friends(@user, @user2)
-        expect(flash[:danger]).to eql("There is no invitation like this")
+        expect(flash[:danger]).to eql("Unable to make friendship.")
       end
     end
   end
