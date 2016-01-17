@@ -7,7 +7,7 @@
 				.posts
 					= render @posts
 					#inf-scroll
-						= will_paginate @posts
+						= will_paginate @posts, page_links: false
 		= render partial: "static_pages/you_may_know", locals: { users: @users }
 
 - else

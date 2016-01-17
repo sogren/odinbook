@@ -15,4 +15,7 @@
   .p-comments
     - comments = post.comments.paginate(page: params[:comment_page])
     = render comments
-    = will_paginate comments, param_name: "comment_page"
+    .paginate-comments{id: post.id}
+      = will_paginate comments, param_name: "comment_page", page_links: false
+      %button#show-more{style:"width: 150px; height: 100px;background: red"}
+        show more more
