@@ -1,11 +1,11 @@
 jQuery ->
-  $('.paginate-comments #show-more').click ->
+  $(document).on 'click', '.paginate-comments #show-more', ->
     console.log("hey")
     if $(this).prev().size() > 0
       console.log("ho")
       post_id = $(this).parent().attr('id')
       next_page = $('.paginate-comments .pagination a.next_page').attr('href')
-      page = next_page.split('page=')[1]
+      page = next_page.split('page=')[1].replace(/\D/g,'');
       if post_id
         $('.paginate-comments .pagination').html('<img src="/images/ajax-loader.gif" alt="Loading..." title="Loading..." />')
         $('.paginate-comments .pagination').css('display', 'block')

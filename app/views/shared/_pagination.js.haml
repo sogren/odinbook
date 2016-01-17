@@ -6,8 +6,10 @@
     $(window).off('scroll');
     $('#inf-scroll .pagination').remove();
 - elsif @comments
-  $('.paginate-comments##{@post.id}').parent().append('#{j render @comments}');
+  elem = '.paginate-comments##{@post.id}'
+  $(elem).before('#{j render @comments}');
   - if @comments.next_page
-    $('.paginate-comments##{@post.id} .pagination').replaceWith('#{j will_paginate @comments}');
+    $(elem + ' .pagination').replaceWith('#{j will_paginate @comments}');
   - else
-    $('.paginate-comments##{@post.id} .pagination').remove();
+    $(elem + ' .pagination').remove();
+    $(elem).remove();
