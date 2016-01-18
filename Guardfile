@@ -71,6 +71,6 @@ guard :rspec, cmd: "bundle exec spring rspec" do
   # my own settings
   fr_con = "friends_relations_controller.rb"
   watch('app/controllers/invitations_controller.rb') { 'spec/features/friending_spec.rb' }
-  watch('app/controllers/'+ fr_con) { 'spec/features/friending_spec.rb' }
-  watch('app/controllers/'+ fr_con) { 'spec/requests/friends_relations_spec.rb' }
+  watch('app/controllers/' + fr_con) { 'spec/features/friending_spec.rb' }
+  watch('app/controllers/' + fr_con) { 'spec/requests/friends_relations_spec.rb' }
 end

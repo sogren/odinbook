@@ -38,12 +38,12 @@ module ApplicationHelper
     else
       content_tag(:p, (link_to "Send friend request to this user",
                                send_invite_path(inv_user_id: user),
-                               method: "post", class: 'people_link' ))
+                               method: "post", class: 'people_link'))
     end
   end
 
   def info_msg(msg, msg2)
     content_tag(:p, msg) +
-      content_tag(:p, (link_to msg2, people_path, class: 'people_link' ))
+      content_tag(:p, (link_to msg2, people_path, class: 'people_link'))
   end
 end

@@ -1,6 +1,0 @@
-$('.posts').append('#{j render @posts}');
-- if @posts.next_page
-  $('#inf-scroll .pagination').replaceWith('#{j will_paginate @posts}');
-- else
-  $(window).off('scroll');
-  $('#inf-scroll .pagination').remove();

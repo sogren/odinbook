@@ -1,15 +1,16 @@
 - if @posts
-  $('.posts').append('#{j render @posts}');
-  - if @posts.next_page
-    $('#inf-scroll .pagination').replaceWith('#{j will_paginate @posts}');
-  - else
-    $(window).off('scroll');
-    $('#inf-scroll .pagination').remove();
+  - @collection = @posts
+  elem = '#inf-scroll'
+  scroll_off = true
 - elsif @comments
+  - @collection = @comments
   elem = '.paginate-comments##{@post.id}'
-  $(elem).before('#{j render @comments}');
-  - if @comments.next_page
-    $(elem + ' .pagination').replaceWith('#{j will_paginate @comments}');
+  scroll_off = false
+
+- if @collection
+  $(elem).before('#{j render @collection}');
+  - if @collection.next_page
+    $(elem + ' .pagination').replaceWith('#{j will_paginate @collection}');
   - else
-    $(elem + ' .pagination').remove();
     $(elem).remove();
+    if (scroll_off) $(window).off('scroll');
