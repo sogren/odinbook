@@ -18,5 +18,6 @@
       = render comments
       .paginate-comments{id: post.id}
         = will_paginate comments, param_name: "comment_page", page_links: false
-        %button#show-more
-          show more more
+        - if comments.next_page
+          %button#show-more
+            show more more
