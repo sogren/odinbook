@@ -36,9 +36,8 @@ module ApplicationHelper
     elsif current_user.invited?(user)
       info_msg("You already sent an invitation", "Manage your invitations")
     else
-      content_tag(:p, (link_to "Send friend request to this user",
-                               send_invite_path(inv_user_id: user),
-                               method: "post", class: 'people_link'))
+      content_tag(:p, (link_to "Send friend request to this user", send_invite_path(
+        inv_user_id: user), method: "post", class: 'people_link'))
     end
   end
 

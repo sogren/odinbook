@@ -1,6 +1,7 @@
 class FriendsRelationsController < ApplicationController
   def make_friend
-    @inv = current_user.received_invitations.find_by(inviting_user_id: friend_params, status: 'pending')
+    @inv = current_user.received_invitations
+           .find_by(inviting_user_id: friend_params, status: 'pending')
     @friendship = current_user.friends_relations.build(friend_id: friend_params)
     if @friendship.save && @inv
       @inv.update(status: 'accepted')

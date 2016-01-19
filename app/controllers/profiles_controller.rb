@@ -28,6 +28,8 @@ class ProfilesController < ApplicationController
   end
 
   def update_profile_params
-    params.require(:profile).permit(:about, "birthday(1i)", "birthday(2i)", "birthday(3i)", :country, :gender, :profession, :education, :private)
+    params.require(:profile).permit(:about, "birthday(1i)", "birthday(2i)",
+                                    "birthday(3i)", :country, :gender,
+                                    :profession, :education, :private)
   end
 end

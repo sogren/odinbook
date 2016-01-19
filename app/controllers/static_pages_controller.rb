@@ -4,7 +4,8 @@ class StaticPagesController < ApplicationController
   def home
     if user_signed_in?
       @post = Post.new
-      @posts = current_user.feed.includes(:author, :likes, comments: [:author, :likes]).all.paginate(page: params[:page]).order(created_at: :desc)
+      @posts = current_user.feed.includes(:author, :likes, comments: [:author, :likes])
+               .all.paginate(page: params[:page]).order(created_at: :desc)
       @users = users
       respond_to do |format|
         format.html { render "home" }
@@ -21,6 +22,7 @@ class StaticPagesController < ApplicationController
    private
 
   def users
-    current_user.may_know.includes(:profile).limit(6).offset(rand(User.all.length - 6 - current_user.user_friends.count))
+    current_user.may_know.includes(:profile).limit(6).offset(
+      rand(User.all.length - 6 - current_user.user_friends.count))
   end
 end
