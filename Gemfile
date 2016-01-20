@@ -7,6 +7,9 @@ gem 'pg'
 gem 'omniauth-facebook'
 gem 'figaro'
 
+gem 'faye-rails'
+gem 'thin'
+
 gem 'simple_form'
 gem 'haml'
 gem 'haml-rails'
