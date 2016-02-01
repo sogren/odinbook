@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
 
+  has_many :chats, dependent: :destroy
+
   def user_friends
     (friends.all + inverse_friends.all).uniq
   end
