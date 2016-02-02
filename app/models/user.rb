@@ -33,6 +33,9 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
 
   has_many :chats, dependent: :destroy
+  has_many :chat_messages, through: :chats, foreign_key: "author_id"
+  has_many :inverse_chats, class_name: "Chat", foreign_key: "participant_id", dependent: :destroy
+  has_many :inverse_chat_messages, through: :inverse_chats, foreign_key: "author_id", source: :chat_messages
 
   def user_friends
     (friends.all + inverse_friends.all).uniq
