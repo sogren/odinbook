@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
   resources :likes, only: [:create]
   resources :comments, only: [:new, :create]
+  resources :chats, only: [:show, :index]
+  resources :chat_messages, only: [:new, :create, :index]
 
   root "static_pages#home"
 
