@@ -1,6 +1,7 @@
-= simple_form_for new_chat_message, url: chat_messages_path do |f|
+= simple_form_for new_chat_message, url: chat_messages_path, html: { class: "clearfix" }, remote: true do |f|
   .form-inputs
     = f.input :content, required: true
     = f.hidden_field :chat_id, { value: chat.id }
   .actions
-    = f.button :submit, "Send message"
+    = f.button :button do
+      %span.glyphicon.glyphicon-send

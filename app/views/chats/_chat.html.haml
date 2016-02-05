@@ -1,2 +1,2 @@
-%p= "Chat with: #{chat.participant.first_name} "
-%p= link_to "click here", chat_path(chat)
+%p= "Chat with: #{chat_with(chat)} "
+%p= link_to "open chat", chat_path(chat.id), remote: true

@@ -112,4 +112,9 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  #chats
+  def all_chats
+    Chat.where("user_id = :id OR participant_id = :id", id: id)
+  end
 end

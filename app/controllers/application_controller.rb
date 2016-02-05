@@ -54,4 +54,8 @@ class ApplicationController < ActionController::Base
     return current_user if params[:id].nil?
     User.find(params[:id])
   end
+
+  decent_configuration do
+    strategy DecentExposure::StrongParametersStrategy
+  end
 end

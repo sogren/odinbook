@@ -3,5 +3,5 @@
     #wrapper-chunk
       #chats
         = chat.chat_messages.count
-
+        = link_to "open chat", chat_path(chat.id), remote: true
         = render "chat_messages/new"

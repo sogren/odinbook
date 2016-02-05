@@ -1,3 +1,46 @@
 // Place all the styles related to the Chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#chat{
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border: 1px solid #BBB;
+  bottom: 0;
+  right: 0;
+  background: #FFF;
+}
+#title{
+  font-size: 20px;
+  background: #ECECEF;
+  padding: 2px;
+  padding-left: 8px;
+}
+#chat-messages{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 314px;
+}
+.m-content{
+  padding-left: 8px;
+  border-bottom: 1px solid #DDD;
+  line-height: 28px;
+}
+.al-left{
+  text-align: left;
+  background: #F5F5F5;
+}
+.al-right{ text-align: right }
+#new{
+  bottom: 0;
+  position: fixed;
+  .form-inputs, .actions{float: left}
+  textarea{
+    width: 356px;
+    resize: none;
+    max-height: 54px;
+  }
+  button{
+    height: 54px;
+  }
+}
