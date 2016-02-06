@@ -1,0 +1,6 @@
+- if chat_message.author == current_user
+  .m-content.al-right
+    %p= chat_message.content
+- else
+  .m-content.al-left
+    %p= chat_message.content

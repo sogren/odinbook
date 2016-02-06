@@ -206,6 +206,18 @@ p{
 #main-wrapper{
 	width: 640px;
 	float: right;
+	#wrapper-chunk-header{
+		background: #EEE;
+		border-width: 1px 1px 0 1px;
+		border-color: #DDD #CCC #BBB;
+		border-style: solid;
+		font-size: 24px;
+		line-height: 30px;
+		padding: 8px;
+		p{
+			font-weight: bold;
+		}
+	}
 }
 #wrapper-chunk{
 	>div{

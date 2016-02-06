@@ -2,12 +2,9 @@ class ChatMessagesController < ApplicationController
   expose(:chat_message, attributes: :message_params)
 
   def create
-    if chat_message.save
-      flash[:notice] = "success"
-    else
-      flash[:danger] = "failure"
+    unless chat_message.save
+      render nothing: true
     end
-    render nothing: true
   end
 
   private

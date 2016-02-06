@@ -1,13 +1,8 @@
 #chat
   #title
-    = "Chat with #{chat.participant.first_name}"
+    = "Chat with #{chat.participant.full_name}"
   #chat-messages
-    - chat.chat_messages.includes(:author).each do |m|
-      - if m.author == current_user
-        .m-content.al-right
-          %p= m.content
-      - else
-        .m-content.al-left
-          %p= m.content
+    = render chat.chat_messages
+
   #new
-    = render "chat_messages/new"
+    = render "chat_messages/new", chat_id: chat.id

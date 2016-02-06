@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require pagination
 //= require faye
+//= require chats
