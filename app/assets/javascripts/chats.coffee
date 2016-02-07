@@ -3,6 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 window.client = new Faye.Client('/faye')
 
+
+client.addExtension {
+  outgoing: (message, callback) ->
+    message.ext = message.ext || {}
+    message.ext.csrfToken = $('meta[name=csrf-token]').attr('content')
+    callback(message)
+}
+
 try
  client.unsubscribe '/chats/18/chat_messages'
 catch
