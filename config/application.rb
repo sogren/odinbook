@@ -15,7 +15,8 @@ module Odinbook
 
     # faye-rails configuration
     config.middleware.delete Rack::Lock
-    config.middleware.use FayeRails::Middleware, extensions: [CsrfProtection.new], mount: '/faye', timeout: 25
+    config.middleware.use FayeRails::Middleware, extensions: [CsrfProtection.new],
+                                                 mount: '/faye', timeout: 25
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

@@ -20,4 +20,3 @@ client.subscribe '/chats/'+18+'/chat_messages', (payload) ->
   $('#chat-messages').append(payload.message) if payload.message
   $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight)
   $('#chat_message_content').val('')
-
