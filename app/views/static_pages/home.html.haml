@@ -1,15 +1,10 @@
-- if user_signed_in?
-	#main-profile-wrapper.clearfix
-		#main-wrapper
-			#dashboard-posts
-				.new-post
-					= render partial: "posts/form"
-				.posts
-					= render @posts
-					#inf-scroll
-						= will_paginate @posts, page_links: false
-		= render partial: "static_pages/you_may_know", locals: { users: @users }
-
-- else
-
-	= render "static_pages/welcome"
+#main-profile-wrapper.clearfix
+  #main-wrapper
+    #dashboard-posts
+      .new-post
+        = render "posts/form"
+      .posts
+        = render @posts
+        #inf-scroll
+          = will_paginate @posts, page_links: false
+  = render "static_pages/you_may_know", users: @users

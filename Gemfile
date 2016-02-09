@@ -38,6 +38,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'better_errors'
 end
 group :test do
   gem 'selenium-webdriver'

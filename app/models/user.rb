@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
 
 
   def user_friends
-    (friends.all + inverse_friends.all).uniq
+    FriendsRelation.where("user_id = :id OR friend_id = :id", id: id)
   end
 
   def is_invited_by?(user)
@@ -55,15 +55,14 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    ids = user_friends.map(&:id)
-    ids << id
-    Post.where("author_id IN (#{ids.join(',')}) OR
-                receiver_id = :user_id", user_id: id)
+    ids = user_friends.map(&:id) << id
+    Post.includes(:author, :likes)
+        .where("author_id IN (#{ids.join(',')}) OR receiver_id = :user_id", user_id: id)
+        .order(created_at: :desc)
   end
 
   def may_know
-    ids = user_friends.map(&:id)
-    ids << id
+    ids = user_friends.map(&:id) << id
     User.where("id NOT IN (#{ids.join(',')})")
   end
 

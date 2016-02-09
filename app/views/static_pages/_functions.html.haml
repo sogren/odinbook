@@ -1,6 +1,5 @@
 .functions
-  = link_to likes_path(likeable_id: likeable_id, likeable_type: likeable_type), method: :post, remote: true do
-    %span.glyphicon.glyphicon-thumbs-up{"aria-hidden" => "true"}
-  = likes
-  = link_to new_comment_path(post: post), method: :get, remote: true  do
-    %span.glyphicon.glyphicon-comment{"aria-hidden" => "true"}
+  = render 'likes/like', id: object.id, type: object.class.name, likes: object.likes.length
+  - object.class.name == "Comment" ? post_id = object.post.id : post_id = object.id
+  = render 'comments/make_comment', post_id: post_id
+  %p= time_ago_in_words(object.created_at) + " ago"

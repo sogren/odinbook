@@ -1,15 +1,16 @@
 class LikesController < ApplicationController
   respond_to :html, :js
+  expose(:like) { Like.find() }
 
   def create
-    @like_relation = current_user.likes_relations.new(likes_params)
-    @like_relation.save
-    render 'reload.js', locals: likes_locals(@like_relation)
+    like.liker = current_user
+    like.save
+    render 'reload.js', locals: likes_locals(like)
   end
 
   def destroy
-    @like_relation = current_user.likes_relations.find_by(likes_params)
-    @like_relation.destroy
+    like.liker = current_user
+    like.destroy
     render 'reload.js', locals: likes_locals(@like_relation)
   end
 

@@ -16,6 +16,6 @@ class Post < ActiveRecord::Base
   end
 
   def receiver
-    User.find_by(id: receiver_id)
+    User.find_by(id: receiver_id) if receiver_id
   end
 end

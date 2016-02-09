@@ -4,13 +4,12 @@ class StaticPagesController < ApplicationController
   def home
     if user_signed_in?
       @post = Post.new
-      @posts = current_user.feed.includes(:author, :likes, comments: [:author, :likes])
-               .all.paginate(page: params[:page]).order(created_at: :desc)
-      @users = users
-      respond_to do |format|
-        format.html { render "home" }
-        format.js   { render partial: "shared/pagination" }
-      end
+      @posts = current_user.feed
+               .all.paginate(page: params[:page])
+      @users = take_users
+      render "home"
+    else
+      render "welcome"
     end
   end
 
@@ -21,8 +20,7 @@ class StaticPagesController < ApplicationController
 
    private
 
-  def users
-    current_user.may_know.includes(:profile).limit(6).offset(
-      rand(User.all.length - 6 - current_user.user_friends.count))
+  def take_users
+    current_user.may_know.includes(:profile).order("RANDOM()").limit(6)
   end
 end
