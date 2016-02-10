@@ -11,8 +11,7 @@ class UsersController < ApplicationController
       @post = Post.new
       @users = users
     end
-    @posts = user.timeline.includes(:author, :likes, comments: [:author, :likes])
-             .all.paginate(page: params[:page]).order(created_at: :desc)
+    @posts = user.timeline(params[:page])
     respond_to do |format|
       format.html { render "timeline" }
       format.js   { render partial: "shared/pagination" }
@@ -33,8 +32,7 @@ class UsersController < ApplicationController
     private
 
   def users
-    current_user.may_know.includes(:profile).limit(6).offset(
-      rand(User.all.length - 6 - current_user.user_friends.count))
+    current_user.may_know.includes(:profile).order("RANDOM()").limit(6)
   end
 
   def authorize

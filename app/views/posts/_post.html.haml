@@ -6,12 +6,11 @@
       = post.content
     .p-functions
       = render 'static_pages/functions', object: post
-  - if post.comments.any?
-    .p-comments
-      - comments = post.comments.paginate(page: params[:comment_page])
-      = render comments
-      .paginate-comments{id: post.id}
-        = will_paginate comments, param_name: "comment_page", page_links: false
-        - if comments.next_page
-          %button#show-more
-            show more more
+  .p-comments
+    - comments = post.comments.includes(:likes, :author).paginate(page: params[:comment_page])
+    = render comments
+    .paginate-comments{id: post.id}
+      = will_paginate comments, param_name: "comment_page", page_links: false
+      - if comments.next_page
+        %button#show-more
+          show more more

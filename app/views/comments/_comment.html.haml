@@ -2,7 +2,7 @@
   .c-main
     .c-core
       .c-content
-        = render partial: "users/basic_user_display", locals: { user: comment.author, pic_size: "sm" }
+        = render "users/basic_user_display", user: comment.author, pic_size: "sm"
         %p
           = comment.content
       .c-functions

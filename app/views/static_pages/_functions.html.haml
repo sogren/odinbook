@@ -1,5 +1,5 @@
 .functions
-  = render 'likes/like', id: object.id, type: object.class.name, likes: object.likes.length
+  = render 'likes/like', id: object.id, type: object.class.name, likes: object.likes.length, liked: user_liked?(object)
   - object.class.name == "Comment" ? post_id = object.post.id : post_id = object.id
   = render 'comments/make_comment', post_id: post_id
   %p= time_ago_in_words(object.created_at) + " ago"

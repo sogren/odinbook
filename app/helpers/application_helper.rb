@@ -24,8 +24,8 @@ module ApplicationHelper
     current_user.user_friends & user.user_friends
   end
 
-  def user_liked?(id, type)
-    current_user.likes_relations.find_by(likeable_id: id, likeable_type: type)
+  def user_liked?(object)
+    object.likes.map(&:liker_id).include?(current_user.id)
   end
 
   def friend_button(user)

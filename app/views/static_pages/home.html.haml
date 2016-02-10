@@ -5,6 +5,6 @@
         = render "posts/form"
       .posts
         = render @posts
-        #inf-scroll
-          = will_paginate @posts, page_links: false
+      #inf-scroll
+        = will_paginate @posts, page_links: false
   = render "static_pages/you_may_know", users: @users

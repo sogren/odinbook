@@ -4,10 +4,12 @@ class StaticPagesController < ApplicationController
   def home
     if user_signed_in?
       @post = Post.new
-      @posts = current_user.feed
-               .all.paginate(page: params[:page])
+      @posts = current_user.feed(params[:page])
       @users = take_users
-      render "home"
+      respond_to do |format|
+        format.html { render "home" }
+        format.js   { render partial: "shared/pagination" }
+      end
     else
       render "welcome"
     end

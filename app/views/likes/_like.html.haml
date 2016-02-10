@@ -1,6 +1,6 @@
 %span.like
-  - if user_liked?(id, type)
-    = link_to unlike_path(liked: { likeable_id: id, likeable_type: type } ), method: :delete, id: "like-#{type.downcase}" do
+  - if liked
+    = link_to unlike_path(liked: { likeable_id: id, likeable_type: type } ), method: :delete, id: "like-#{type.downcase}", remote: true do
       %span.glyphicon.glyphicon-thumbs-down{"aria-hidden" => "true"}
     = likes
   - else

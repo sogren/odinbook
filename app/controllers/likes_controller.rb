@@ -1,26 +1,23 @@
 class LikesController < ApplicationController
-  respond_to :html, :js
-  expose(:like) { Like.find() }
+  respond_to :js
+  expose(:like) { current_user.likes_relations.where(likes_params).first_or_create }
 
   def create
-    like.liker = current_user
-    like.save
     render 'reload.js', locals: likes_locals(like)
   end
 
   def destroy
-    like.liker = current_user
     like.destroy
-    render 'reload.js', locals: likes_locals(@like_relation)
+    render 'reload.js', locals: likes_locals(like)
   end
 
   private
 
-  def likes_locals(relation)
-    @id = likes_params[:likeable_id]
-    @type = likes_params[:likeable_type]
-    @likes = relation.likes
-    { type: @type, id: @id, likes: @likes }
+  def likes_locals(like)
+    @id = like.likeable_id
+    @type = like.likeable_type
+    @likes = like.likes
+    { type: @type, id: @id, likes: @likes, liked: user_liked?(like.likeable) }
   end
 
   def likes_params
