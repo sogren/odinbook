@@ -23,6 +23,6 @@ class StaticPagesController < ApplicationController
    private
 
   def take_users
-    current_user.may_know.includes(:profile).order("RANDOM()").limit(6)
+    current_user.may_know
   end
 end

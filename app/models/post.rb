@@ -1,11 +1,14 @@
 class Post < ActiveRecord::Base
   # scope :news_feed, -> { where(current_user.friends.include?(author)) }
-  validates :content, length: { maximum: 250 }
-  validates :author_id, presence: true
   belongs_to :author, class_name: "User"
   has_many :likes, as: :likeable
   has_many :comments
+
   validate :authorized?, if: "receiver_id"
+  validates :content, length: { maximum: 250 }
+  validates :author_id, presence: true
+
+  default_scope { includes(:author, :likes, comments: [:author, :likes, :post]) }
 
   self.per_page = 6
 

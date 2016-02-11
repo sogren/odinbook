@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
 
 
   def user_friends
-    (friends.all + inverse_friends.all).uniq
+    friends + inverse_friends
   end
 
   def is_invited_by?(user)
@@ -56,8 +56,7 @@ class User < ActiveRecord::Base
 
   def feed(page = 1)
     ids = user_friends.map(&:id) << id
-    Post.includes(:author, :likes, comments: [:author, :likes, :post])
-        .where("author_id IN (#{ids.join(',')}) OR receiver_id = :user_id", user_id: id)
+    Post.where("author_id IN (#{ids.join(',')}) OR receiver_id = :user_id", user_id: id)
         .order(created_at: :desc)
         .paginate(page: page)
   end
@@ -65,13 +64,13 @@ class User < ActiveRecord::Base
   def may_know
     ids = user_friends.map(&:id) << id
     User.where("id NOT IN (#{ids.join(',')})")
+        .includes(:profile).order("RANDOM()").limit(6)
   end
 
   def timeline(page = 1)
     Post.where('author_id = :user_id OR receiver_id = :user_id', user_id: id)
-    .includes(:author, :likes, comments: [:author, :likes])
-    .paginate(page: page)
-    .order(created_at: :desc)
+        .order(created_at: :desc)
+        .paginate(page: page)
   end
 
   def full_name

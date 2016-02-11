@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:timeline, :friends]
   before_action :authorize, only: [:timeline, :friends]
+  before_action :include_social, only: [:all_users, :timeline]
 
   def all_users
-    @users = User.all
+    @users = User.includes(:profile).all
   end
 
   def timeline
     if user_signed_in?
       @post = Post.new
-      @users = users
+      @users = take_users
     end
     @posts = user.timeline(params[:page])
     respond_to do |format|
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
     @sent_invitations = current_user.sent_invitations.where(status: "pending")
     @received_invitations = current_user.received_invitations.where(status: "pending")
     @friends = current_user.user_friends
-    @users = users
+    @users = take_users
   end
 
   def friends
@@ -31,8 +32,8 @@ class UsersController < ApplicationController
 
     private
 
-  def users
-    current_user.may_know.includes(:profile).order("RANDOM()").limit(6)
+  def take_users
+    current_user.may_know
   end
 
   def authorize
