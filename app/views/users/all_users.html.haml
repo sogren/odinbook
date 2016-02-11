@@ -3,11 +3,15 @@
     #wrapper-chunk
       #all-users
         - if user_signed_in?
+          .user-people.clearfix
+            = render "users/basic_user_display", user: current_user, pic_size: "sm"
+            .message
+              It's me!
           - @users.each do |user|
             .user-people.clearfix
               = render "users/basic_user_display", user: user, pic_size: "sm"
               .message
-                = friend_button(user) if user != current_user
+                = friend_button(user)
         - else
           - @users.each do |user|
             .user-people.clearfix

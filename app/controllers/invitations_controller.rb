@@ -1,7 +1,8 @@
 class InvitationsController < ApplicationController
+  expose(:invite) { current_user.sent_invitations.where(invite_params).first_or_create }
+
   def send_invite
-    @inv = current_user.sent_invitations.build(invite_params)
-    if @inv.save
+    if invite
       flash[:info] = 'You succesfully invited user!'
     else
       flash[:danger] = 'You cannot invite this user!'
@@ -10,8 +11,7 @@ class InvitationsController < ApplicationController
   end
 
   def remove_invite
-    @inv = current_user.sent_invitations.find_by(invite_params)
-    if @inv.destroy
+    if invite.destroy
       flash[:info] = 'invitation removed'
     else
       flash[:danger] = 'couldnt find invite'
@@ -33,10 +33,10 @@ class InvitationsController < ApplicationController
    private
 
   def invite_params
-    { invited_user_id: params[:inv_user_id], status: 'pending' }
+    { invited_user_id: params[:id], status: 'pending' }
   end
 
   def decline_invite_params
-    { inviting_user_id: params[:inv_user_id], status: 'pending' }
+    { inviting_user_id: params[:id], status: 'pending' }
   end
 end

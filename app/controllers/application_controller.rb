@@ -61,13 +61,4 @@ class ApplicationController < ActionController::Base
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
   end
-
-  # eager loads current user associated relations - solves n+1 query problem for some actions
-  def include_social
-    def current_user
-      @current_user ||= super &&
-        User.includes(:inverse_friends, :friends, :invited_by, :invited_users)
-        .find(@current_user.id)
-    end
-  end
 end

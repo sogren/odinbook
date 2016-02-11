@@ -91,18 +91,18 @@ end
 
 def send_invitation(sender, receiver)
   sign_in sender
-  post send_invite_path, inv_user_id: receiver.id
+  post send_invite_path(id: receiver.id)
   sign_out
 end
 
 def make_friends(friender, friend)
   sign_in friender
-  post make_friend_path, friend_id: friend.id
+  post make_friend_path(friend_id: friend.id)
   sign_out
 end
 
 def remove_friends(remover, friend)
   sign_in remover
-  delete remove_friend_path, friend_id: friend.id
+  delete remove_friend_path(friend_id: friend.id)
   sign_out
 end

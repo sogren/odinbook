@@ -12,7 +12,7 @@ RSpec.describe InvitationsController, type: :controller do
     context "with valid attributes" do
       before do
         sign_in @user
-        post :send_invite, inv_user_id: @user2.id
+        post :send_invite, id: @user2.id
       end
 
       it "creates invitation" do
@@ -33,13 +33,13 @@ RSpec.describe InvitationsController, type: :controller do
       it "blocks first user from inviting again" do
         sign_out(@user)
         sign_in @user2
-        post :send_invite, inv_user_id: @user.id
+        post :send_invite, id: @user.id
         expect(flash[:danger]).to eql("You cannot invite this user!")
       end
       it "blocks second user from inviting again" do
         sign_out(@user2)
         sign_in @user
-        post :send_invite, inv_user_id: @user2.id
+        post :send_invite, id: @user2.id
         expect(flash[:danger]).to eql("You cannot invite this user!")
       end
     end
@@ -48,14 +48,14 @@ RSpec.describe InvitationsController, type: :controller do
   describe "POST #decline_invite" do
     before do
       sign_in @user
-      post :send_invite, inv_user_id: @user2.id
+      post :send_invite, id: @user2.id
     end
 
     context "after decline with valid attributes" do
       before do
         sign_out(@user)
         sign_in @user2
-        post :decline_invite, inv_user_id: @user.id
+        post :decline_invite, id: @user.id
       end
 
       it "confirms with flash" do
@@ -70,7 +70,7 @@ RSpec.describe InvitationsController, type: :controller do
       it "block user from inviting again" do
         sign_out(@user2)
         sign_in @user
-        post :send_invite, inv_user_id: @user2.id
+        post :send_invite, id: @user2.id
         expect(flash[:danger]).to eql("You cannot invite this user!")
       end
     end
@@ -79,12 +79,12 @@ RSpec.describe InvitationsController, type: :controller do
   describe "POST #remove_invite" do
     before do
       sign_in @user
-      post :send_invite, inv_user_id: @user2.id
+      post :send_invite, id: @user2.id
     end
 
     context "after removing invitation" do
       before do
-        post :remove_invite, inv_user_id: @user2.id
+        post :remove_invite, id: @user2.id
       end
       it "removes invitation from user" do
         expect(@user2.received_invitations.count).to eql(0)

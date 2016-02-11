@@ -43,11 +43,11 @@ class User < ActiveRecord::Base
   end
 
   def is_invited_by?(user)
-    invited_by.include?(user)
+    invited_by.map(&:id).include?(user.id)
   end
 
   def invited?(user)
-    invited_users.include?(user)
+    invited_users.map(&:id).include?(user.id)
   end
 
   def is_friend?(friend)
@@ -64,7 +64,8 @@ class User < ActiveRecord::Base
   def may_know
     ids = user_friends.map(&:id) << id
     User.where("id NOT IN (#{ids.join(',')})")
-        .includes(:profile).order("RANDOM()").limit(6)
+        .includes(:profile)
+        .order("RANDOM()").limit(6)
   end
 
   def timeline(page = 1)

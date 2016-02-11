@@ -23,12 +23,12 @@ Rails.application.routes.draw do
 
   get "timeline/:id" => "users#timeline", as: "timeline"
 
-  post "invitations/send_invite" => "invitations#send_invite", as: "send_invite"
-  post "invitations/decline_invite" => "invitations#decline_invite", as: "decline_invite"
-  delete "invitations/remove_invite" => "invitations#remove_invite", as: "remove_invite"
+  post "send_invite/:id" => "invitations#send_invite", as: "send_invite"
+  post "decline_invite/:id" => "invitations#decline_invite", as: "decline_invite"
+  delete "remove_invite/:id" => "invitations#remove_invite", as: "remove_invite"
 
-  post "friends_relations/make_friend" => "friends_relations#make_friend", as: "make_friend"
-  delete "friends_relations/destroy" => "friends_relations#destroy", as: "remove_friend"
+  post "make_friend/:friend_id" => "friends_relations#make_friend", as: "make_friend"
+  delete "remove_friend/:friend_id" => "friends_relations#destroy", as: "remove_friend"
 
   delete "like" => "likes#destroy", as: "unlike"
 
