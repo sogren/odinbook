@@ -5,50 +5,77 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-def word
- ('a'..'z').to_a.shuffle[rand(4) + 1..rand(12) + 5].join
+def true_or_not
+  [true,false].sample
 end
 
-def sentence
-	arr = []
-	t = rand(16) + 3
-	t.times do
-		arr << word
-	end
-	arr.join(" ")
+def make_post(user)
+  post = Faker::Lorem.paragraph(p = 3, s = false, o = 3)
+  user.posts.create(content: post) if rand(9) > 1
+  make_post(user) if rand(7) > 1
 end
 
-amazing_number = 10
-
-amazing_number.times do |i|
-		a = User.new(first_name: "John##{i + 1}", last_name: "Doe##{i + 1}", email: "email#{i + 1}@example.com", password: "qwerqwer")
-		a.save
-		a.create_profile(private: false, about: sentence)
-	 a.posts.build(content: sentence).save if rand(7) > 1
+def make_comment(user, post)
+  comment = Faker::Lorem.paragraph(rand(3), true_or_not, rand(4))
+  user.comments.create(content: comment, post: post) if rand(9) > 1
 end
 
-User.all.each_with_index do |i, index|
-	(amazing_number - index - 1).times do |k|
-		if rand(15) > 7
-			i.sent_invitations.build(invited_user: User.find(2 + k), status: "pending").save
-		end
-	end
+def user_data
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  email = Faker::Internet.email
+  password = "qwerqwer"
+  { first_name: first_name, last_name: last_name, email: email, password: password }
 end
 
-User.all.each_with_index do |i|
-	all = i.received_invitations
-	all.count.times do |k|
-		if rand(12) > 3
-			i.friends_relations.build(friend_id: all[k].inviting_user_id).save
-			all[k].update(status: "accepted")
-		end
-	end
+def profile_data
+  about = Faker::Lorem.paragraph(2, false, 0)
+  country = Faker::Address.country
+  profession = Faker::Company.profession
+  { private: true_or_not, about: about, country: country, profession: profession }
 end
 
-(amazing_number * 4).times do |_i|
-	next unless rand(9) > 1
- a = User.find(rand(amazing_number) + 1)
-	bb = a.user_friends.map(&:posts).flatten
-	b = bb[rand(bb.count)]
-	a.comments.build(content: sentence, post: b).save
+def create_user_with_profile
+  u = User.create(user_data)
+  u.create_profile(profile_data)
+  u
+end
+
+def send_invite(user, receiver)
+  user.sent_invitations.create(invited_user: receiver, status: "pending")
+end
+
+u = User.create(first_name: 'John', last_name: 'Doe',
+                email: "email1@example.com", password: "qwerqwer")
+u.create_profile(profile_data)
+make_post(u)
+
+amazing_number = 50
+
+amazing_number.times do
+  user = create_user_with_profile
+  make_post(user)
+end
+
+User.all.each do |user|
+  User.all.each do |receiver|
+    send_invite(user, receiver) if rand(3) > 1
+  end
+end
+
+User.all.each do |user|
+  all = user.received_invitations
+  all.count.times do |k|
+    if rand(2) > 0
+      user.friends_relations.create(friend_id: all[k].inviting_user_id)
+      all[k].update(status: "accepted")
+    end
+  end
+end
+
+(amazing_number * 3).times do
+  User.all.each do |user|
+    post = user.user_friends.sample.posts.sample
+    make_comment(user, post)
+  end
 end

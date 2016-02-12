@@ -6,6 +6,7 @@ gem 'rubocop'
 gem 'pg'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'faker'
 
 gem 'faye-rails'
 gem 'thin'
