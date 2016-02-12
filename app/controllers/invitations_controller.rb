@@ -1,8 +1,8 @@
 class InvitationsController < ApplicationController
-  expose(:invite) { current_user.sent_invitations.where(invite_params).first_or_create }
+  expose(:invite) { current_user.sent_invitations.find_or_initialize_by(invite_params) }
 
   def send_invite
-    if invite
+    if invite.new_record? && invite.save
       flash[:info] = 'You succesfully invited user!'
     else
       flash[:danger] = 'You cannot invite this user!'

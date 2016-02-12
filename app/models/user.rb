@@ -59,6 +59,8 @@ class User < ActiveRecord::Base
     Post.where("author_id IN (#{ids.join(',')}) OR receiver_id = :user_id", user_id: id)
         .order(created_at: :desc)
         .paginate(page: page)
+        .includes(:author, :likes, :comments)
+
   end
 
   def may_know
@@ -72,6 +74,7 @@ class User < ActiveRecord::Base
     Post.where('author_id = :user_id OR receiver_id = :user_id', user_id: id)
         .order(created_at: :desc)
         .paginate(page: page)
+        .includes(:author, :likes, :comments)
   end
 
   def full_name

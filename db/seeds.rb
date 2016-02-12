@@ -50,7 +50,7 @@ u = User.create(first_name: 'John', last_name: 'Doe',
 u.create_profile(profile_data)
 make_post(u)
 
-amazing_number = 50
+amazing_number = 100
 
 amazing_number.times do
   user = create_user_with_profile

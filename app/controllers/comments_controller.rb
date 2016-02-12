@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def more_comments
     @post = Post.find_by(id: params[:post_id])
-    @comments = @post.comments.paginate(page: params[:comment_page])
+    @comments = @post.more_comments(params[:comment_page])
     respond_to do |format|
       format.html { render nothing: true }
       format.js   { render partial: "shared/pagination" }

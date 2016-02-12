@@ -7,7 +7,7 @@
     .p-functions
       = render 'static_pages/functions', object: post
   .p-comments
-    - comments = post.comments.includes(:likes, :author).paginate(page: params[:comment_page])
+    - comments = post.more_comments(params[:comment_page])
     = render comments
     .paginate-comments{id: post.id}
       = will_paginate comments, param_name: "comment_page", page_links: false

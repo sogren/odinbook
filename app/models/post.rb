@@ -8,8 +8,6 @@ class Post < ActiveRecord::Base
   validates :content, length: { maximum: 250 }
   validates :author_id, presence: true
 
-  default_scope { includes(:author, :likes, comments: [:author, :likes, :post]) }
-
   self.per_page = 6
 
   def authorized?
@@ -20,5 +18,10 @@ class Post < ActiveRecord::Base
 
   def receiver
     User.find_by(id: receiver_id) if receiver_id
+  end
+
+  def more_comments(page = 1)
+    comments.paginate(page: page)
+            .includes(:author, :likes)
   end
 end
