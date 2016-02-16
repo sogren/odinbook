@@ -1,3 +1,4 @@
-publisher = client.publish('/chats/18/chat_messages', {
+publisher = client.publish('/chats', {
+  id: '<%= params[:chat_message][:chat_id] %>',
   message: '<%= j render chat_message %>'
 });

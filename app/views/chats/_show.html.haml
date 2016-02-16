@@ -1,8 +1,8 @@
-#chat
-  #title
+.chat{id: "chat-#{chat.id}"}
+  .title
     = "Chat with #{chat.participant.full_name}"
-  #chat-messages
+  .chat-messages
     = render chat.chat_messages
 
-  #new
+  .new
     = render "chat_messages/new", chat_id: chat.id

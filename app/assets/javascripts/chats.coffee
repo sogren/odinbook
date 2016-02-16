@@ -12,11 +12,15 @@ client.addExtension {
 }
 
 try
- client.unsubscribe '/chats/18/chat_messages'
+ client.unsubscribe '/chats'
 catch
  console?.log "Can't unsubscribe." # print a message only if console is defined
 
-client.subscribe '/chats/'+18+'/chat_messages', (payload) ->
-  $('#chat-messages').append(payload.message) if payload.message
-  $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight)
-  $('#chat_message_content').val('')
+client.subscribe '/chats', (payload) ->
+  message = payload.message
+  id = payload.id
+  chat_window = $("#chat-#{id} .chat-messages")
+
+  chat_window.append(message) if message
+  chat_window.scrollTop(chat_window[0].scrollHeight)
+  $('.chat_message_content').val('')
