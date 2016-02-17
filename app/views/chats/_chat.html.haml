@@ -1,4 +1,4 @@
 %p
   = link_to chat_path(chat.id), remote: true do
     %span.glyphicon.glyphicon-envelope{"aria-hidden" => "true", style: "margin-right: 25px;" }
-  = "#{chat_with(chat)} "
+  = chat_with(chat)

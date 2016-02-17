@@ -1,5 +1,5 @@
-if ($('.chat').length)
-$('.chat').remove()
-else
-$('body').append("#{escape_javascript (render "chats/show")}")
+if (!$('.chat').length)
+$('body').append("#{escape_javascript (render "chats/chat_window")}")
+
+$('.chat .current-chat').html("#{escape_javascript (render "chats/show")}")
 $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight)

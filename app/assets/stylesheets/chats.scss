@@ -1,14 +1,42 @@
 // Place all the styles related to the Chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.chat{
+.minimize{
+  &:hover{
+    background: red;
+  }
+}
+#chat-window{
   position: fixed;
   width: 400px;
-  height: 400px;
+  height: 410px;
   border: 1px solid #BBB;
   bottom: 0;
   right: 0;
   background: #FFF;
+  .chat-options{
+    float:right;
+    width: 25px;
+  }
+  .chat{
+    height: 332px;
+  }
+  .chat-list{
+    width: 373px;
+    >div{
+      float: left;
+      background: #FEFEFE;
+      border: 1px solid #DDD;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+    }
+    >div:hover{
+      float: left;
+      background: #F3F3F3;
+      border: 1px solid #DDD;
+    }
+  }
 }
 .title{
   font-size: 20px;
@@ -19,7 +47,7 @@
 .chat-messages{
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 314px;
+  height: 290px;
 }
 .m-content{
   padding-left: 8px;

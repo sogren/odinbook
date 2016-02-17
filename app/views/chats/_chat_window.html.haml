@@ -1,0 +1,15 @@
+.chat{id: "chat-window"}
+  %span.chat-options.clearfix
+    %button.close#close_button{type: "button"}
+      %span &times;
+    %button.close#minimize_button{type: "button"}
+      %span &minus;
+    %button.close#maximize_button{type: "button", style:"display: none"}
+      %span &square;
+
+  .chat-list.clearfix
+    - current_user.chats.each do |c|
+      %div
+        = link_to "#{chat_with(c).split(' ')[0]}", c, remote: true
+  .current-chat
+    Choose a chat

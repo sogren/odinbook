@@ -21,6 +21,22 @@ client.subscribe '/chats', (payload) ->
   id = payload.id
   chat_window = $("#chat-#{id} .chat-messages")
 
-  chat_window.append(message) if message
-  chat_window.scrollTop(chat_window[0].scrollHeight)
-  $('.chat_message_content').val('')
+  if chat_window
+    chat_window.append(message) if message
+    chat_window.scrollTop(chat_window[0].scrollHeight)
+    $('.chat_message_content').val('')
+
+$(document).on "click", '#minimize_button', (e) ->
+  $('.chat').css("bottom", '-387px')
+  $('.chat #maximize_button').show()
+  $('.chat div').hide()
+  $(this).css("display", 'none')
+
+$(document).on "click", '#maximize_button', (e) ->
+  $('.chat').css("bottom", '')
+  $('.chat #minimize_button').show()
+  $('.chat div').show()
+  $(this).hide()
+
+$(document).on "click", '#close_button', (e) ->
+  $('.chat').remove()
