@@ -24,7 +24,7 @@ client.subscribe '/chats', (payload) ->
   if chat_window
     chat_window.append(message) if message
     chat_window.scrollTop(chat_window[0].scrollHeight)
-    $('.chat_message_content').val('')
+    $('#chat_message_content').val('')
 
 $(document).on "click", '#minimize_button', (e) ->
   $('.chat').css("bottom", '-387px')
